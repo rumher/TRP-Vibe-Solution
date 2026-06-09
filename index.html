@@ -140,8 +140,8 @@
       flex-direction: column;
       justify-content: center;
       gap: 5px;
-      width: 36px;
-      height: 36px;
+      width: 44px;
+      height: 44px;
       background: none;
       border: none;
       padding: 4px;
@@ -855,36 +855,146 @@
     }
     .port-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
 
-    /* Thumbnail */
+    /* Thumbnail — mini screenshot preview */
     .port-thumb {
-      height: 210px;
+      height: 220px;
       position: relative;
       overflow: hidden;
+    }
+    /* Browser chrome bar */
+    .thumb-chrome {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 24px;
+      background: rgba(20,20,20,0.92);
       display: flex;
       align-items: center;
-      justify-content: center;
+      padding: 0 8px;
+      gap: 5px;
+      z-index: 4;
     }
-    .port-thumb-pattern {
-      position: absolute; inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
-      background-size: 28px 28px;
+    .thumb-dots { display: flex; gap: 4px; }
+    .thumb-dots span { width: 7px; height: 7px; border-radius: 50%; }
+    .thumb-dots span:nth-child(1) { background: #ff5f57; }
+    .thumb-dots span:nth-child(2) { background: #febc2e; }
+    .thumb-dots span:nth-child(3) { background: #2bc840; }
+    .thumb-url-bar {
+      flex: 1;
+      height: 12px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 3px;
+      font-size: 7px;
+      color: rgba(255,255,255,0.5);
+      display: flex;
+      align-items: center;
+      padding: 0 6px;
+      overflow: hidden;
+      white-space: nowrap;
     }
-    .port-thumb-icon {
-      position: relative;
-      z-index: 1;
-      text-align: center;
-      color: var(--white);
+    /* Mini navbar inside preview */
+    .thumb-mock-nav {
+      position: absolute;
+      top: 24px; left: 0; right: 0;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 9px;
+      background: rgba(0,0,0,0.38);
+      backdrop-filter: blur(4px);
+      z-index: 3;
     }
-    .port-thumb-icon .big-emoji { font-size: 3rem; display: block; margin-bottom: 0.5rem; }
-    .port-thumb-icon span {
+    .thumb-mock-logo {
+      font-size: 7.5px;
+      font-weight: 800;
+      color: white;
       font-family: 'Montserrat', sans-serif;
-      font-weight: 700;
-      font-size: 0.78rem;
-      letter-spacing: 0.16em;
+      letter-spacing: 0.03em;
+      white-space: nowrap;
+    }
+    .thumb-mock-links { display: flex; gap: 5px; align-items: center; }
+    .thumb-mock-links span {
+      font-size: 5.5px;
+      color: rgba(255,255,255,0.7);
+      letter-spacing: 0.04em;
       text-transform: uppercase;
-      opacity: 0.85;
+    }
+    .thumb-mock-cta-btn {
+      font-size: 5.5px !important;
+      font-weight: 700 !important;
+      background: var(--gold) !important;
+      color: white !important;
+      padding: 2px 5px;
+      border-radius: 2px;
+    }
+    /* Hero area inside preview */
+    .thumb-mock-hero {
+      position: absolute;
+      top: 44px; bottom: 0; left: 0; right: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 1rem 0.5rem;
+      z-index: 2;
+    }
+    .thumb-eyebrow-text {
+      font-size: 6px;
+      color: rgba(255,255,255,0.65);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+    .thumb-title-text {
+      font-size: 12.5px;
+      font-weight: 800;
+      color: white;
+      line-height: 1.2;
+      font-family: 'Montserrat', sans-serif;
+    }
+    .thumb-italic-text {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--gold);
+      font-style: italic;
+      line-height: 1.25;
+      font-family: 'Montserrat', sans-serif;
+    }
+    .thumb-sub-text {
+      font-size: 6.5px;
+      color: rgba(255,255,255,0.55);
+      margin: 3px 0 7px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .thumb-hero-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.85);
+      font-size: 5.5px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 2px 6px;
+      border-radius: 4px;
+      margin-bottom: 6px;
+    }
+    .thumb-btns { display: flex; gap: 5px; margin-top: 8px; flex-wrap: wrap; justify-content: center; }
+    .thumb-btn-fill {
+      font-size: 6px; font-weight: 700;
+      background: var(--gold); color: white;
+      padding: 3px 7px; border-radius: 2px;
+      letter-spacing: 0.06em; text-transform: uppercase;
+    }
+    .thumb-btn-outline {
+      font-size: 6px; font-weight: 700;
+      border: 1px solid rgba(255,255,255,0.5); color: white;
+      padding: 3px 7px; border-radius: 2px;
+      letter-spacing: 0.06em; text-transform: uppercase;
     }
     .port-chip {
       position: absolute;
@@ -1130,26 +1240,50 @@
     @media (max-width: 840px) {
       .value-grid { grid-template-columns: 1fr; }
       .value-visual { display: none; }
-      .contact-grid { grid-template-columns: 1fr; }
-      .portfolio-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
       .urgency-banner { flex-direction: column; text-align: center; padding: 2rem 1.75rem; }
       .ub-cta { width: 100%; }
       .ub-cta .btn { width: 100%; }
       .ub-desc { max-width: 100%; }
+      .page-hero { padding: 3rem 0 2.5rem; }
+      .portfolio-section, .packages-section, .contact-section { padding: 3.5rem 0 3rem; }
+      .value-section { padding: 4.5rem 0; }
     }
     @media (max-width: 768px) {
       .nav-links { display: none; }
       .hamburger { display: flex; }
       .hero-stats { flex-wrap: wrap; gap: 1.5rem; }
       .form-row-2 { grid-template-columns: 1fr; }
+      /* Portfolio single-column at tablet portrait */
+      .portfolio-grid { grid-template-columns: 1fr; }
+      .strip-scroll { gap: 1.25rem; justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; padding-bottom: 4px; }
+      .form-card { padding: 1.75rem; }
+    }
+    @media (max-width: 640px) {
+      /* Packages go single-column earlier */
+      .pkg-grid { grid-template-columns: 1fr; }
+      .pkg-card.featured { transform: none; }
+      .pkg-card.featured:hover { transform: translateY(-5px); }
     }
     @media (max-width: 560px) {
-      .pkg-grid { grid-template-columns: 1fr; }
       .hero-ctas { flex-direction: column; }
       .hero-ctas .btn { width: 100%; justify-content: center; }
       .footer-top { flex-direction: column; }
       .footer-links-col { flex-wrap: wrap; gap: 1.25rem; }
       .value-include-bar { flex-direction: column; text-align: center; align-items: center; }
+      .hero { padding: 3rem 0 2.5rem; }
+      .page-hero { padding: 2.5rem 0 2rem; }
+      .portfolio-section, .packages-section, .contact-section { padding: 2.75rem 0 2.25rem; }
+      .value-section { padding: 3.25rem 0; }
+      .form-card { padding: 1.35rem; }
+      .urgency-banner { padding: 1.5rem 1.25rem; }
+      .thumb-mock-links { display: none; }
+    }
+    @media (max-width: 400px) {
+      .port-thumb { height: 200px; }
+      .hero-stats .stat-num { font-size: 1.55rem; }
+      .pkg-card { padding: 1.5rem 1.25rem; }
+      .port-body { padding: 1.25rem; }
     }
   </style>
 </head>
@@ -1624,124 +1758,184 @@
     <div class="container">
       <div class="portfolio-grid">
 
-        <!-- Card 1: Solana Jet -->
+        <!-- Card 1: Solana Private Cabin -->
         <div class="port-card">
-          <div class="port-thumb" style="background:linear-gradient(135deg,#0c1e35 0%,#0f3460 55%,#1a4a8a 100%);">
-            <div class="port-thumb-pattern"></div>
-            <div class="port-overlay"></div>
-            <div class="port-thumb-icon">
-              <span class="big-emoji">🌐</span>
-              <span>Solana Jet</span>
+          <div class="port-thumb" style="background:linear-gradient(160deg,#101e2e 0%,#1c3a5e 50%,#0f2640 100%);">
+            <div class="thumb-chrome">
+              <div class="thumb-dots"><span></span><span></span><span></span></div>
+              <div class="thumb-url-bar">solana-jet-seven.vercel.app</div>
             </div>
-            <div class="port-chip">Web3 / Landing</div>
+            <div class="thumb-mock-nav">
+              <div class="thumb-mock-logo">Solana · Private Cabin by Jenela</div>
+              <div class="thumb-mock-links">
+                <span>Experience</span><span>Gallery</span><span>Reviews</span>
+                <span class="thumb-mock-cta-btn">Book Now</span>
+              </div>
+            </div>
+            <div class="thumb-mock-hero">
+              <div class="thumb-eyebrow-text">📍 Tayug, Pangasinan · Philippines</div>
+              <div class="thumb-title-text">Disconnect. Unwind.</div>
+              <div class="thumb-italic-text">Your Private Paradise</div>
+              <div class="thumb-title-text">Awaits.</div>
+              <div class="thumb-btns">
+                <div class="thumb-btn-fill">Book Your Stay</div>
+                <div class="thumb-btn-outline">Explore</div>
+              </div>
+            </div>
+            <div class="port-chip">Private Cabin</div>
           </div>
           <div class="port-body">
-            <div class="port-title">Solana Jet Platform</div>
-            <div class="port-sub">Web3 Infrastructure — Blockchain Landing Page</div>
+            <div class="port-title">Solana Private Cabin by Jenela</div>
+            <div class="port-sub">Private Cabin — Tayug, Pangasinan</div>
             <ul class="port-checklist">
-              <li>High-conversion Web3 landing page with animated hero</li>
-              <li>Crypto wallet connection UI &amp; tokenomics display</li>
-              <li>Mobile-first responsive architecture</li>
-              <li>Performance-optimized asset delivery</li>
+              <li>Luxury A-frame private cabin with pool &amp; stunning views</li>
+              <li>Booking system with inquiry &amp; availability flow</li>
+              <li>Immersive photo gallery &amp; virtual property tour</li>
+              <li>Mobile-first design optimized for direct bookings</li>
             </ul>
             <div class="port-footer">
               <div class="port-tags">
                 <span class="port-tag">HTML/CSS</span>
                 <span class="port-tag">JavaScript</span>
-                <span class="port-tag">Web3</span>
+                <span class="port-tag">Hospitality</span>
               </div>
               <a href="https://solana-jet-seven.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-navy btn-sm">View Live Site</a>
             </div>
           </div>
         </div>
 
-        <!-- Card 2: Urdaneta Garden -->
+        <!-- Card 2: Urdaneta Garden Resort -->
         <div class="port-card">
-          <div class="port-thumb" style="background:linear-gradient(135deg,#0d2818 0%,#1a5c32 55%,#2e7d4f 100%);">
-            <div class="port-thumb-pattern"></div>
-            <div class="port-overlay"></div>
-            <div class="port-thumb-icon">
-              <span class="big-emoji">🌿</span>
-              <span>Garden Resort</span>
+          <div class="port-thumb" style="background:linear-gradient(160deg,#0c2016 0%,#1a4a2e 50%,#122d1e 100%);">
+            <div class="thumb-chrome">
+              <div class="thumb-dots"><span></span><span></span><span></span></div>
+              <div class="thumb-url-bar">urdaneta-garden.vercel.app</div>
             </div>
-            <div class="port-chip">Hospitality</div>
+            <div class="thumb-mock-nav">
+              <div class="thumb-mock-logo">Urdaneta Garden Resort</div>
+              <div class="thumb-mock-links">
+                <span>Experience</span><span>Rooms</span><span>Location</span>
+                <span class="thumb-mock-cta-btn">Book Now</span>
+              </div>
+            </div>
+            <div class="thumb-mock-hero">
+              <div class="thumb-eyebrow-text">Urdaneta City, Pangasinan · Est. 2009</div>
+              <div class="thumb-title-text">Your Garden</div>
+              <div class="thumb-italic-text">Celebration</div>
+              <div class="thumb-title-text">Awaits</div>
+              <div class="thumb-btns">
+                <div class="thumb-btn-fill">Book Your Event</div>
+                <div class="thumb-btn-outline">View Gallery</div>
+              </div>
+            </div>
+            <div class="port-chip">Garden Resort</div>
           </div>
           <div class="port-body">
             <div class="port-title">Urdaneta Garden Resort</div>
-            <div class="port-sub">Hospitality &amp; Tourism — Corporate Site</div>
+            <div class="port-sub">Garden Resort &amp; Events Venue — Urdaneta City</div>
             <ul class="port-checklist">
-              <li>Elegant resort showcase with rooms &amp; amenities</li>
-              <li>Reservation &amp; contact form integration</li>
-              <li>Photo gallery with lightbox experience</li>
+              <li>Elegant events venue for weddings, debuts &amp; functions</li>
+              <li>Garden resort rooms, pool &amp; dining sections</li>
+              <li>Event booking inquiry &amp; immersive photo gallery</li>
               <li>SEO-optimized local business structure</li>
             </ul>
             <div class="port-footer">
               <div class="port-tags">
                 <span class="port-tag">HTML/CSS</span>
                 <span class="port-tag">JavaScript</span>
-                <span class="port-tag">CMS</span>
+                <span class="port-tag">Hospitality</span>
               </div>
               <a href="https://urdaneta-garden.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-navy btn-sm">View Live Site</a>
             </div>
           </div>
         </div>
 
-        <!-- Card 3: Saroju's -->
+        <!-- Card 3: Saroju's Farmview -->
         <div class="port-card">
-          <div class="port-thumb" style="background:linear-gradient(135deg,#1e0a2e 0%,#4a1272 55%,#7b2d9e 100%);">
-            <div class="port-thumb-pattern"></div>
-            <div class="port-overlay"></div>
-            <div class="port-thumb-icon">
-              <span class="big-emoji">👗</span>
-              <span>Saroju's Fashion</span>
+          <div class="port-thumb" style="background:linear-gradient(160deg,#1c1205 0%,#3d2a10 50%,#2c1e08 100%);">
+            <div class="thumb-chrome">
+              <div class="thumb-dots"><span></span><span></span><span></span></div>
+              <div class="thumb-url-bar">saroju-s.vercel.app</div>
             </div>
-            <div class="port-chip">E-Commerce</div>
+            <div class="thumb-mock-nav">
+              <div class="thumb-mock-logo">Saroju's Farmview</div>
+              <div class="thumb-mock-links">
+                <span>About</span><span>Rooms</span><span>Events</span>
+                <span class="thumb-mock-cta-btn">Reserve Now</span>
+              </div>
+            </div>
+            <div class="thumb-mock-hero">
+              <div class="thumb-eyebrow-text">Urdaneta City, Pangasinan</div>
+              <div class="thumb-title-text">Where the <em style="color:var(--gold);font-style:italic;">Farm</em></div>
+              <div class="thumb-title-text">Meets Finesse</div>
+              <div class="thumb-sub-text">Boutique Hotel &amp; Events Center</div>
+              <div class="thumb-btns">
+                <div class="thumb-btn-fill">Check Availability</div>
+                <div class="thumb-btn-outline">Discover</div>
+              </div>
+            </div>
+            <div class="port-chip">Farm Resort</div>
           </div>
           <div class="port-body">
-            <div class="port-title">Saroju's — Fashion &amp; Lifestyle</div>
-            <div class="port-sub">Retail E-Commerce — Brand Identity Site</div>
+            <div class="port-title">Saroju's Farmview</div>
+            <div class="port-sub">Boutique Hotel &amp; Events Center — Urdaneta City</div>
             <ul class="port-checklist">
-              <li>Fashion-forward product showcase with filter UI</li>
-              <li>Brand storytelling &amp; lifestyle content layout</li>
-              <li>Integrated checkout flow &amp; cart design</li>
-              <li>Instagram-ready social proof sections</li>
+              <li>Boutique hotel showcase with rooms &amp; events calendar</li>
+              <li>Farm-to-table dining section &amp; amenities display</li>
+              <li>Event booking &amp; inquiry system</li>
+              <li>Warm, earthy brand identity with immersive visuals</li>
             </ul>
             <div class="port-footer">
               <div class="port-tags">
                 <span class="port-tag">HTML/CSS</span>
                 <span class="port-tag">JavaScript</span>
-                <span class="port-tag">E-Commerce</span>
+                <span class="port-tag">Hospitality</span>
               </div>
               <a href="https://saroju-s.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-navy btn-sm">View Live Site</a>
             </div>
           </div>
         </div>
 
-        <!-- Card 4: La Casa -->
+        <!-- Card 4: La Casa Prime Cabin's -->
         <div class="port-card">
-          <div class="port-thumb" style="background:linear-gradient(135deg,#2a0d0d 0%,#6b2020 55%,#9e4040 100%);">
-            <div class="port-thumb-pattern"></div>
-            <div class="port-overlay"></div>
-            <div class="port-thumb-icon">
-              <span class="big-emoji">🏡</span>
-              <span>La Casa</span>
+          <div class="port-thumb" style="background:linear-gradient(160deg,#2a1e10 0%,#56381e 50%,#3c2812 100%);">
+            <div class="thumb-chrome">
+              <div class="thumb-dots"><span></span><span></span><span></span></div>
+              <div class="thumb-url-bar">la-casa-ten.vercel.app</div>
             </div>
-            <div class="port-chip">Real Estate</div>
+            <div class="thumb-mock-nav">
+              <div class="thumb-mock-logo">La Casa Prime Cabin's</div>
+              <div class="thumb-mock-links">
+                <span>About</span><span>Rooms</span><span>Rates</span>
+                <span class="thumb-mock-cta-btn">Book Now</span>
+              </div>
+            </div>
+            <div class="thumb-mock-hero">
+              <div class="thumb-hero-chip">🌴 Bali-Inspired · Bongabon, Nueva Ecija</div>
+              <div class="thumb-title-text">La Casa</div>
+              <div class="thumb-italic-text">Prime</div>
+              <div class="thumb-title-text">Cabin's</div>
+              <div class="thumb-btns">
+                <div class="thumb-btn-fill">View Packages</div>
+                <div class="thumb-btn-outline">Book via Facebook</div>
+              </div>
+            </div>
+            <div class="port-chip">Private Resort</div>
           </div>
           <div class="port-body">
-            <div class="port-title">La Casa — Real Estate Platform</div>
-            <div class="port-sub">Property &amp; Real Estate — Listing Site</div>
+            <div class="port-title">La Casa Prime Cabin's</div>
+            <div class="port-sub">Bali-Inspired Private Resort — Bongabon, Nueva Ecija</div>
             <ul class="port-checklist">
-              <li>Premium property listings with search &amp; filter</li>
-              <li>Lead capture &amp; inquiry forms</li>
-              <li>Virtual tour &amp; photo gallery integration</li>
-              <li>Agent profiles &amp; trust-building layout</li>
+              <li>Bali-inspired private resort with premium cabin accommodations</li>
+              <li>Room showcase with rates &amp; availability</li>
+              <li>Events &amp; dining sections with immersive visuals</li>
+              <li>Facebook booking integration &amp; social proof elements</li>
             </ul>
             <div class="port-footer">
               <div class="port-tags">
                 <span class="port-tag">HTML/CSS</span>
                 <span class="port-tag">JavaScript</span>
-                <span class="port-tag">CMS</span>
+                <span class="port-tag">Hospitality</span>
               </div>
               <a href="https://la-casa-ten.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-navy btn-sm">View Live Site</a>
             </div>
