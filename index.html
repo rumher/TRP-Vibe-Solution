@@ -1230,6 +1230,110 @@
     }
 
     /* ═════════════════════════════════════════════════
+       FACEBOOK / MESSENGER INTEGRATION
+    ═════════════════════════════════════════════════ */
+    .messenger-float {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      z-index: 990;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      background: #0084FF;
+      color: #fff;
+      border-radius: 50px;
+      padding: 0.72rem 1.2rem 0.72rem 0.85rem;
+      box-shadow: 0 4px 22px rgba(0,132,255,0.38);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+      white-space: nowrap;
+      line-height: 1;
+    }
+    .messenger-float:hover {
+      background: #006fd6;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(0,132,255,0.5);
+    }
+    .messenger-float svg { flex-shrink: 0; }
+    .footer-social-col {
+      display: flex;
+      gap: 0.7rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .footer-social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.48) !important;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.32rem 0.8rem;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 100px;
+      transition: color var(--t), border-color var(--t);
+    }
+    .footer-social-link:hover { color: #fff !important; border-color: rgba(255,255,255,0.28); }
+    .footer-social-msn:hover  { color: #5bb8ff !important; border-color: rgba(0,132,255,0.4) !important; }
+    .footer-social-fb:hover   { color: #74a9ff !important; border-color: rgba(24,119,242,0.4) !important; }
+    .form-alt {
+      margin-top: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0.8rem;
+    }
+    .form-alt-divider {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.71rem;
+      color: var(--slate);
+      opacity: 0.75;
+    }
+    .form-alt-divider::before, .form-alt-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+    .btn-messenger {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      padding: 0.82rem 1.5rem;
+      background: #0084FF;
+      color: #fff;
+      border-radius: var(--radius-sm);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-messenger:hover {
+      background: #006fd6;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,132,255,0.3);
+    }
+    @media (max-width: 560px) {
+      .messenger-float { padding: 0; width: 52px; height: 52px; border-radius: 50%; justify-content: center; }
+      .messenger-float .mf-label { display: none; }
+    }
+
+    /* ═════════════════════════════════════════════════
        RESPONSIVE BREAKPOINTS
     ═════════════════════════════════════════════════ */
     @media (max-width: 1080px) {
@@ -1544,6 +1648,16 @@
           <a href="#" onclick="navigate('portfolio'); return false;">Portfolio</a>
           <a href="#" onclick="navigate('contact');   return false;">Contact</a>
         </div>
+        <div class="footer-social-col">
+          <a href="https://www.facebook.com/trp.vibe.solutions" target="_blank" rel="noopener noreferrer" class="footer-social-link footer-social-fb">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            Facebook
+          </a>
+          <a href="https://m.me/trp.vibe.solutions" target="_blank" rel="noopener noreferrer" class="footer-social-link footer-social-msn">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.36 2 2 6.13 2 11.7c0 2.7 1.1 5.14 2.94 6.9.15.14.24.33.25.54l.05 1.66c.02.53.55.88 1.04.66l1.86-.82c.16-.07.33-.08.49-.04.95.26 1.96.4 3 .4 5.64 0 10-4.13 10-9.7C22 6.13 17.64 2 12 2zm6.1 7.43L15.6 13.5c-.2.32-.64.4-.96.18l-2.13-1.6c-.1-.07-.24-.07-.34 0l-2.88 2.18c-.38.29-.88-.16-.63-.57l2.5-4.07c.2-.32.64-.4.96-.18l2.13 1.6c.1.07.24.07.34 0l2.88-2.18c.38-.29.88.16.63.57z"/></svg>
+            Messenger
+          </a>
+        </div>
       </div>
       <div class="footer-bottom">
         <p class="footer-copy">© 2025 TRP Vibe Solutions. All rights reserved.</p>
@@ -1726,6 +1840,16 @@
           <a href="#" onclick="navigate('services');  return false;">Services</a>
           <a href="#" onclick="navigate('portfolio'); return false;">Portfolio</a>
           <a href="#" onclick="navigate('contact');   return false;">Contact</a>
+        </div>
+        <div class="footer-social-col">
+          <a href="https://www.facebook.com/trp.vibe.solutions" target="_blank" rel="noopener noreferrer" class="footer-social-link footer-social-fb">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            Facebook
+          </a>
+          <a href="https://m.me/trp.vibe.solutions" target="_blank" rel="noopener noreferrer" class="footer-social-link footer-social-msn">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.36 2 2 6.13 2 11.7c0 2.7 1.1 5.14 2.94 6.9.15.14.24.33.25.54l.05 1.66c.02.53.55.88 1.04.66l1.86-.82c.16-.07.33-.08.49-.04.95.26 1.96.4 3 .4 5.64 0 10-4.13 10-9.7C22 6.13 17.64 2 12 2zm6.1 7.43L15.6 13.5c-.2.32-.64.4-.96.18l-2.13-1.6c-.1-.07-.24-.07-.34 0l-2.88 2.18c-.38.29-.88-.16-.63-.57l2.5-4.07c.2-.32.64-.4.96-.18l2.13 1.6c.1.07.24.07.34 0l2.88-2.18c.38-.29.88.16.63.57z"/></svg>
+            Messenger
+          </a>
         </div>
       </div>
       <div class="footer-bottom">
@@ -1959,6 +2083,16 @@
           <a href="#" onclick="navigate('portfolio'); return false;">Portfolio</a>
           <a href="#" onclick="navigate('contact');   return false;">Contact</a>
         </div>
+        <div class="footer-social-col">
+          <a href="https://www.facebook.com/trp.vibe.solutions" target="_blank" rel="noopener noreferrer" class="footer-social-link footer-social-fb">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            Facebook
+          </a>
+          <a href="https://m.me/trp.vibe.solutions" target="_blank" rel="noopener noreferrer" class="footer-social-link footer-social-msn">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.36 2 2 6.13 2 11.7c0 2.7 1.1 5.14 2.94 6.9.15.14.24.33.25.54l.05 1.66c.02.53.55.88 1.04.66l1.86-.82c.16-.07.33-.08.49-.04.95.26 1.96.4 3 .4 5.64 0 10-4.13 10-9.7C22 6.13 17.64 2 12 2zm6.1 7.43L15.6 13.5c-.2.32-.64.4-.96.18l-2.13-1.6c-.1-.07-.24-.07-.34 0l-2.88 2.18c-.38.29-.88-.16-.63-.57l2.5-4.07c.2-.32.64-.4.96-.18l2.13 1.6c.1.07.24.07.34 0l2.88-2.18c.38-.29.88.16.63.57z"/></svg>
+            Messenger
+          </a>
+        </div>
       </div>
       <div class="footer-bottom">
         <p class="footer-copy">© 2025 TRP Vibe Solutions. All rights reserved.</p>
@@ -2001,6 +2135,24 @@
           </p>
 
           <div style="margin-top:2rem;">
+            <div class="info-row">
+              <div class="info-icon" style="background:rgba(0,132,255,0.08);border-color:rgba(0,132,255,0.18);">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#0084FF" aria-hidden="true"><path d="M12 2C6.36 2 2 6.13 2 11.7c0 2.7 1.1 5.14 2.94 6.9.15.14.24.33.25.54l.05 1.66c.02.53.55.88 1.04.66l1.86-.82c.16-.07.33-.08.49-.04.95.26 1.96.4 3 .4 5.64 0 10-4.13 10-9.7C22 6.13 17.64 2 12 2zm6.1 7.43L15.6 13.5c-.2.32-.64.4-.96.18l-2.13-1.6c-.1-.07-.24-.07-.34 0l-2.88 2.18c-.38.29-.88-.16-.63-.57l2.5-4.07c.2-.32.64-.4.96-.18l2.13 1.6c.1.07.24.07.34 0l2.88-2.18c.38-.29.88.16.63.57z"/></svg>
+              </div>
+              <div class="info-content">
+                <h4>Chat on Messenger</h4>
+                <a href="https://m.me/trp.vibe.solutions" target="_blank" rel="noopener noreferrer">m.me/trp.vibe.solutions</a>
+              </div>
+            </div>
+            <div class="info-row">
+              <div class="info-icon" style="background:rgba(24,119,242,0.08);border-color:rgba(24,119,242,0.18);">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#1877F2" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              </div>
+              <div class="info-content">
+                <h4>Facebook Page</h4>
+                <a href="https://www.facebook.com/trp.vibe.solutions" target="_blank" rel="noopener noreferrer">fb.com/trp.vibe.solutions</a>
+              </div>
+            </div>
             <div class="info-row">
               <div class="info-icon">✉️</div>
               <div class="info-content">
@@ -2078,6 +2230,14 @@
               ✓ Inquiry received! We'll be in touch within 24 hours.
             </div>
           </form>
+
+          <div class="form-alt">
+            <div class="form-alt-divider">or reach us instantly via</div>
+            <a href="https://m.me/trp.vibe.solutions" target="_blank" rel="noopener noreferrer" class="btn-messenger">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.36 2 2 6.13 2 11.7c0 2.7 1.1 5.14 2.94 6.9.15.14.24.33.25.54l.05 1.66c.02.53.55.88 1.04.66l1.86-.82c.16-.07.33-.08.49-.04.95.26 1.96.4 3 .4 5.64 0 10-4.13 10-9.7C22 6.13 17.64 2 12 2zm6.1 7.43L15.6 13.5c-.2.32-.64.4-.96.18l-2.13-1.6c-.1-.07-.24-.07-.34 0l-2.88 2.18c-.38.29-.88-.16-.63-.57l2.5-4.07c.2-.32.64-.4.96-.18l2.13 1.6c.1.07.24.07.34 0l2.88-2.18c.38-.29.88.16.63.57z"/></svg>
+              Message Us on Messenger
+            </a>
+          </div>
         </div>
 
       </div>
@@ -2096,6 +2256,16 @@
           <a href="#" onclick="navigate('services');  return false;">Services</a>
           <a href="#" onclick="navigate('portfolio'); return false;">Portfolio</a>
           <a href="#" onclick="navigate('contact');   return false;">Contact</a>
+        </div>
+        <div class="footer-social-col">
+          <a href="https://www.facebook.com/trp.vibe.solutions" target="_blank" rel="noopener noreferrer" class="footer-social-link footer-social-fb">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            Facebook
+          </a>
+          <a href="https://m.me/trp.vibe.solutions" target="_blank" rel="noopener noreferrer" class="footer-social-link footer-social-msn">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.36 2 2 6.13 2 11.7c0 2.7 1.1 5.14 2.94 6.9.15.14.24.33.25.54l.05 1.66c.02.53.55.88 1.04.66l1.86-.82c.16-.07.33-.08.49-.04.95.26 1.96.4 3 .4 5.64 0 10-4.13 10-9.7C22 6.13 17.64 2 12 2zm6.1 7.43L15.6 13.5c-.2.32-.64.4-.96.18l-2.13-1.6c-.1-.07-.24-.07-.34 0l-2.88 2.18c-.38.29-.88-.16-.63-.57l2.5-4.07c.2-.32.64-.4.96-.18l2.13 1.6c.1.07.24.07.34 0l2.88-2.18c.38-.29.88.16.63.57z"/></svg>
+            Messenger
+          </a>
         </div>
       </div>
       <div class="footer-bottom">
@@ -2202,6 +2372,14 @@
     }, 1400);
   });
 </script>
+
+<!-- ── Floating Messenger Button ── -->
+<a href="https://m.me/trp.vibe.solutions" target="_blank" rel="noopener noreferrer" class="messenger-float" aria-label="Chat with us on Messenger">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M12 2C6.36 2 2 6.13 2 11.7c0 2.7 1.1 5.14 2.94 6.9.15.14.24.33.25.54l.05 1.66c.02.53.55.88 1.04.66l1.86-.82c.16-.07.33-.08.49-.04.95.26 1.96.4 3 .4 5.64 0 10-4.13 10-9.7C22 6.13 17.64 2 12 2zm6.1 7.43L15.6 13.5c-.2.32-.64.4-.96.18l-2.13-1.6c-.1-.07-.24-.07-.34 0l-2.88 2.18c-.38.29-.88-.16-.63-.57l2.5-4.07c.2-.32.64-.4.96-.18l2.13 1.6c.1.07.24.07.34 0l2.88-2.18c.38-.29.88.16.63.57z"/>
+  </svg>
+  <span class="mf-label">Chat on Messenger</span>
+</a>
 
 </body>
 </html>
