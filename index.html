@@ -1,0 +1,2013 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="TRP Vibe Solutions — Premium digital agency building high-conversion websites and revenue engines. Based in Balungao, Pangasinan, Philippines." />
+  <title>TRP Vibe Solutions | Premium Digital Agency</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─────────────────────────────────────────────────
+       RESET & CSS CUSTOM PROPERTIES
+    ───────────────────────────────────────────────── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg:           #F5F4F0;
+      --navy:         #112946;
+      --navy-deep:    #0d1f35;
+      --gold:         #A98E60;
+      --gold-light:   rgba(169,142,96,0.10);
+      --gold-border:  rgba(169,142,96,0.22);
+      --slate:        #5A6B7C;
+      --white:        #FFFFFF;
+      --border:       rgba(17,41,70,0.09);
+      --border-md:    rgba(17,41,70,0.14);
+      --navy-tint:    rgba(17,41,70,0.04);
+      --shadow-sm:    0 2px 12px rgba(17,41,70,0.07);
+      --shadow-md:    0 6px 28px rgba(17,41,70,0.10);
+      --shadow-lg:    0 12px 48px rgba(17,41,70,0.14);
+      --t:            0.3s ease;
+      --radius-sm:    6px;
+      --radius-md:    12px;
+      --radius-lg:    18px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--slate);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; }
+    ul { list-style: none; }
+    button { font-family: inherit; cursor: pointer; }
+
+    /* ─────────────────────────────────────────────────
+       NAVIGATION
+    ───────────────────────────────────────────────── */
+    .navbar {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 900;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 clamp(1.25rem, 4vw, 3rem);
+      background: rgba(245,244,240,0.94);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      transition: box-shadow var(--t);
+    }
+    .navbar.scrolled { box-shadow: var(--shadow-md); }
+
+    /* ── Logo ── */
+    .logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      user-select: none;
+    }
+    .logo-svg { width: 56px; height: 40px; flex-shrink: 0; }
+    .logo-wordmark { display: flex; flex-direction: column; line-height: 1; }
+    .logo-wordmark strong {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 1rem;
+      color: var(--navy);
+      letter-spacing: 0.04em;
+    }
+    .logo-wordmark small {
+      font-size: 0.58rem;
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    /* ── Desktop nav links ── */
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2.25rem;
+    }
+    .nav-links a {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--slate);
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      position: relative;
+      padding-bottom: 3px;
+      transition: color var(--t);
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      left: 0; bottom: 0;
+      width: 0; height: 1.5px;
+      background: var(--gold);
+      transition: width var(--t);
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--navy); }
+    .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+    .nav-links a.nav-cta {
+      background: var(--navy);
+      color: var(--white) !important;
+      padding: 0.45rem 1.15rem;
+      border-radius: var(--radius-sm);
+      transition: background var(--t), transform var(--t) !important;
+    }
+    .nav-links a.nav-cta::after { display: none; }
+    .nav-links a.nav-cta:hover { background: var(--gold) !important; transform: translateY(-1px); }
+
+    /* ── Hamburger ── */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 36px;
+      height: 36px;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--navy);
+      border-radius: 2px;
+      transition: all 0.28s ease;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    /* ── Mobile menu ── */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 70px; left: 0; right: 0;
+      z-index: 899;
+      background: rgba(245,244,240,0.97);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      flex-direction: column;
+      padding: 1rem 1.5rem 1.5rem;
+      gap: 0;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a {
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--slate);
+      padding: 0.9rem 0;
+      border-bottom: 1px solid var(--border);
+      transition: color var(--t);
+    }
+    .mobile-nav a:last-child { border-bottom: none; }
+    .mobile-nav a:hover, .mobile-nav a.active { color: var(--gold); }
+
+    /* ─────────────────────────────────────────────────
+       VIEWS / SPA
+    ───────────────────────────────────────────────── */
+    .view { display: none; padding-top: 70px; min-height: 100vh; }
+    .view.active {
+      display: block;
+      animation: viewIn 0.38s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+    }
+    @keyframes viewIn {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─────────────────────────────────────────────────
+       SHARED LAYOUT & COMPONENTS
+    ───────────────────────────────────────────────── */
+    .container { max-width: 1180px; margin: 0 auto; padding: 0 clamp(1.25rem, 4vw, 2.5rem); }
+
+    .section-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.85rem;
+    }
+    .section-eyebrow::before {
+      content: '';
+      width: 28px; height: 1px;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .section-heading {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+    }
+    .section-heading.lg  { font-size: clamp(2.1rem,  4.2vw, 3.2rem); }
+    .section-heading.xl  { font-size: clamp(2.6rem,  5.5vw, 4.2rem); }
+    .section-heading.md  { font-size: clamp(1.6rem,  2.8vw, 2.2rem); }
+
+    .section-body {
+      font-size: clamp(0.9rem, 1.4vw, 1rem);
+      color: var(--slate);
+      line-height: 1.78;
+      max-width: 560px;
+    }
+
+    .gold-bar { width: 44px; height: 3px; background: var(--gold); border-radius: 2px; margin: 1rem 0; }
+
+    /* ── Buttons ── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.85rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: all var(--t);
+      border: 1.5px solid transparent;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .btn-navy  { background: var(--navy); color: var(--white); border-color: var(--navy); }
+    .btn-navy:hover  { background: transparent; color: var(--navy); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+    .btn-gold  { background: var(--gold); color: var(--white); border-color: var(--gold); }
+    .btn-gold:hover  { background: var(--navy); border-color: var(--navy); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+    .btn-ghost { background: transparent; color: var(--navy); border-color: var(--navy); }
+    .btn-ghost:hover { background: var(--navy); color: var(--white); transform: translateY(-2px); }
+    .btn-ghost-white { background: transparent; color: var(--white); border-color: rgba(255,255,255,0.5); }
+    .btn-ghost-white:hover { background: rgba(255,255,255,0.12); border-color: var(--white); }
+    .btn-sm { padding: 0.5rem 1.15rem; font-size: 0.72rem; }
+
+    /* ─────────────────────────────────────────────────
+       SHARED DARK HERO BAND (Services / Portfolio / Contact)
+    ───────────────────────────────────────────────── */
+    .page-hero {
+      background: var(--navy);
+      padding: 4.5rem 0 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 50% 110%, rgba(169,142,96,0.14) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .page-hero .section-eyebrow { color: var(--gold); justify-content: center; }
+    .page-hero .section-eyebrow::before { background: var(--gold); }
+    .page-hero .section-heading { color: var(--white); }
+    .page-hero .section-body { color: rgba(255,255,255,0.62); margin: 0 auto; text-align: center; }
+
+    /* ─────────────────────────────────────────────────
+       SHARED FOOTER
+    ───────────────────────────────────────────────── */
+    .site-footer {
+      background: var(--navy-deep);
+      padding: 3.5rem 0 2rem;
+      color: rgba(255,255,255,0.5);
+    }
+    .footer-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      margin-bottom: 1.75rem;
+    }
+    .footer-brand strong {
+      display: block;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 1.05rem;
+      color: var(--white);
+      letter-spacing: 0.04em;
+    }
+    .footer-brand span {
+      font-size: 0.6rem;
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      display: block;
+      margin-top: 3px;
+    }
+    .footer-links-col { display: flex; gap: 2rem; align-items: center; }
+    .footer-links-col a {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.45);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color var(--t);
+    }
+    .footer-links-col a:hover { color: var(--gold); }
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    .footer-copy { font-size: 0.75rem; }
+    .footer-tagline { font-size: 0.75rem; color: var(--gold); font-weight: 500; }
+
+    /* ═════════════════════════════════════════════════
+       HOME VIEW
+    ═════════════════════════════════════════════════ */
+
+    /* ── Hero ── */
+    .hero {
+      min-height: calc(100vh - 70px);
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 5rem 0 4rem;
+    }
+    .hero-grid-bg {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 72px 72px;
+      pointer-events: none;
+    }
+    .hero-glow {
+      position: absolute;
+      top: -180px; right: -160px;
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(169,142,96,0.07) 0%, transparent 68%);
+      pointer-events: none;
+    }
+    .hero-glow-2 {
+      position: absolute;
+      bottom: -100px; left: -100px;
+      width: 480px; height: 480px;
+      background: radial-gradient(circle, rgba(17,41,70,0.04) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 4rem;
+      width: 100%;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0.35rem 1rem 0.35rem 0.65rem;
+      background: var(--gold-light);
+      border: 1px solid var(--gold-border);
+      border-radius: 100px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 1.75rem;
+    }
+    .hero-badge::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--gold);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+    .hero-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: clamp(2.4rem, 5.2vw, 4.1rem);
+      color: var(--navy);
+      line-height: 1.06;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.5rem;
+    }
+    .hero-title em {
+      font-style: normal;
+      color: var(--gold);
+    }
+    .hero-subtitle {
+      font-size: clamp(0.95rem, 1.4vw, 1.08rem);
+      color: var(--slate);
+      line-height: 1.8;
+      max-width: 560px;
+      margin-bottom: 2.5rem;
+    }
+    .hero-ctas { display: flex; gap: 0.9rem; flex-wrap: wrap; margin-bottom: 3.75rem; }
+    .hero-divider {
+      width: 100%;
+      height: 1px;
+      background: var(--border);
+      margin-bottom: 2.25rem;
+    }
+    .hero-stats { display: flex; gap: clamp(1.5rem, 4vw, 3.5rem); flex-wrap: wrap; }
+    .stat-num {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 1.85rem;
+      color: var(--navy);
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+    .stat-lbl {
+      font-size: 0.73rem;
+      color: var(--slate);
+      letter-spacing: 0.04em;
+      margin-top: 4px;
+    }
+
+    /* Hero card */
+    .hero-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      width: 280px;
+      flex-shrink: 0;
+      box-shadow: var(--shadow-lg);
+    }
+    .hc-dots { display: flex; gap: 5px; margin-bottom: 1.25rem; }
+    .hc-dot { width: 9px; height: 9px; border-radius: 50%; }
+    .hc-title {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--navy);
+      margin-bottom: 1.25rem;
+    }
+    .hc-metric { margin-bottom: 1rem; }
+    .hc-metric-head {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.73rem;
+      color: var(--slate);
+      margin-bottom: 5px;
+    }
+    .hc-metric-head span:last-child { font-weight: 700; color: var(--navy); }
+    .hc-bar {
+      height: 5px;
+      background: var(--navy-tint);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .hc-bar-fill {
+      height: 100%;
+      border-radius: 3px;
+      background: linear-gradient(90deg, var(--navy), var(--gold));
+    }
+    .hc-footer {
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .hc-status {
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: #16a34a;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .hc-status::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: #16a34a;
+      border-radius: 50%;
+    }
+    .hc-badge {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: var(--gold-light);
+      color: var(--gold);
+      border: 1px solid var(--gold-border);
+      padding: 0.2rem 0.55rem;
+      border-radius: 100px;
+    }
+
+    /* ── Feature strip ── */
+    .feature-strip {
+      background: var(--navy);
+      padding: 1.15rem 0;
+    }
+    .strip-scroll {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+      padding: 0 clamp(1.25rem, 4vw, 2.5rem);
+    }
+    .strip-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.65);
+      white-space: nowrap;
+    }
+    .strip-check { color: var(--gold); font-size: 0.85rem; }
+
+    /* ── Value section (home) ── */
+    .value-section { padding: 6.5rem 0; }
+    .value-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .value-features { margin-top: 2rem; display: flex; flex-direction: column; gap: 1.5rem; }
+    .vf-item { display: flex; gap: 1rem; align-items: flex-start; }
+    .vf-icon {
+      width: 42px; height: 42px;
+      background: var(--gold-light);
+      border: 1px solid var(--gold-border);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .vf-text h4 {
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--navy);
+      margin-bottom: 3px;
+    }
+    .vf-text p { font-size: 0.82rem; color: var(--slate); line-height: 1.55; }
+    .value-visual {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .v-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2.25rem;
+      width: 100%;
+      max-width: 380px;
+      box-shadow: var(--shadow-lg);
+    }
+    .v-card-float {
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      background: var(--navy);
+      border-radius: var(--radius-md);
+      padding: 1.1rem 1.4rem;
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .vcf-icon { font-size: 1.4rem; }
+    .vcf-text { }
+    .vcf-text strong { display: block; font-size: 0.82rem; font-weight: 700; color: var(--white); }
+    .vcf-text span { font-size: 0.7rem; color: rgba(255,255,255,0.55); }
+
+    /* ═════════════════════════════════════════════════
+       SERVICES VIEW
+    ═════════════════════════════════════════════════ */
+    .packages-section { padding: 5.5rem 0 4rem; }
+
+    .value-include-bar {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.2rem 1.6rem;
+      background: var(--gold-light);
+      border: 1px solid var(--gold-border);
+      border-radius: var(--radius-md);
+      margin-bottom: 3.5rem;
+      flex-wrap: wrap;
+    }
+    .vib-icon { font-size: 1.4rem; flex-shrink: 0; }
+    .vib-text { flex: 1; min-width: 200px; }
+    .vib-text strong { display: block; font-size: 0.85rem; font-weight: 700; color: var(--navy); margin-bottom: 2px; }
+    .vib-text span { font-size: 0.78rem; color: var(--slate); }
+    .vib-pill {
+      background: var(--gold);
+      color: var(--white);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.85rem;
+      border-radius: 100px;
+      white-space: nowrap;
+    }
+
+    /* Package grid */
+    .pkg-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.4rem;
+      align-items: start;
+    }
+    .pkg-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.85rem 1.6rem;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      transition: transform var(--t), box-shadow var(--t);
+    }
+    .pkg-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+    .pkg-card.featured {
+      border: 2px solid var(--gold);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+    .pkg-card.featured:hover { transform: translateY(-9px); }
+    .pkg-featured-label {
+      position: absolute;
+      top: -11px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--gold);
+      color: var(--white);
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.22rem 0.9rem;
+      border-radius: 100px;
+      white-space: nowrap;
+    }
+    .pkg-tier {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.35rem;
+    }
+    .pkg-name {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 1.15rem;
+      color: var(--navy);
+      margin-bottom: 0.6rem;
+    }
+    .pkg-price {
+      display: flex;
+      align-items: baseline;
+      gap: 2px;
+      margin-bottom: 0.2rem;
+    }
+    .pkg-currency {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--navy);
+      padding-bottom: 2px;
+    }
+    .pkg-amount {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 2.15rem;
+      color: var(--navy);
+      line-height: 1;
+      letter-spacing: -0.03em;
+    }
+    .pkg-deposit {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--gold);
+      margin-bottom: 1.25rem;
+    }
+    .pkg-rule { height: 1px; background: var(--border); margin-bottom: 1.2rem; }
+    .pkg-features {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin-bottom: 1.6rem;
+      flex: 1;
+    }
+    .pkg-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.55rem;
+      font-size: 0.79rem;
+      color: var(--slate);
+      line-height: 1.4;
+    }
+    .pkg-features li::before {
+      content: '✓';
+      color: var(--gold);
+      font-weight: 700;
+      font-size: 0.82rem;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .pkg-cta { width: 100%; text-align: center; }
+
+    /* Renewal note */
+    .renewal-note {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      margin-top: 2rem;
+      padding: 1.1rem 1.5rem;
+      background: var(--navy-tint);
+      border-left: 3px solid var(--navy);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      font-size: 0.8rem;
+      color: var(--slate);
+      line-height: 1.6;
+    }
+    .renewal-note strong { color: var(--navy); }
+
+    /* Urgency banner */
+    .urgency-banner {
+      margin-top: 3.5rem;
+      background: linear-gradient(130deg, var(--navy) 0%, #1b3f65 100%);
+      border-radius: var(--radius-lg);
+      padding: 2.75rem 3rem;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .urgency-banner::before {
+      content: '';
+      position: absolute;
+      top: -60%; right: -8%;
+      width: 380px; height: 380px;
+      background: radial-gradient(circle, rgba(169,142,96,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .urgency-banner::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+    }
+    .ub-icon {
+      font-size: 2.75rem;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+    .ub-body { flex: 1; position: relative; z-index: 1; }
+    .ub-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(169,142,96,0.18);
+      border: 1px solid rgba(169,142,96,0.35);
+      color: var(--gold);
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.75rem;
+      border-radius: 100px;
+      margin-bottom: 0.65rem;
+    }
+    .ub-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: clamp(1.2rem, 2.2vw, 1.55rem);
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+    .ub-title em { font-style: normal; color: var(--gold); }
+    .ub-desc {
+      font-size: 0.84rem;
+      color: rgba(255,255,255,0.65);
+      max-width: 500px;
+      line-height: 1.65;
+    }
+    .ub-desc strong { color: var(--gold); font-weight: 600; }
+    .ub-cta { flex-shrink: 0; position: relative; z-index: 1; }
+
+    /* ═════════════════════════════════════════════════
+       PORTFOLIO VIEW
+    ═════════════════════════════════════════════════ */
+    .portfolio-section { padding: 5.5rem 0 4rem; }
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+    .port-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: transform var(--t), box-shadow var(--t);
+    }
+    .port-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+
+    /* Thumbnail */
+    .port-thumb {
+      height: 210px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .port-thumb-pattern {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+    .port-thumb-icon {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      color: var(--white);
+    }
+    .port-thumb-icon .big-emoji { font-size: 3rem; display: block; margin-bottom: 0.5rem; }
+    .port-thumb-icon span {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.78rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      opacity: 0.85;
+    }
+    .port-chip {
+      position: absolute;
+      top: 0.9rem; left: 0.9rem;
+      background: rgba(17,41,70,0.75);
+      color: var(--white);
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.7rem;
+      border-radius: 100px;
+      backdrop-filter: blur(8px);
+    }
+    .port-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, transparent 55%, rgba(0,0,0,0.18));
+    }
+
+    /* Card body */
+    .port-body { padding: 1.6rem; }
+    .port-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--navy);
+      margin-bottom: 0.2rem;
+    }
+    .port-sub {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: 0.05em;
+      margin-bottom: 1rem;
+    }
+    .port-checklist {
+      display: flex;
+      flex-direction: column;
+      gap: 0.38rem;
+      margin-bottom: 1.35rem;
+    }
+    .port-checklist li {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.77rem;
+      color: var(--slate);
+    }
+    .port-checklist li::before {
+      content: '✓';
+      color: var(--gold);
+      font-weight: 700;
+      font-size: 0.8rem;
+      flex-shrink: 0;
+    }
+    .port-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+    .port-tags { display: flex; gap: 0.35rem; flex-wrap: wrap; }
+    .port-tag {
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: var(--navy);
+      background: var(--navy-tint);
+      border-radius: var(--radius-sm);
+      padding: 0.2rem 0.55rem;
+    }
+
+    /* ═════════════════════════════════════════════════
+       CONTACT VIEW
+    ═════════════════════════════════════════════════ */
+    .contact-section { padding: 5.5rem 0 4rem; }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.55fr;
+      gap: 4.5rem;
+      align-items: start;
+    }
+
+    /* Info column */
+    .contact-info {}
+    .contact-info .section-body { max-width: 100%; margin-bottom: 2.25rem; }
+    .info-row {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      margin-bottom: 1.6rem;
+    }
+    .info-icon {
+      width: 42px; height: 42px;
+      background: var(--gold-light);
+      border: 1px solid var(--gold-border);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .info-content h4 { font-weight: 700; font-size: 0.82rem; color: var(--navy); margin-bottom: 2px; }
+    .info-content a, .info-content p { font-size: 0.84rem; color: var(--slate); }
+    .info-content a:hover { color: var(--gold); }
+
+    .offer-callout {
+      margin-top: 2.5rem;
+      padding: 1.4rem;
+      background: var(--gold-light);
+      border: 1px solid var(--gold-border);
+      border-radius: var(--radius-md);
+    }
+    .offer-callout-label {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.4rem;
+    }
+    .offer-callout h4 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--navy);
+      margin-bottom: 0.35rem;
+    }
+    .offer-callout p { font-size: 0.79rem; color: var(--slate); line-height: 1.6; }
+
+    /* Form card */
+    .form-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      box-shadow: var(--shadow-md);
+    }
+    .form-card-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--navy);
+      margin-bottom: 0.2rem;
+    }
+    .form-card-sub { font-size: 0.8rem; color: var(--slate); margin-bottom: 2rem; }
+
+    .form-row-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .form-group { margin-bottom: 1.1rem; }
+    .form-group label {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--navy);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.45rem;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.72rem 1rem;
+      background: var(--bg);
+      border: 1.5px solid var(--border-md);
+      border-radius: var(--radius-sm);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.875rem;
+      color: var(--navy);
+      transition: border-color var(--t), box-shadow var(--t);
+      outline: none;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: rgba(90,107,124,0.5); }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(169,142,96,0.12);
+      background: var(--white);
+    }
+    .form-group select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='7' fill='none'%3E%3Cpath d='M1 1l4.5 4.5L10 1' stroke='%235A6B7C' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      padding-right: 2.5rem;
+      cursor: pointer;
+    }
+    .form-group textarea { resize: vertical; min-height: 115px; }
+    .form-submit-btn {
+      width: 100%;
+      padding: 0.95rem;
+      background: var(--navy);
+      color: var(--white);
+      border: none;
+      border-radius: var(--radius-sm);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background var(--t), transform var(--t), box-shadow var(--t);
+      margin-top: 0.5rem;
+    }
+    .form-submit-btn:hover {
+      background: var(--gold);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(169,142,96,0.3);
+    }
+    .form-submit-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+    .form-success-msg {
+      display: none;
+      margin-top: 1rem;
+      padding: 0.9rem 1.1rem;
+      background: rgba(22,163,74,0.08);
+      border: 1px solid rgba(22,163,74,0.25);
+      border-radius: var(--radius-sm);
+      font-size: 0.83rem;
+      color: #166534;
+      font-weight: 500;
+    }
+
+    /* ═════════════════════════════════════════════════
+       RESPONSIVE BREAKPOINTS
+    ═════════════════════════════════════════════════ */
+    @media (max-width: 1080px) {
+      .pkg-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-card { display: none; }
+    }
+    @media (max-width: 840px) {
+      .value-grid { grid-template-columns: 1fr; }
+      .value-visual { display: none; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .portfolio-grid { grid-template-columns: 1fr; }
+      .urgency-banner { flex-direction: column; text-align: center; padding: 2rem 1.75rem; }
+      .ub-cta { width: 100%; }
+      .ub-cta .btn { width: 100%; }
+      .ub-desc { max-width: 100%; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .hero-stats { flex-wrap: wrap; gap: 1.5rem; }
+      .form-row-2 { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 560px) {
+      .pkg-grid { grid-template-columns: 1fr; }
+      .hero-ctas { flex-direction: column; }
+      .hero-ctas .btn { width: 100%; justify-content: center; }
+      .footer-top { flex-direction: column; }
+      .footer-links-col { flex-wrap: wrap; gap: 1.25rem; }
+      .value-include-bar { flex-direction: column; text-align: center; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════
+     NAVIGATION
+════════════════════════════════════════════════ -->
+<nav class="navbar" id="navbar">
+  <div class="logo-wrap" onclick="navigate('home')">
+    <!-- CSS-only TRP monogram SVG -->
+    <svg class="logo-svg" viewBox="0 0 72 52" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <!-- T -->
+      <rect x="1"   y="4"  width="17" height="3.2" rx="1.2" fill="#112946"/>
+      <rect x="8"   y="4"  width="3.2" height="19" rx="1.2" fill="#112946"/>
+      <!-- R — stem -->
+      <rect x="22"  y="4"  width="3.2" height="19" rx="1.2" fill="#112946"/>
+      <!-- R — bowl -->
+      <path d="M25.2 4 Q35.5 4 35.5 11.5 Q35.5 19 25.2 19"
+            stroke="#112946" stroke-width="3.2" fill="none"
+            stroke-linecap="round" stroke-linejoin="round"/>
+      <!-- R — leg -->
+      <line x1="32" y1="18" x2="39" y2="23"
+            stroke="#112946" stroke-width="3.2" stroke-linecap="round"/>
+      <!-- P — stem -->
+      <rect x="43"  y="4"  width="3.2" height="19" rx="1.2" fill="#112946"/>
+      <!-- P — bowl -->
+      <path d="M46.2 4 Q56.5 4 56.5 11.5 Q56.5 19 46.2 19"
+            stroke="#112946" stroke-width="3.2" fill="none"
+            stroke-linecap="round" stroke-linejoin="round"/>
+      <!-- Gold diagonal accent slash -->
+      <line x1="24" y1="24" x2="41" y2="3"
+            stroke="#A98E60" stroke-width="2.6" stroke-linecap="round"/>
+      <!-- Gold key-circle accent -->
+      <circle cx="32" cy="40" r="4" fill="#A98E60"/>
+      <line x1="36" y1="40" x2="43" y2="40"
+            stroke="#A98E60" stroke-width="2.2" stroke-linecap="round"/>
+      <line x1="41" y1="40" x2="41" y2="44"
+            stroke="#A98E60" stroke-width="2.2" stroke-linecap="round"/>
+    </svg>
+    <div class="logo-wordmark">
+      <strong>TRP Vibe</strong>
+      <small>Solutions</small>
+    </div>
+  </div>
+
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#" class="nav-link active" data-view="home"      onclick="navigate('home');      return false;">Home</a></li>
+    <li><a href="#" class="nav-link"        data-view="services"  onclick="navigate('services');  return false;">Services</a></li>
+    <li><a href="#" class="nav-link"        data-view="portfolio" onclick="navigate('portfolio'); return false;">Portfolio</a></li>
+    <li><a href="#" class="nav-link nav-cta" data-view="contact"  onclick="navigate('contact');   return false;">Contact Us</a></li>
+  </ul>
+
+  <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile nav drawer -->
+<nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+  <a href="#" class="mobile-link active" data-view="home"      onclick="navigate('home');      closeMobile(); return false;">Home</a>
+  <a href="#" class="mobile-link"        data-view="services"  onclick="navigate('services');  closeMobile(); return false;">Services</a>
+  <a href="#" class="mobile-link"        data-view="portfolio" onclick="navigate('portfolio'); closeMobile(); return false;">Portfolio</a>
+  <a href="#" class="mobile-link"        data-view="contact"   onclick="navigate('contact');   closeMobile(); return false;">Contact Us</a>
+</nav>
+
+
+<!-- ═══════════════════════════════════════════════
+     VIEW: HOME
+════════════════════════════════════════════════ -->
+<section id="home" class="view active">
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-grid-bg"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-glow-2"></div>
+    <div class="container">
+      <div class="hero-inner">
+        <div class="hero-left">
+          <div class="hero-badge">Premium Digital Agency — Philippines</div>
+          <h1 class="hero-title">
+            Premium Digital<br>
+            Infrastructure &amp;<br>
+            <em>Revenue Engines</em>
+          </h1>
+          <p class="hero-subtitle">
+            We architect high-conversion digital systems — from precision-built websites
+            to automated lead machines. Engineered to establish authority, capture attention,
+            and drive measurable business growth for ambitious brands.
+          </p>
+          <div class="hero-ctas">
+            <a href="#" class="btn btn-navy" onclick="navigate('services'); return false;">Explore Services</a>
+            <a href="#" class="btn btn-ghost" onclick="navigate('portfolio'); return false;">View Our Work</a>
+          </div>
+          <div class="hero-divider"></div>
+          <div class="hero-stats">
+            <div>
+              <div class="stat-num">100%</div>
+              <div class="stat-lbl">Client Satisfaction</div>
+            </div>
+            <div>
+              <div class="stat-num">6-Hr</div>
+              <div class="stat-lbl">Fast-Action Bonus</div>
+            </div>
+            <div>
+              <div class="stat-num">Free</div>
+              <div class="stat-lbl">Domain + SSL Year 1</div>
+            </div>
+            <div>
+              <div class="stat-num">$60</div>
+              <div class="stat-lbl">Flat Annual Renewal</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Performance card (hidden on mobile) -->
+        <div class="hero-card">
+          <div class="hc-dots">
+            <div class="hc-dot" style="background:#ef4444"></div>
+            <div class="hc-dot" style="background:#f59e0b"></div>
+            <div class="hc-dot" style="background:#22c55e"></div>
+          </div>
+          <div class="hc-title">Performance Dashboard</div>
+          <div class="hc-metric">
+            <div class="hc-metric-head"><span>Page Speed</span><span>98</span></div>
+            <div class="hc-bar"><div class="hc-bar-fill" style="width:98%"></div></div>
+          </div>
+          <div class="hc-metric">
+            <div class="hc-metric-head"><span>Mobile Score</span><span>100</span></div>
+            <div class="hc-bar"><div class="hc-bar-fill" style="width:100%"></div></div>
+          </div>
+          <div class="hc-metric">
+            <div class="hc-metric-head"><span>SEO Readiness</span><span>94</span></div>
+            <div class="hc-bar"><div class="hc-bar-fill" style="width:94%"></div></div>
+          </div>
+          <div class="hc-metric">
+            <div class="hc-metric-head"><span>Conversion Rate</span><span>91</span></div>
+            <div class="hc-bar"><div class="hc-bar-fill" style="width:91%"></div></div>
+          </div>
+          <div class="hc-footer">
+            <div class="hc-status">All Systems Live</div>
+            <div class="hc-badge">TRP Grade</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Feature strip -->
+  <div class="feature-strip">
+    <div class="strip-scroll">
+      <div class="strip-item"><span class="strip-check">✓</span> Free 1-Year Domain</div>
+      <div class="strip-item"><span class="strip-check">✓</span> Secure SSL Hosting</div>
+      <div class="strip-item"><span class="strip-check">✓</span> Built-in CMS / Page Builder</div>
+      <div class="strip-item"><span class="strip-check">✓</span> Business Email Setup</div>
+      <div class="strip-item"><span class="strip-check">✓</span> Mobile-Responsive Design</div>
+      <div class="strip-item"><span class="strip-check">✓</span> 6-Hour Bonus Offer</div>
+    </div>
+  </div>
+
+  <!-- Value section -->
+  <div class="value-section">
+    <div class="container">
+      <div class="value-grid">
+        <div>
+          <div class="section-eyebrow">Why TRP Vibe</div>
+          <h2 class="section-heading lg">Digital Systems<br>Built to Convert</h2>
+          <div class="gold-bar"></div>
+          <p class="section-body">
+            We don't just build websites — we engineer digital revenue systems. Every project
+            is crafted with performance, conversion, and long-term scalability at its core.
+          </p>
+          <div class="value-features">
+            <div class="vf-item">
+              <div class="vf-icon">⚡</div>
+              <div class="vf-text">
+                <h4>Rapid Deployment</h4>
+                <p>Professional sites launched swiftly with production-grade quality and attention to detail.</p>
+              </div>
+            </div>
+            <div class="vf-item">
+              <div class="vf-icon">🔒</div>
+              <div class="vf-text">
+                <h4>Security-First Architecture</h4>
+                <p>SSL encryption, secure hosting, and enterprise-grade infrastructure from day one.</p>
+              </div>
+            </div>
+            <div class="vf-item">
+              <div class="vf-icon">📈</div>
+              <div class="vf-text">
+                <h4>Conversion-Optimized</h4>
+                <p>Every element designed to guide visitors into becoming paying customers.</p>
+              </div>
+            </div>
+            <div class="vf-item">
+              <div class="vf-icon">🎯</div>
+              <div class="vf-text">
+                <h4>Complete Digital Ecosystem</h4>
+                <p>Domain, hosting, emails, and CMS — your entire digital footprint, one partner.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Decorative card (hidden on small screens) -->
+        <div class="value-visual">
+          <div class="v-card">
+            <div class="section-eyebrow" style="margin-bottom:0.5rem">Project Overview</div>
+            <div style="font-family:'Montserrat',sans-serif;font-weight:700;font-size:1rem;color:var(--navy);margin-bottom:1.5rem;">E-Commerce Rebuild</div>
+            <div class="hc-metric">
+              <div class="hc-metric-head"><span>Design Fidelity</span><span>100%</span></div>
+              <div class="hc-bar"><div class="hc-bar-fill" style="width:100%"></div></div>
+            </div>
+            <div class="hc-metric">
+              <div class="hc-metric-head"><span>Load Performance</span><span>97%</span></div>
+              <div class="hc-bar"><div class="hc-bar-fill" style="width:97%"></div></div>
+            </div>
+            <div class="hc-metric">
+              <div class="hc-metric-head"><span>SEO Coverage</span><span>93%</span></div>
+              <div class="hc-bar"><div class="hc-bar-fill" style="width:93%"></div></div>
+            </div>
+            <div class="hc-metric">
+              <div class="hc-metric-head"><span>Lead Conversion</span><span>88%</span></div>
+              <div class="hc-bar"><div class="hc-bar-fill" style="width:88%"></div></div>
+            </div>
+            <div style="margin-top:1.5rem;padding-top:1rem;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;">
+              <div style="font-size:0.75rem;color:var(--slate);">Status</div>
+              <div style="font-size:0.75rem;font-weight:700;color:#16a34a;display:flex;align-items:center;gap:5px;">
+                <span style="width:6px;height:6px;background:#16a34a;border-radius:50%;display:inline-block"></span>
+                Live &amp; Converting
+              </div>
+            </div>
+          </div>
+          <div class="v-card-float">
+            <div class="vcf-icon">🚀</div>
+            <div class="vcf-text">
+              <strong>Launched in 5 Days</strong>
+              <span>From brief to live site</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <strong>TRP Vibe Solutions</strong>
+          <span>The Rumherius Project</span>
+        </div>
+        <div class="footer-links-col">
+          <a href="#" onclick="navigate('home');      return false;">Home</a>
+          <a href="#" onclick="navigate('services');  return false;">Services</a>
+          <a href="#" onclick="navigate('portfolio'); return false;">Portfolio</a>
+          <a href="#" onclick="navigate('contact');   return false;">Contact</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2025 TRP Vibe Solutions. All rights reserved.</p>
+        <p class="footer-tagline">Building Tomorrow's Digital Infrastructure — Today.</p>
+      </div>
+    </div>
+  </footer>
+
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     VIEW: SERVICES
+════════════════════════════════════════════════ -->
+<section id="services" class="view">
+
+  <div class="page-hero">
+    <div class="container">
+      <div class="section-eyebrow">Our Packages</div>
+      <h2 class="section-heading lg" style="margin:0 auto 1rem;max-width:520px;">Transparent Pricing.<br>Premium Delivery.</h2>
+      <p class="section-body" style="margin:0 auto;text-align:center;">
+        Choose the package that matches your scale. Every tier includes a free domain,
+        secure SSL hosting, and a built-in CMS — no hidden fees.
+      </p>
+    </div>
+  </div>
+
+  <div class="packages-section">
+    <div class="container">
+
+      <!-- All-included bar -->
+      <div class="value-include-bar">
+        <div class="vib-icon">🎁</div>
+        <div class="vib-text">
+          <strong>All Packages Include: Free 1-Year Domain · Secure SSL Hosting · CMS/Page Builder</strong>
+          <span>Email, Hosting &amp; Domain renewal: flat <strong>$60 USD annually</strong> after the first complimentary year.</span>
+        </div>
+        <div class="vib-pill">Included Free</div>
+      </div>
+
+      <!-- 4 packages -->
+      <div class="pkg-grid">
+
+        <!-- Tier 01 -->
+        <div class="pkg-card">
+          <div class="pkg-tier">Tier 01</div>
+          <div class="pkg-name">Single-Page</div>
+          <div class="pkg-price">
+            <span class="pkg-currency">₱</span>
+            <span class="pkg-amount">5,999</span>
+          </div>
+          <div class="pkg-deposit">₱3,000 Deposit Required</div>
+          <div class="pkg-rule"></div>
+          <ul class="pkg-features">
+            <li>1 Full Single Page</li>
+            <li>1 Business Email Account</li>
+            <li>Free 1-Year Domain</li>
+            <li>Secure SSL Hosting</li>
+            <li>Built-in CMS / Page Builder</li>
+            <li>Mobile-Responsive Design</li>
+            <li>Basic On-Page SEO</li>
+          </ul>
+          <a href="#" class="btn btn-ghost pkg-cta" onclick="navigate('contact'); return false;">Get Started</a>
+        </div>
+
+        <!-- Tier 02 -->
+        <div class="pkg-card">
+          <div class="pkg-tier">Tier 02</div>
+          <div class="pkg-name">Starter</div>
+          <div class="pkg-price">
+            <span class="pkg-currency">₱</span>
+            <span class="pkg-amount">7,999</span>
+          </div>
+          <div class="pkg-deposit">₱4,000 Deposit Required</div>
+          <div class="pkg-rule"></div>
+          <ul class="pkg-features">
+            <li>2–4 Pages</li>
+            <li>1 Business Email Account</li>
+            <li>Free 1-Year Domain</li>
+            <li>Secure SSL Hosting</li>
+            <li>Built-in CMS / Page Builder</li>
+            <li>Mobile-Responsive Design</li>
+            <li>On-Page SEO Optimization</li>
+            <li>Contact Form Integration</li>
+          </ul>
+          <a href="#" class="btn btn-ghost pkg-cta" onclick="navigate('contact'); return false;">Get Started</a>
+        </div>
+
+        <!-- Tier 03 — Featured -->
+        <div class="pkg-card featured">
+          <div class="pkg-featured-label">Most Popular</div>
+          <div class="pkg-tier">Tier 03</div>
+          <div class="pkg-name">Standard</div>
+          <div class="pkg-price">
+            <span class="pkg-currency">₱</span>
+            <span class="pkg-amount">10,000</span>
+          </div>
+          <div class="pkg-deposit">₱5,000 Deposit Required</div>
+          <div class="pkg-rule"></div>
+          <ul class="pkg-features">
+            <li>5–8 Pages</li>
+            <li>3 Business Email Accounts</li>
+            <li>Free 1-Year Domain</li>
+            <li>Secure SSL Hosting</li>
+            <li>Built-in CMS / Page Builder</li>
+            <li>Mobile-Responsive Design</li>
+            <li>Full SEO Suite</li>
+            <li>Advanced Lead &amp; Contact Forms</li>
+            <li>Google Analytics Integration</li>
+          </ul>
+          <a href="#" class="btn btn-navy pkg-cta" onclick="navigate('contact'); return false;">Get Started</a>
+        </div>
+
+        <!-- Tier 04 -->
+        <div class="pkg-card">
+          <div class="pkg-tier">Tier 04</div>
+          <div class="pkg-name">Premium</div>
+          <div class="pkg-price">
+            <span class="pkg-currency">₱</span>
+            <span class="pkg-amount">15,000</span>
+          </div>
+          <div class="pkg-deposit">₱7,500 Deposit Required</div>
+          <div class="pkg-rule"></div>
+          <ul class="pkg-features">
+            <li>Unlimited Pages</li>
+            <li>Unlimited Business Emails</li>
+            <li>Free 1-Year Domain</li>
+            <li>Secure SSL Hosting</li>
+            <li>Built-in CMS / Page Builder</li>
+            <li>Mobile-Responsive Design</li>
+            <li>Enterprise SEO Suite</li>
+            <li>E-Commerce Ready</li>
+            <li>Priority Support &amp; Maintenance</li>
+            <li>Custom Integrations &amp; Automations</li>
+          </ul>
+          <a href="#" class="btn btn-gold pkg-cta" onclick="navigate('contact'); return false;">Get Started</a>
+        </div>
+
+      </div>
+
+      <!-- Renewal note -->
+      <div class="renewal-note">
+        <span style="font-size:1rem;flex-shrink:0">ℹ️</span>
+        <span>
+          <strong>Renewal Notice:</strong> After the complimentary first year, Email, Hosting &amp; Domain
+          renewal is a flat <strong>$60 USD annually</strong> — transparent, predictable, no surprises.
+        </span>
+      </div>
+
+      <!-- 6-Hour urgency banner -->
+      <div class="urgency-banner">
+        <div class="ub-icon">⚡</div>
+        <div class="ub-body">
+          <div class="ub-eyebrow">⏱ Limited Offer</div>
+          <h3 class="ub-title">6-Hour Fast-Action <em>Bonus</em></h3>
+          <p class="ub-desc">
+            Book within <strong>6 hours</strong> and receive a
+            <strong>Complimentary Social Proof Boost</strong> — 10,000 free Facebook followers
+            delivered to your page for <strong>immediate brand credibility</strong> and social
+            authority. Establish dominance before your competitors do.
+          </p>
+        </div>
+        <div class="ub-cta">
+          <a href="#" class="btn btn-gold" onclick="navigate('contact'); return false;">Claim Bonus Now</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <strong>TRP Vibe Solutions</strong>
+          <span>The Rumherius Project</span>
+        </div>
+        <div class="footer-links-col">
+          <a href="#" onclick="navigate('home');      return false;">Home</a>
+          <a href="#" onclick="navigate('services');  return false;">Services</a>
+          <a href="#" onclick="navigate('portfolio'); return false;">Portfolio</a>
+          <a href="#" onclick="navigate('contact');   return false;">Contact</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2025 TRP Vibe Solutions. All rights reserved.</p>
+        <p class="footer-tagline">Building Tomorrow's Digital Infrastructure — Today.</p>
+      </div>
+    </div>
+  </footer>
+
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     VIEW: PORTFOLIO
+════════════════════════════════════════════════ -->
+<section id="portfolio" class="view">
+
+  <div class="page-hero">
+    <div class="container">
+      <div class="section-eyebrow">Our Work</div>
+      <h2 class="section-heading lg" style="margin:0 auto 1rem;">Digital Footprints</h2>
+      <p class="section-body" style="margin:0 auto;text-align:center;">
+        A curated selection of high-performance digital systems engineered for ambitious brands
+        across diverse industries.
+      </p>
+    </div>
+  </div>
+
+  <div class="portfolio-section">
+    <div class="container">
+      <div class="portfolio-grid">
+
+        <!-- Card 1: Solana Jet -->
+        <div class="port-card">
+          <div class="port-thumb" style="background:linear-gradient(135deg,#0c1e35 0%,#0f3460 55%,#1a4a8a 100%);">
+            <div class="port-thumb-pattern"></div>
+            <div class="port-overlay"></div>
+            <div class="port-thumb-icon">
+              <span class="big-emoji">🌐</span>
+              <span>Solana Jet</span>
+            </div>
+            <div class="port-chip">Web3 / Landing</div>
+          </div>
+          <div class="port-body">
+            <div class="port-title">Solana Jet Platform</div>
+            <div class="port-sub">Web3 Infrastructure — Blockchain Landing Page</div>
+            <ul class="port-checklist">
+              <li>High-conversion Web3 landing page with animated hero</li>
+              <li>Crypto wallet connection UI &amp; tokenomics display</li>
+              <li>Mobile-first responsive architecture</li>
+              <li>Performance-optimized asset delivery</li>
+            </ul>
+            <div class="port-footer">
+              <div class="port-tags">
+                <span class="port-tag">HTML/CSS</span>
+                <span class="port-tag">JavaScript</span>
+                <span class="port-tag">Web3</span>
+              </div>
+              <a href="https://solana-jet-seven.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-navy btn-sm">View Live Site</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: Urdaneta Garden -->
+        <div class="port-card">
+          <div class="port-thumb" style="background:linear-gradient(135deg,#0d2818 0%,#1a5c32 55%,#2e7d4f 100%);">
+            <div class="port-thumb-pattern"></div>
+            <div class="port-overlay"></div>
+            <div class="port-thumb-icon">
+              <span class="big-emoji">🌿</span>
+              <span>Garden Resort</span>
+            </div>
+            <div class="port-chip">Hospitality</div>
+          </div>
+          <div class="port-body">
+            <div class="port-title">Urdaneta Garden Resort</div>
+            <div class="port-sub">Hospitality &amp; Tourism — Corporate Site</div>
+            <ul class="port-checklist">
+              <li>Elegant resort showcase with rooms &amp; amenities</li>
+              <li>Reservation &amp; contact form integration</li>
+              <li>Photo gallery with lightbox experience</li>
+              <li>SEO-optimized local business structure</li>
+            </ul>
+            <div class="port-footer">
+              <div class="port-tags">
+                <span class="port-tag">HTML/CSS</span>
+                <span class="port-tag">JavaScript</span>
+                <span class="port-tag">CMS</span>
+              </div>
+              <a href="https://urdaneta-garden.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-navy btn-sm">View Live Site</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3: Saroju's -->
+        <div class="port-card">
+          <div class="port-thumb" style="background:linear-gradient(135deg,#1e0a2e 0%,#4a1272 55%,#7b2d9e 100%);">
+            <div class="port-thumb-pattern"></div>
+            <div class="port-overlay"></div>
+            <div class="port-thumb-icon">
+              <span class="big-emoji">👗</span>
+              <span>Saroju's Fashion</span>
+            </div>
+            <div class="port-chip">E-Commerce</div>
+          </div>
+          <div class="port-body">
+            <div class="port-title">Saroju's — Fashion &amp; Lifestyle</div>
+            <div class="port-sub">Retail E-Commerce — Brand Identity Site</div>
+            <ul class="port-checklist">
+              <li>Fashion-forward product showcase with filter UI</li>
+              <li>Brand storytelling &amp; lifestyle content layout</li>
+              <li>Integrated checkout flow &amp; cart design</li>
+              <li>Instagram-ready social proof sections</li>
+            </ul>
+            <div class="port-footer">
+              <div class="port-tags">
+                <span class="port-tag">HTML/CSS</span>
+                <span class="port-tag">JavaScript</span>
+                <span class="port-tag">E-Commerce</span>
+              </div>
+              <a href="https://saroju-s.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-navy btn-sm">View Live Site</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4: La Casa -->
+        <div class="port-card">
+          <div class="port-thumb" style="background:linear-gradient(135deg,#2a0d0d 0%,#6b2020 55%,#9e4040 100%);">
+            <div class="port-thumb-pattern"></div>
+            <div class="port-overlay"></div>
+            <div class="port-thumb-icon">
+              <span class="big-emoji">🏡</span>
+              <span>La Casa</span>
+            </div>
+            <div class="port-chip">Real Estate</div>
+          </div>
+          <div class="port-body">
+            <div class="port-title">La Casa — Real Estate Platform</div>
+            <div class="port-sub">Property &amp; Real Estate — Listing Site</div>
+            <ul class="port-checklist">
+              <li>Premium property listings with search &amp; filter</li>
+              <li>Lead capture &amp; inquiry forms</li>
+              <li>Virtual tour &amp; photo gallery integration</li>
+              <li>Agent profiles &amp; trust-building layout</li>
+            </ul>
+            <div class="port-footer">
+              <div class="port-tags">
+                <span class="port-tag">HTML/CSS</span>
+                <span class="port-tag">JavaScript</span>
+                <span class="port-tag">CMS</span>
+              </div>
+              <a href="https://la-casa-ten.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-navy btn-sm">View Live Site</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <strong>TRP Vibe Solutions</strong>
+          <span>The Rumherius Project</span>
+        </div>
+        <div class="footer-links-col">
+          <a href="#" onclick="navigate('home');      return false;">Home</a>
+          <a href="#" onclick="navigate('services');  return false;">Services</a>
+          <a href="#" onclick="navigate('portfolio'); return false;">Portfolio</a>
+          <a href="#" onclick="navigate('contact');   return false;">Contact</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2025 TRP Vibe Solutions. All rights reserved.</p>
+        <p class="footer-tagline">Building Tomorrow's Digital Infrastructure — Today.</p>
+      </div>
+    </div>
+  </footer>
+
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     VIEW: CONTACT
+════════════════════════════════════════════════ -->
+<section id="contact" class="view">
+
+  <div class="page-hero">
+    <div class="container">
+      <div class="section-eyebrow">Get In Touch</div>
+      <h2 class="section-heading lg" style="margin:0 auto 1rem;max-width:480px;">Start Your Digital<br>Journey Today</h2>
+      <p class="section-body" style="margin:0 auto;text-align:center;">
+        Fill in the intake form and we'll craft the perfect digital strategy for your business.
+        We respond within 1–2 business hours.
+      </p>
+    </div>
+  </div>
+
+  <div class="contact-section">
+    <div class="container">
+      <div class="contact-grid">
+
+        <!-- Info column -->
+        <div class="contact-info">
+          <div class="section-eyebrow">Agency Footprint</div>
+          <h3 class="section-heading md" style="margin-bottom:0.75rem;">Let's Build Something<br>Remarkable.</h3>
+          <div class="gold-bar"></div>
+          <p class="section-body" style="max-width:100%;">
+            We're a boutique digital agency focused on building high-performance websites and
+            revenue-driving digital systems for ambitious businesses across the Philippines and beyond.
+          </p>
+
+          <div style="margin-top:2rem;">
+            <div class="info-row">
+              <div class="info-icon">✉️</div>
+              <div class="info-content">
+                <h4>Email Us</h4>
+                <a href="mailto:rumherius@gmail.com">rumherius@gmail.com</a>
+              </div>
+            </div>
+            <div class="info-row">
+              <div class="info-icon">📍</div>
+              <div class="info-content">
+                <h4>Location</h4>
+                <p>Balungao, Pangasinan<br>Philippines</p>
+              </div>
+            </div>
+            <div class="info-row">
+              <div class="info-icon">⚡</div>
+              <div class="info-content">
+                <h4>Response Time</h4>
+                <p>Typically within 1–2 business hours</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="offer-callout">
+            <div class="offer-callout-label">Current Offer</div>
+            <h4>6-Hour Fast-Action Bonus</h4>
+            <p>Book within 6 hours and receive 10,000 Free Facebook Followers for instant social proof and brand credibility — completely complimentary.</p>
+          </div>
+        </div>
+
+        <!-- Form card -->
+        <div class="form-card">
+          <div class="form-card-title">Project Intake Form</div>
+          <div class="form-card-sub">Complete the form — we'll review and reach out within 24 hours.</div>
+
+          <form id="contactForm" novalidate>
+            <div class="form-row-2">
+              <div class="form-group">
+                <label for="f-name">Full Name *</label>
+                <input type="text" id="f-name" name="fullName" placeholder="Juan dela Cruz" required />
+              </div>
+              <div class="form-group">
+                <label for="f-company">Company Name</label>
+                <input type="text" id="f-company" name="companyName" placeholder="Your Company, Inc." />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="f-email">Email Address *</label>
+              <input type="email" id="f-email" name="email" placeholder="juan@yourcompany.com" required />
+            </div>
+
+            <div class="form-group">
+              <label for="f-package">Select Package *</label>
+              <select id="f-package" name="package" required>
+                <option value="" disabled selected>Choose your package…</option>
+                <option value="single-page">Single-Page Package — ₱5,999</option>
+                <option value="starter">Starter Package — ₱7,999</option>
+                <option value="standard">Standard Package — ₱10,000</option>
+                <option value="premium">Premium Package — ₱15,000</option>
+                <option value="custom">Custom / Enterprise — Let's Talk</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="f-details">Project Details *</label>
+              <textarea id="f-details" name="projectDetails" placeholder="Tell us about your business, your goals, and what you need built. The more detail, the better we can tailor our approach." required></textarea>
+            </div>
+
+            <button type="submit" class="form-submit-btn" id="submitBtn">
+              Submit Inquiry — Let's Build
+            </button>
+
+            <div class="form-success-msg" id="formSuccess">
+              ✓ Inquiry received! We'll be in touch within 24 hours.
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <strong>TRP Vibe Solutions</strong>
+          <span>The Rumherius Project</span>
+        </div>
+        <div class="footer-links-col">
+          <a href="#" onclick="navigate('home');      return false;">Home</a>
+          <a href="#" onclick="navigate('services');  return false;">Services</a>
+          <a href="#" onclick="navigate('portfolio'); return false;">Portfolio</a>
+          <a href="#" onclick="navigate('contact');   return false;">Contact</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2025 TRP Vibe Solutions. All rights reserved.</p>
+        <p class="footer-tagline">Building Tomorrow's Digital Infrastructure — Today.</p>
+      </div>
+    </div>
+  </footer>
+
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     JAVASCRIPT — SPA ENGINE
+════════════════════════════════════════════════ -->
+<script>
+  'use strict';
+
+  /* ── View switching ── */
+  function navigate(viewId) {
+    // Deactivate all views
+    document.querySelectorAll('.view').forEach(function(v) {
+      v.classList.remove('active');
+    });
+
+    // Activate target view
+    var target = document.getElementById(viewId);
+    if (target) {
+      target.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    }
+
+    // Sync desktop nav
+    document.querySelectorAll('.nav-link').forEach(function(a) {
+      a.classList.toggle('active', a.dataset.view === viewId);
+    });
+
+    // Sync mobile nav
+    document.querySelectorAll('.mobile-link').forEach(function(a) {
+      a.classList.toggle('active', a.dataset.view === viewId);
+    });
+  }
+
+  /* ── Hamburger / mobile menu ── */
+  var hamburger  = document.getElementById('hamburger');
+  var mobileNav  = document.getElementById('mobileNav');
+
+  function closeMobile() {
+    hamburger.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    mobileNav.classList.remove('open');
+  }
+
+  hamburger.addEventListener('click', function() {
+    var isOpen = mobileNav.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', String(isOpen));
+  });
+
+  // Close on outside tap
+  document.addEventListener('click', function(e) {
+    if (!hamburger.contains(e.target) && !mobileNav.contains(e.target)) {
+      closeMobile();
+    }
+  });
+
+  /* ── Navbar shadow on scroll ── */
+  var navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', function() {
+    navbar.classList.toggle('scrolled', window.scrollY > 8);
+  }, { passive: true });
+
+  /* ── Contact form ── */
+  var form       = document.getElementById('contactForm');
+  var submitBtn  = document.getElementById('submitBtn');
+  var successMsg = document.getElementById('formSuccess');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    // Basic validation
+    var name    = document.getElementById('f-name').value.trim();
+    var email   = document.getElementById('f-email').value.trim();
+    var pkg     = document.getElementById('f-package').value;
+    var details = document.getElementById('f-details').value.trim();
+
+    if (!name || !email || !pkg || !details) {
+      return; // browser native validation handles visual feedback
+    }
+
+    // Simulate async send
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+
+    setTimeout(function() {
+      form.reset();
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Submit Inquiry — Let\'s Build';
+      successMsg.style.display = 'block';
+
+      setTimeout(function() {
+        successMsg.style.display = 'none';
+      }, 7000);
+    }, 1400);
+  });
+</script>
+
+</body>
+</html>
