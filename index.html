@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="TRP Vibe Solutions — Premium digital agency building high-conversion websites and revenue engines. Based in Balungao, Pangasinan, Philippines." />
   <title>TRP Vibe Solutions | Premium Digital Agency</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23112946'/%3E%3Crect x='3' y='5' width='10' height='2.8' rx='1' fill='white'/%3E%3Crect x='6.5' y='5' width='2.8' height='13' rx='1' fill='white'/%3E%3Crect x='15.5' y='5' width='2.5' height='13' rx='1' fill='%23c8d4de'/%3E%3Cpath d='M18 5 Q23.5 5 23.5 9.5 Q23.5 14 18 14' stroke='%23c8d4de' stroke-width='2.5' fill='none' stroke-linecap='round'/%3E%3Cline x1='21.5' y1='13' x2='25.5' y2='18' stroke='%23c8d4de' stroke-width='2.5' stroke-linecap='round'/%3E%3Cline x1='8' y1='27' x2='27' y2='4' stroke='%23A98E60' stroke-width='2' stroke-linecap='round'/%3E%3Ccircle cx='11' cy='23.5' r='3.5' stroke='%23A98E60' stroke-width='1.5' fill='none'/%3E%3Ccircle cx='11' cy='23.5' r='1.3' fill='%23A98E60'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -80,20 +81,20 @@
       cursor: pointer;
       user-select: none;
     }
-    .logo-svg { width: 56px; height: 40px; flex-shrink: 0; }
+    .logo-svg { width: 62px; height: 46px; flex-shrink: 0; }
     .logo-wordmark { display: flex; flex-direction: column; line-height: 1; }
     .logo-wordmark strong {
       font-family: 'Montserrat', sans-serif;
       font-weight: 800;
       font-size: 1rem;
       color: var(--navy);
-      letter-spacing: 0.04em;
+      letter-spacing: 0.03em;
     }
     .logo-wordmark small {
-      font-size: 0.58rem;
+      font-size: 0.56rem;
       font-weight: 600;
       color: var(--gold);
-      letter-spacing: 0.18em;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
       margin-top: 2px;
     }
@@ -140,8 +141,8 @@
       flex-direction: column;
       justify-content: center;
       gap: 5px;
-      width: 36px;
-      height: 36px;
+      width: 44px;
+      height: 44px;
       background: none;
       border: none;
       padding: 4px;
@@ -855,36 +856,146 @@
     }
     .port-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
 
-    /* Thumbnail */
+    /* Thumbnail — mini screenshot preview */
     .port-thumb {
-      height: 210px;
+      height: 220px;
       position: relative;
       overflow: hidden;
+    }
+    /* Browser chrome bar */
+    .thumb-chrome {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 24px;
+      background: rgba(20,20,20,0.92);
       display: flex;
       align-items: center;
-      justify-content: center;
+      padding: 0 8px;
+      gap: 5px;
+      z-index: 4;
     }
-    .port-thumb-pattern {
-      position: absolute; inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
-      background-size: 28px 28px;
+    .thumb-dots { display: flex; gap: 4px; }
+    .thumb-dots span { width: 7px; height: 7px; border-radius: 50%; }
+    .thumb-dots span:nth-child(1) { background: #ff5f57; }
+    .thumb-dots span:nth-child(2) { background: #febc2e; }
+    .thumb-dots span:nth-child(3) { background: #2bc840; }
+    .thumb-url-bar {
+      flex: 1;
+      height: 12px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 3px;
+      font-size: 7px;
+      color: rgba(255,255,255,0.5);
+      display: flex;
+      align-items: center;
+      padding: 0 6px;
+      overflow: hidden;
+      white-space: nowrap;
     }
-    .port-thumb-icon {
-      position: relative;
-      z-index: 1;
-      text-align: center;
-      color: var(--white);
+    /* Mini navbar inside preview */
+    .thumb-mock-nav {
+      position: absolute;
+      top: 24px; left: 0; right: 0;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 9px;
+      background: rgba(0,0,0,0.38);
+      backdrop-filter: blur(4px);
+      z-index: 3;
     }
-    .port-thumb-icon .big-emoji { font-size: 3rem; display: block; margin-bottom: 0.5rem; }
-    .port-thumb-icon span {
+    .thumb-mock-logo {
+      font-size: 7.5px;
+      font-weight: 800;
+      color: white;
       font-family: 'Montserrat', sans-serif;
-      font-weight: 700;
-      font-size: 0.78rem;
-      letter-spacing: 0.16em;
+      letter-spacing: 0.03em;
+      white-space: nowrap;
+    }
+    .thumb-mock-links { display: flex; gap: 5px; align-items: center; }
+    .thumb-mock-links span {
+      font-size: 5.5px;
+      color: rgba(255,255,255,0.7);
+      letter-spacing: 0.04em;
       text-transform: uppercase;
-      opacity: 0.85;
+    }
+    .thumb-mock-cta-btn {
+      font-size: 5.5px !important;
+      font-weight: 700 !important;
+      background: var(--gold) !important;
+      color: white !important;
+      padding: 2px 5px;
+      border-radius: 2px;
+    }
+    /* Hero area inside preview */
+    .thumb-mock-hero {
+      position: absolute;
+      top: 44px; bottom: 0; left: 0; right: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 1rem 0.5rem;
+      z-index: 2;
+    }
+    .thumb-eyebrow-text {
+      font-size: 6px;
+      color: rgba(255,255,255,0.65);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+    .thumb-title-text {
+      font-size: 12.5px;
+      font-weight: 800;
+      color: white;
+      line-height: 1.2;
+      font-family: 'Montserrat', sans-serif;
+    }
+    .thumb-italic-text {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--gold);
+      font-style: italic;
+      line-height: 1.25;
+      font-family: 'Montserrat', sans-serif;
+    }
+    .thumb-sub-text {
+      font-size: 6.5px;
+      color: rgba(255,255,255,0.55);
+      margin: 3px 0 7px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .thumb-hero-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.85);
+      font-size: 5.5px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 2px 6px;
+      border-radius: 4px;
+      margin-bottom: 6px;
+    }
+    .thumb-btns { display: flex; gap: 5px; margin-top: 8px; flex-wrap: wrap; justify-content: center; }
+    .thumb-btn-fill {
+      font-size: 6px; font-weight: 700;
+      background: var(--gold); color: white;
+      padding: 3px 7px; border-radius: 2px;
+      letter-spacing: 0.06em; text-transform: uppercase;
+    }
+    .thumb-btn-outline {
+      font-size: 6px; font-weight: 700;
+      border: 1px solid rgba(255,255,255,0.5); color: white;
+      padding: 3px 7px; border-radius: 2px;
+      letter-spacing: 0.06em; text-transform: uppercase;
     }
     .port-chip {
       position: absolute;
@@ -1120,6 +1231,388 @@
     }
 
     /* ═════════════════════════════════════════════════
+       FACEBOOK / MESSENGER INTEGRATION
+    ═════════════════════════════════════════════════ */
+    .messenger-float {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      z-index: 990;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      background: #0084FF;
+      color: #fff;
+      border-radius: 50px;
+      padding: 0.72rem 1.2rem 0.72rem 0.85rem;
+      box-shadow: 0 4px 22px rgba(0,132,255,0.38);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+      white-space: nowrap;
+      line-height: 1;
+    }
+    .messenger-float:hover {
+      background: #006fd6;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(0,132,255,0.5);
+    }
+    .messenger-float svg { flex-shrink: 0; }
+    .footer-social-col {
+      display: flex;
+      gap: 0.7rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .footer-social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.48) !important;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.32rem 0.8rem;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 100px;
+      transition: color var(--t), border-color var(--t);
+    }
+    .footer-social-link:hover { color: #fff !important; border-color: rgba(255,255,255,0.28); }
+    .footer-social-msn:hover  { color: #5bb8ff !important; border-color: rgba(0,132,255,0.4) !important; }
+    .footer-social-fb:hover   { color: #74a9ff !important; border-color: rgba(24,119,242,0.4) !important; }
+    .form-alt {
+      margin-top: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0.8rem;
+    }
+    .form-alt-divider {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.71rem;
+      color: var(--slate);
+      opacity: 0.75;
+    }
+    .form-alt-divider::before, .form-alt-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+    .btn-messenger {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      padding: 0.82rem 1.5rem;
+      background: #0084FF;
+      color: #fff;
+      border-radius: var(--radius-sm);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-messenger:hover {
+      background: #006fd6;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,132,255,0.3);
+    }
+    @media (max-width: 560px) {
+      .messenger-float { padding: 0; width: 52px; height: 52px; border-radius: 50%; justify-content: center; }
+      .messenger-float .mf-label { display: none; }
+    }
+
+    /* ═════════════════════════════════════════════════
+       6-HOUR FAST-ACTION BONUS — HIGHLIGHT STYLES
+    ═════════════════════════════════════════════════ */
+
+    /* Hero stat highlight */
+    .bonus-stat-wrap {
+      padding: 0.45rem 0.8rem;
+      background: linear-gradient(135deg, rgba(169,142,96,0.14), rgba(169,142,96,0.05));
+      border: 1px solid rgba(169,142,96,0.35);
+      border-radius: var(--radius-sm);
+      animation: bonusStatPulse 2.5s ease-in-out infinite;
+    }
+    @keyframes bonusStatPulse {
+      0%, 100% { border-color: rgba(169,142,96,0.35); box-shadow: none; }
+      50% { border-color: rgba(169,142,96,0.7); box-shadow: 0 0 18px rgba(169,142,96,0.2); }
+    }
+    .bonus-stat-num { color: var(--gold) !important; }
+    .bonus-stat-lbl { color: var(--gold) !important; font-weight: 700 !important; }
+
+    /* Feature strip bonus item */
+    .strip-bonus-item {
+      background: linear-gradient(90deg, rgba(169,142,96,0.2), rgba(169,142,96,0.08));
+      border: 1px solid rgba(169,142,96,0.4);
+      border-radius: 100px;
+      padding: 0.28rem 0.9rem;
+      animation: stripBonusPulse 2.2s ease-in-out infinite;
+      white-space: nowrap;
+    }
+    .strip-bonus-text { color: var(--gold) !important; font-weight: 700 !important; }
+    @keyframes stripBonusPulse {
+      0%, 100% { box-shadow: none; }
+      50% { box-shadow: 0 0 14px rgba(169,142,96,0.28); }
+    }
+
+    /* ── Main Bonus Section (home) ── */
+    .bonus-section {
+      background: linear-gradient(135deg, #090f1a 0%, #0e2040 45%, #0b1928 100%);
+      padding: 5.5rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .bonus-bg-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(169,142,96,0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(169,142,96,0.045) 1px, transparent 1px);
+      background-size: 52px 52px;
+      pointer-events: none;
+    }
+    .bonus-glow-orb {
+      position: absolute;
+      top: 50%; right: 5%;
+      transform: translateY(-50%);
+      width: 560px; height: 560px;
+      background: radial-gradient(circle, rgba(169,142,96,0.13) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .bonus-inner {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 4rem;
+      align-items: center;
+    }
+    /* Badge */
+    .bonus-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(239,68,68,0.12);
+      border: 1px solid rgba(239,68,68,0.35);
+      color: #f87171;
+      font-size: 0.63rem;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 0.32rem 1rem;
+      border-radius: 100px;
+      margin-bottom: 1.5rem;
+    }
+    .bonus-badge-dot {
+      width: 7px; height: 7px;
+      background: #ef4444;
+      border-radius: 50%;
+      flex-shrink: 0;
+      animation: liveDot 1s ease-in-out infinite;
+    }
+    @keyframes liveDot {
+      0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 0 0 rgba(239,68,68,0.6); }
+      70%       { opacity: 1; transform: scale(1.15); box-shadow: 0 0 0 5px rgba(239,68,68,0); }
+    }
+    /* Headline */
+    .bonus-headline {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: clamp(2rem, 4.5vw, 3.4rem);
+      color: var(--white);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.25rem;
+    }
+    .bonus-headline em {
+      font-style: normal;
+      background: linear-gradient(90deg, #A98E60, #e0c07a, #d4a84a, #A98E60);
+      background-size: 300% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: goldShimmer 3.5s linear infinite;
+    }
+    @keyframes goldShimmer {
+      0%   { background-position: 0% center; }
+      100% { background-position: 300% center; }
+    }
+    .bonus-subhead {
+      font-size: clamp(0.9rem, 1.3vw, 1rem);
+      color: rgba(255,255,255,0.6);
+      line-height: 1.78;
+      max-width: 520px;
+      margin-bottom: 1.75rem;
+    }
+    .bonus-checklist { display: flex; flex-direction: column; gap: 0.65rem; margin-bottom: 2.25rem; }
+    .bonus-checklist li { display: flex; align-items: center; gap: 0.65rem; font-size: 0.87rem; color: rgba(255,255,255,0.78); }
+    .bonus-checklist li .bcheck { color: var(--gold); font-weight: 800; font-size: 0.95rem; flex-shrink: 0; }
+    .bonus-cta-row { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+    /* Bonus CTAs */
+    .btn-bonus-primary {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 1rem 2.25rem;
+      background: var(--gold); color: var(--white);
+      border-radius: var(--radius-sm);
+      font-family: 'Montserrat', sans-serif; font-size: 0.82rem; font-weight: 800;
+      letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none;
+      transition: all 0.28s ease;
+      animation: primaryBtnGlow 2.5s ease-in-out infinite;
+    }
+    @keyframes primaryBtnGlow {
+      0%, 100% { box-shadow: 0 4px 20px rgba(169,142,96,0.3); }
+      50%       { box-shadow: 0 4px 36px rgba(169,142,96,0.7), 0 0 0 6px rgba(169,142,96,0.12); }
+    }
+    .btn-bonus-primary:hover { background: #c4a870; transform: translateY(-3px) scale(1.02); animation: none; box-shadow: 0 8px 36px rgba(169,142,96,0.65) !important; }
+    .btn-bonus-secondary {
+      display: inline-flex; align-items: center;
+      padding: 1rem 1.75rem;
+      background: transparent; color: rgba(255,255,255,0.7);
+      border: 1px solid rgba(255,255,255,0.22);
+      border-radius: var(--radius-sm);
+      font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none;
+      transition: all 0.25s ease;
+    }
+    .btn-bonus-secondary:hover { border-color: rgba(255,255,255,0.55); color: white; transform: translateY(-2px); }
+
+    /* ── Countdown Timer ── */
+    .bonus-timer-wrap {
+      display: flex; flex-direction: column; align-items: center; gap: 0.8rem;
+      flex-shrink: 0;
+    }
+    .bonus-timer-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--gold);
+    }
+    .bonus-timer-sub { font-size: 0.63rem; color: rgba(255,255,255,0.38); letter-spacing: 0.05em; margin-top: -0.5rem; }
+    .bonus-countdown {
+      display: flex; align-items: center; gap: 0.4rem;
+      background: rgba(255,255,255,0.035);
+      border: 1px solid rgba(169,142,96,0.35);
+      border-radius: var(--radius-md);
+      padding: 1.6rem 1.75rem;
+      backdrop-filter: blur(10px);
+      animation: countdownGlow 2.5s ease-in-out infinite;
+    }
+    @keyframes countdownGlow {
+      0%, 100% { border-color: rgba(169,142,96,0.35); box-shadow: none; }
+      50% { border-color: rgba(169,142,96,0.7); box-shadow: 0 0 32px rgba(169,142,96,0.18); }
+    }
+    .bc-unit { display: flex; flex-direction: column; align-items: center; gap: 0.35rem; }
+    .bc-num {
+      font-family: 'Montserrat', sans-serif; font-weight: 900;
+      font-size: clamp(2.2rem, 4vw, 2.9rem); color: white;
+      letter-spacing: -0.04em; line-height: 1; min-width: 2.3ch; text-align: center;
+      transition: transform 0.12s ease, opacity 0.12s ease;
+    }
+    .bc-num.tick { transform: translateY(-4px); opacity: 0.5; }
+    .bc-lbl { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.38); }
+    .bc-sep {
+      font-family: 'Montserrat', sans-serif; font-weight: 900;
+      font-size: 2.4rem; color: var(--gold); line-height: 1;
+      margin-bottom: 1rem; animation: colonBlink 1s step-end infinite;
+    }
+    @keyframes colonBlink { 0%, 100% { opacity: 0.85; } 50% { opacity: 0.2; } }
+    .bonus-timer-note { font-size: 0.62rem; color: rgba(255,255,255,0.3); text-align: center; }
+
+    /* ── Mini countdown inside urgency banner ── */
+    .ub-mini-cd {
+      display: flex; align-items: center; gap: 0.35rem; margin-top: 0.9rem;
+    }
+    .ub-cd-unit { display: flex; flex-direction: column; align-items: center; }
+    .ub-cd-num {
+      font-family: 'Montserrat', sans-serif; font-weight: 800;
+      font-size: 1.3rem; color: var(--gold); line-height: 1;
+      background: rgba(169,142,96,0.12);
+      border: 1px solid rgba(169,142,96,0.3);
+      border-radius: 5px; padding: 0.2rem 0.5rem;
+      min-width: 2.4ch; text-align: center;
+      transition: transform 0.12s ease, opacity 0.12s ease;
+    }
+    .ub-cd-num.tick { transform: translateY(-3px); opacity: 0.5; }
+    .ub-cd-lbl { font-size: 0.5rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.42); margin-top: 2px; }
+    .ub-cd-sep { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 1.1rem; color: var(--gold); opacity: 0.7; padding-bottom: 0.9rem; animation: colonBlink 1s step-end infinite; }
+    .ub-window-label { font-size: 0.67rem; color: rgba(255,255,255,0.45); margin-top: 0.35rem; letter-spacing: 0.04em; }
+    /* Urgency banner enhanced glow */
+    .urgency-banner { animation: bannerGlow 2.8s ease-in-out infinite; }
+    @keyframes bannerGlow {
+      0%, 100% { box-shadow: var(--shadow-md); }
+      50% { box-shadow: 0 0 0 3px rgba(169,142,96,0.45), 0 12px 48px rgba(169,142,96,0.22); }
+    }
+    .ub-icon { animation: iconBounce 2s ease-in-out infinite; }
+    @keyframes iconBounce {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-5px) scale(1.12); }
+    }
+
+    /* ── Enhanced offer callout (contact page) ── */
+    .offer-callout-v2 {
+      margin-top: 2.5rem;
+      background: linear-gradient(135deg, #0f1e32 0%, #1a3452 100%);
+      border: 1px solid rgba(169,142,96,0.4);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      animation: offerCalloutGlow 2.5s ease-in-out infinite;
+    }
+    @keyframes offerCalloutGlow {
+      0%, 100% { border-color: rgba(169,142,96,0.4); box-shadow: none; }
+      50% { border-color: rgba(169,142,96,0.75); box-shadow: 0 4px 24px rgba(169,142,96,0.2); }
+    }
+    .ocv2-header {
+      background: var(--gold);
+      padding: 0.58rem 1.25rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .ocv2-header-label { font-size: 0.6rem; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase; color: white; }
+    .ocv2-live {
+      display: flex; align-items: center; gap: 5px;
+      font-size: 0.57rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.9);
+    }
+    .ocv2-live-dot { width: 6px; height: 6px; background: white; border-radius: 50%; animation: liveDot 1s ease-in-out infinite; }
+    .ocv2-body { padding: 1.3rem 1.4rem; }
+    .ocv2-title {
+      font-family: 'Montserrat', sans-serif; font-weight: 800;
+      font-size: 1.02rem; color: white; margin-bottom: 0.35rem; line-height: 1.3;
+    }
+    .ocv2-title em { font-style: normal; color: var(--gold); }
+    .ocv2-text { font-size: 0.77rem; color: rgba(255,255,255,0.58); line-height: 1.65; margin-bottom: 1.1rem; }
+    .ocv2-cta {
+      display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+      width: 100%; padding: 0.72rem;
+      background: var(--gold); color: white;
+      border-radius: var(--radius-sm);
+      font-size: 0.72rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none;
+      transition: background 0.25s ease, transform 0.25s ease;
+      animation: primaryBtnGlow 2.5s ease-in-out infinite;
+    }
+    .ocv2-cta:hover { background: #c4a870; transform: translateY(-2px); animation: none; }
+
+    /* Bonus section responsive */
+    @media (max-width: 960px) {
+      .bonus-inner { grid-template-columns: 1fr; gap: 2.75rem; }
+      .bonus-timer-wrap { order: -1; flex-direction: row; gap: 1.5rem; align-items: center; justify-content: center; flex-wrap: wrap; }
+      .bonus-timer-label { text-align: center; }
+    }
+    @media (max-width: 560px) {
+      .bonus-section { padding: 3.5rem 0; }
+      .btn-bonus-primary, .btn-bonus-secondary { width: 100%; justify-content: center; }
+      .bc-num { font-size: 2rem; }
+      .bc-sep { font-size: 1.8rem; }
+      .bonus-countdown { padding: 1.25rem 1.25rem; }
+    }
+
+    /* ═════════════════════════════════════════════════
        RESPONSIVE BREAKPOINTS
     ═════════════════════════════════════════════════ */
     @media (max-width: 1080px) {
@@ -1130,26 +1623,50 @@
     @media (max-width: 840px) {
       .value-grid { grid-template-columns: 1fr; }
       .value-visual { display: none; }
-      .contact-grid { grid-template-columns: 1fr; }
-      .portfolio-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
       .urgency-banner { flex-direction: column; text-align: center; padding: 2rem 1.75rem; }
       .ub-cta { width: 100%; }
       .ub-cta .btn { width: 100%; }
       .ub-desc { max-width: 100%; }
+      .page-hero { padding: 3rem 0 2.5rem; }
+      .portfolio-section, .packages-section, .contact-section { padding: 3.5rem 0 3rem; }
+      .value-section { padding: 4.5rem 0; }
     }
     @media (max-width: 768px) {
       .nav-links { display: none; }
       .hamburger { display: flex; }
       .hero-stats { flex-wrap: wrap; gap: 1.5rem; }
       .form-row-2 { grid-template-columns: 1fr; }
+      /* Portfolio single-column at tablet portrait */
+      .portfolio-grid { grid-template-columns: 1fr; }
+      .strip-scroll { gap: 1.25rem; justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; padding-bottom: 4px; }
+      .form-card { padding: 1.75rem; }
+    }
+    @media (max-width: 640px) {
+      /* Packages go single-column earlier */
+      .pkg-grid { grid-template-columns: 1fr; }
+      .pkg-card.featured { transform: none; }
+      .pkg-card.featured:hover { transform: translateY(-5px); }
     }
     @media (max-width: 560px) {
-      .pkg-grid { grid-template-columns: 1fr; }
       .hero-ctas { flex-direction: column; }
       .hero-ctas .btn { width: 100%; justify-content: center; }
       .footer-top { flex-direction: column; }
       .footer-links-col { flex-wrap: wrap; gap: 1.25rem; }
       .value-include-bar { flex-direction: column; text-align: center; align-items: center; }
+      .hero { padding: 3rem 0 2.5rem; }
+      .page-hero { padding: 2.5rem 0 2rem; }
+      .portfolio-section, .packages-section, .contact-section { padding: 2.75rem 0 2.25rem; }
+      .value-section { padding: 3.25rem 0; }
+      .form-card { padding: 1.35rem; }
+      .urgency-banner { padding: 1.5rem 1.25rem; }
+      .thumb-mock-links { display: none; }
+    }
+    @media (max-width: 400px) {
+      .port-thumb { height: 200px; }
+      .hero-stats .stat-num { font-size: 1.55rem; }
+      .pkg-card { padding: 1.5rem 1.25rem; }
+      .port-body { padding: 1.25rem; }
     }
   </style>
 </head>
@@ -1160,39 +1677,35 @@
 ════════════════════════════════════════════════ -->
 <nav class="navbar" id="navbar">
   <div class="logo-wrap" onclick="navigate('home')">
-    <!-- CSS-only TRP monogram SVG -->
-    <svg class="logo-svg" viewBox="0 0 72 52" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <!-- T -->
-      <rect x="1"   y="4"  width="17" height="3.2" rx="1.2" fill="#112946"/>
-      <rect x="8"   y="4"  width="3.2" height="19" rx="1.2" fill="#112946"/>
-      <!-- R — stem -->
-      <rect x="22"  y="4"  width="3.2" height="19" rx="1.2" fill="#112946"/>
-      <!-- R — bowl -->
-      <path d="M25.2 4 Q35.5 4 35.5 11.5 Q35.5 19 25.2 19"
-            stroke="#112946" stroke-width="3.2" fill="none"
-            stroke-linecap="round" stroke-linejoin="round"/>
-      <!-- R — leg -->
-      <line x1="32" y1="18" x2="39" y2="23"
-            stroke="#112946" stroke-width="3.2" stroke-linecap="round"/>
-      <!-- P — stem -->
-      <rect x="43"  y="4"  width="3.2" height="19" rx="1.2" fill="#112946"/>
-      <!-- P — bowl -->
-      <path d="M46.2 4 Q56.5 4 56.5 11.5 Q56.5 19 46.2 19"
-            stroke="#112946" stroke-width="3.2" fill="none"
-            stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- TRP monogram — faithful recreation -->
+    <svg class="logo-svg" viewBox="0 0 96 68" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <!-- T (Deep Navy) -->
+      <rect x="1"  y="4"  width="28" height="5.5" rx="2"   fill="#112946"/>
+      <rect x="12" y="4"  width="6"  height="34"  rx="2"   fill="#112946"/>
+      <!-- R (Dark Charcoal) -->
+      <rect x="33" y="4"  width="5.5" height="34" rx="2"   fill="#3c4a5c"/>
+      <path d="M38.5 4 C54 4 54 13.5 54 16.5 C54 26 38.5 27 38.5 27"
+            stroke="#3c4a5c" stroke-width="5.5" fill="none" stroke-linecap="round"/>
+      <line x1="47" y1="25" x2="60" y2="38"
+            stroke="#3c4a5c" stroke-width="5.5" stroke-linecap="round"/>
+      <!-- P (Dark Charcoal) -->
+      <rect x="64" y="4"  width="5.5" height="34" rx="2"   fill="#3c4a5c"/>
+      <path d="M69.5 4 C84 4 84 13.5 84 16.5 C84 26 69.5 26 69.5 26"
+            stroke="#3c4a5c" stroke-width="5.5" fill="none" stroke-linecap="round"/>
       <!-- Gold diagonal accent slash -->
-      <line x1="24" y1="24" x2="41" y2="3"
-            stroke="#A98E60" stroke-width="2.6" stroke-linecap="round"/>
-      <!-- Gold key-circle accent -->
-      <circle cx="32" cy="40" r="4" fill="#A98E60"/>
-      <line x1="36" y1="40" x2="43" y2="40"
-            stroke="#A98E60" stroke-width="2.2" stroke-linecap="round"/>
-      <line x1="41" y1="40" x2="41" y2="44"
-            stroke="#A98E60" stroke-width="2.2" stroke-linecap="round"/>
+      <line x1="20" y1="56" x2="82" y2="4"
+            stroke="#A98E60" stroke-width="3.5" stroke-linecap="round"/>
+      <!-- Gold key ring motif -->
+      <circle cx="28" cy="48" r="8"   stroke="#A98E60" stroke-width="2.5" fill="none"/>
+      <circle cx="28" cy="48" r="2.8" fill="#A98E60"/>
+      <line x1="28" y1="40" x2="28" y2="31"
+            stroke="#A98E60" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="24.5" y1="35.5" x2="28" y2="35.5"
+            stroke="#A98E60" stroke-width="2"   stroke-linecap="round"/>
     </svg>
     <div class="logo-wordmark">
-      <strong>TRP Vibe</strong>
-      <small>Solutions</small>
+      <strong>Vibe Solutions</strong>
+      <small>The Rumherius Project</small>
     </div>
   </div>
 
@@ -1251,9 +1764,9 @@
               <div class="stat-num">100%</div>
               <div class="stat-lbl">Client Satisfaction</div>
             </div>
-            <div>
-              <div class="stat-num">6-Hr</div>
-              <div class="stat-lbl">Fast-Action Bonus</div>
+            <div class="bonus-stat-wrap">
+              <div class="stat-num bonus-stat-num">6-Hr</div>
+              <div class="stat-lbl bonus-stat-lbl">⚡ Fast-Action Bonus</div>
             </div>
             <div>
               <div class="stat-num">Free</div>
@@ -1307,7 +1820,67 @@
       <div class="strip-item"><span class="strip-check">✓</span> Built-in CMS / Page Builder</div>
       <div class="strip-item"><span class="strip-check">✓</span> Business Email Setup</div>
       <div class="strip-item"><span class="strip-check">✓</span> Mobile-Responsive Design</div>
-      <div class="strip-item"><span class="strip-check">✓</span> 6-Hour Bonus Offer</div>
+      <div class="strip-item strip-bonus-item">
+        <span class="strip-bonus-icon">⚡</span>
+        <span class="strip-bonus-text">6-Hour Bonus — 10K Followers FREE</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ⚡ 6-Hour Fast-Action Bonus Highlight -->
+  <div class="bonus-section">
+    <div class="bonus-bg-grid"></div>
+    <div class="bonus-glow-orb"></div>
+    <div class="container">
+      <div class="bonus-inner">
+
+        <div class="bonus-content">
+          <div class="bonus-badge">
+            <span class="bonus-badge-dot"></span>
+            LIVE FAST-ACTION OFFER — ACTIVE NOW
+          </div>
+          <h2 class="bonus-headline">
+            Book Now &amp; Claim <em>10,000 Free</em><br>Facebook Followers.
+          </h2>
+          <p class="bonus-subhead">
+            This exclusive social proof boost is reserved for clients who act within 6 hours of first contact.
+            Zero catch — completely complimentary with any package. Establish authority before competitors even wake up.
+          </p>
+          <ul class="bonus-checklist">
+            <li><span class="bcheck">✓</span> Instant brand credibility on Facebook</li>
+            <li><span class="bcheck">✓</span> 10,000 followers delivered to your page</li>
+            <li><span class="bcheck">✓</span> Outpace competitors before your launch</li>
+            <li><span class="bcheck">✓</span> Included with every package — no extra cost</li>
+          </ul>
+          <div class="bonus-cta-row">
+            <a href="#" class="btn-bonus-primary" onclick="navigate('contact'); return false;">⚡ Claim My Bonus Now</a>
+            <a href="#" class="btn-bonus-secondary" onclick="navigate('services'); return false;">View Packages</a>
+          </div>
+        </div>
+
+        <div class="bonus-timer-wrap">
+          <div class="bonus-timer-label">Your 6-Hour Window</div>
+          <div class="bonus-timer-sub">Activate by reaching out — then the clock starts</div>
+          <div class="bonus-countdown" id="bonusCountdown">
+            <div class="bc-unit">
+              <div class="bc-num" id="bc-hours">06</div>
+              <div class="bc-lbl">Hours</div>
+            </div>
+            <div class="bc-sep">:</div>
+            <div class="bc-unit">
+              <div class="bc-num" id="bc-minutes">00</div>
+              <div class="bc-lbl">Min</div>
+            </div>
+            <div class="bc-sep">:</div>
+            <div class="bc-unit">
+              <div class="bc-num" id="bc-seconds">00</div>
+              <div class="bc-lbl">Sec</div>
+            </div>
+          </div>
+          <div class="bonus-timer-note">⚡ Click Messenger or Submit Inquiry to activate</div>
+        </div>
+
+      </div>
     </div>
   </div>
 
@@ -1387,7 +1960,7 @@
           <div class="v-card-float">
             <div class="vcf-icon">🚀</div>
             <div class="vcf-text">
-              <strong>Launched in 5 Days</strong>
+              <strong>Ready in 1–3 Days</strong>
               <span>From brief to live site</span>
             </div>
           </div>
@@ -1409,6 +1982,16 @@
           <a href="#" onclick="navigate('services');  return false;">Services</a>
           <a href="#" onclick="navigate('portfolio'); return false;">Portfolio</a>
           <a href="#" onclick="navigate('contact');   return false;">Contact</a>
+        </div>
+        <div class="footer-social-col">
+          <a href="https://www.facebook.com/trp.vibe.solutions" target="_blank" rel="noopener noreferrer" class="footer-social-link footer-social-fb">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            Facebook
+          </a>
+          <a href="https://m.me/trp.vibe.solutions" target="_blank" rel="noopener noreferrer" class="footer-social-link footer-social-msn">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.36 2 2 6.13 2 11.7c0 2.7 1.1 5.14 2.94 6.9.15.14.24.33.25.54l.05 1.66c.02.53.55.88 1.04.66l1.86-.82c.16-.07.33-.08.49-.04.95.26 1.96.4 3 .4 5.64 0 10-4.13 10-9.7C22 6.13 17.64 2 12 2zm6.1 7.43L15.6 13.5c-.2.32-.64.4-.96.18l-2.13-1.6c-.1-.07-.24-.07-.34 0l-2.88 2.18c-.38.29-.88-.16-.63-.57l2.5-4.07c.2-.32.64-.4.96-.18l2.13 1.6c.1.07.24.07.34 0l2.88-2.18c.38-.29.88.16.63.57z"/></svg>
+            Messenger
+          </a>
         </div>
       </div>
       <div class="footer-bottom">
@@ -1563,7 +2146,7 @@
       <div class="urgency-banner">
         <div class="ub-icon">⚡</div>
         <div class="ub-body">
-          <div class="ub-eyebrow">⏱ Limited Offer</div>
+          <div class="ub-eyebrow">🔴 LIVE — Limited Fast-Action Offer</div>
           <h3 class="ub-title">6-Hour Fast-Action <em>Bonus</em></h3>
           <p class="ub-desc">
             Book within <strong>6 hours</strong> and receive a
@@ -1571,9 +2154,26 @@
             delivered to your page for <strong>immediate brand credibility</strong> and social
             authority. Establish dominance before your competitors do.
           </p>
+          <div class="ub-mini-cd">
+            <div class="ub-cd-unit">
+              <div class="ub-cd-num" id="ub-hours">06</div>
+              <div class="ub-cd-lbl">Hrs</div>
+            </div>
+            <div class="ub-cd-sep">:</div>
+            <div class="ub-cd-unit">
+              <div class="ub-cd-num" id="ub-minutes">00</div>
+              <div class="ub-cd-lbl">Min</div>
+            </div>
+            <div class="ub-cd-sep">:</div>
+            <div class="ub-cd-unit">
+              <div class="ub-cd-num" id="ub-seconds">00</div>
+              <div class="ub-cd-lbl">Sec</div>
+            </div>
+            <div class="ub-window-label">— starts the moment you take action</div>
+          </div>
         </div>
         <div class="ub-cta">
-          <a href="#" class="btn btn-gold" onclick="navigate('contact'); return false;">Claim Bonus Now</a>
+          <a href="#" class="btn btn-gold" onclick="navigate('contact'); return false;">⚡ Claim Bonus Now</a>
         </div>
       </div>
 
@@ -1592,6 +2192,16 @@
           <a href="#" onclick="navigate('services');  return false;">Services</a>
           <a href="#" onclick="navigate('portfolio'); return false;">Portfolio</a>
           <a href="#" onclick="navigate('contact');   return false;">Contact</a>
+        </div>
+        <div class="footer-social-col">
+          <a href="https://www.facebook.com/trp.vibe.solutions" target="_blank" rel="noopener noreferrer" class="footer-social-link footer-social-fb">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            Facebook
+          </a>
+          <a href="https://m.me/trp.vibe.solutions" target="_blank" rel="noopener noreferrer" class="footer-social-link footer-social-msn">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.36 2 2 6.13 2 11.7c0 2.7 1.1 5.14 2.94 6.9.15.14.24.33.25.54l.05 1.66c.02.53.55.88 1.04.66l1.86-.82c.16-.07.33-.08.49-.04.95.26 1.96.4 3 .4 5.64 0 10-4.13 10-9.7C22 6.13 17.64 2 12 2zm6.1 7.43L15.6 13.5c-.2.32-.64.4-.96.18l-2.13-1.6c-.1-.07-.24-.07-.34 0l-2.88 2.18c-.38.29-.88-.16-.63-.57l2.5-4.07c.2-.32.64-.4.96-.18l2.13 1.6c.1.07.24.07.34 0l2.88-2.18c.38-.29.88.16.63.57z"/></svg>
+            Messenger
+          </a>
         </div>
       </div>
       <div class="footer-bottom">
@@ -1624,124 +2234,184 @@
     <div class="container">
       <div class="portfolio-grid">
 
-        <!-- Card 1: Solana Jet -->
+        <!-- Card 1: Solana Private Cabin -->
         <div class="port-card">
-          <div class="port-thumb" style="background:linear-gradient(135deg,#0c1e35 0%,#0f3460 55%,#1a4a8a 100%);">
-            <div class="port-thumb-pattern"></div>
-            <div class="port-overlay"></div>
-            <div class="port-thumb-icon">
-              <span class="big-emoji">🌐</span>
-              <span>Solana Jet</span>
+          <div class="port-thumb" style="background:linear-gradient(160deg,#101e2e 0%,#1c3a5e 50%,#0f2640 100%);">
+            <div class="thumb-chrome">
+              <div class="thumb-dots"><span></span><span></span><span></span></div>
+              <div class="thumb-url-bar">solana-jet-seven.vercel.app</div>
             </div>
-            <div class="port-chip">Web3 / Landing</div>
+            <div class="thumb-mock-nav">
+              <div class="thumb-mock-logo">Solana · Private Cabin by Jenela</div>
+              <div class="thumb-mock-links">
+                <span>Experience</span><span>Gallery</span><span>Reviews</span>
+                <span class="thumb-mock-cta-btn">Book Now</span>
+              </div>
+            </div>
+            <div class="thumb-mock-hero">
+              <div class="thumb-eyebrow-text">📍 Tayug, Pangasinan · Philippines</div>
+              <div class="thumb-title-text">Disconnect. Unwind.</div>
+              <div class="thumb-italic-text">Your Private Paradise</div>
+              <div class="thumb-title-text">Awaits.</div>
+              <div class="thumb-btns">
+                <div class="thumb-btn-fill">Book Your Stay</div>
+                <div class="thumb-btn-outline">Explore</div>
+              </div>
+            </div>
+            <div class="port-chip">Private Cabin</div>
           </div>
           <div class="port-body">
-            <div class="port-title">Solana Jet Platform</div>
-            <div class="port-sub">Web3 Infrastructure — Blockchain Landing Page</div>
+            <div class="port-title">Solana Private Cabin by Jenela</div>
+            <div class="port-sub">Private Cabin — Tayug, Pangasinan</div>
             <ul class="port-checklist">
-              <li>High-conversion Web3 landing page with animated hero</li>
-              <li>Crypto wallet connection UI &amp; tokenomics display</li>
-              <li>Mobile-first responsive architecture</li>
-              <li>Performance-optimized asset delivery</li>
+              <li>Luxury A-frame private cabin with pool &amp; stunning views</li>
+              <li>Booking system with inquiry &amp; availability flow</li>
+              <li>Immersive photo gallery &amp; virtual property tour</li>
+              <li>Mobile-first design optimized for direct bookings</li>
             </ul>
             <div class="port-footer">
               <div class="port-tags">
                 <span class="port-tag">HTML/CSS</span>
                 <span class="port-tag">JavaScript</span>
-                <span class="port-tag">Web3</span>
+                <span class="port-tag">Hospitality</span>
               </div>
               <a href="https://solana-jet-seven.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-navy btn-sm">View Live Site</a>
             </div>
           </div>
         </div>
 
-        <!-- Card 2: Urdaneta Garden -->
+        <!-- Card 2: Urdaneta Garden Resort -->
         <div class="port-card">
-          <div class="port-thumb" style="background:linear-gradient(135deg,#0d2818 0%,#1a5c32 55%,#2e7d4f 100%);">
-            <div class="port-thumb-pattern"></div>
-            <div class="port-overlay"></div>
-            <div class="port-thumb-icon">
-              <span class="big-emoji">🌿</span>
-              <span>Garden Resort</span>
+          <div class="port-thumb" style="background:linear-gradient(160deg,#0c2016 0%,#1a4a2e 50%,#122d1e 100%);">
+            <div class="thumb-chrome">
+              <div class="thumb-dots"><span></span><span></span><span></span></div>
+              <div class="thumb-url-bar">urdaneta-garden.vercel.app</div>
             </div>
-            <div class="port-chip">Hospitality</div>
+            <div class="thumb-mock-nav">
+              <div class="thumb-mock-logo">Urdaneta Garden Resort</div>
+              <div class="thumb-mock-links">
+                <span>Experience</span><span>Rooms</span><span>Location</span>
+                <span class="thumb-mock-cta-btn">Book Now</span>
+              </div>
+            </div>
+            <div class="thumb-mock-hero">
+              <div class="thumb-eyebrow-text">Urdaneta City, Pangasinan · Est. 2009</div>
+              <div class="thumb-title-text">Your Garden</div>
+              <div class="thumb-italic-text">Celebration</div>
+              <div class="thumb-title-text">Awaits</div>
+              <div class="thumb-btns">
+                <div class="thumb-btn-fill">Book Your Event</div>
+                <div class="thumb-btn-outline">View Gallery</div>
+              </div>
+            </div>
+            <div class="port-chip">Garden Resort</div>
           </div>
           <div class="port-body">
             <div class="port-title">Urdaneta Garden Resort</div>
-            <div class="port-sub">Hospitality &amp; Tourism — Corporate Site</div>
+            <div class="port-sub">Garden Resort &amp; Events Venue — Urdaneta City</div>
             <ul class="port-checklist">
-              <li>Elegant resort showcase with rooms &amp; amenities</li>
-              <li>Reservation &amp; contact form integration</li>
-              <li>Photo gallery with lightbox experience</li>
+              <li>Elegant events venue for weddings, debuts &amp; functions</li>
+              <li>Garden resort rooms, pool &amp; dining sections</li>
+              <li>Event booking inquiry &amp; immersive photo gallery</li>
               <li>SEO-optimized local business structure</li>
             </ul>
             <div class="port-footer">
               <div class="port-tags">
                 <span class="port-tag">HTML/CSS</span>
                 <span class="port-tag">JavaScript</span>
-                <span class="port-tag">CMS</span>
+                <span class="port-tag">Hospitality</span>
               </div>
               <a href="https://urdaneta-garden.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-navy btn-sm">View Live Site</a>
             </div>
           </div>
         </div>
 
-        <!-- Card 3: Saroju's -->
+        <!-- Card 3: Saroju's Farmview -->
         <div class="port-card">
-          <div class="port-thumb" style="background:linear-gradient(135deg,#1e0a2e 0%,#4a1272 55%,#7b2d9e 100%);">
-            <div class="port-thumb-pattern"></div>
-            <div class="port-overlay"></div>
-            <div class="port-thumb-icon">
-              <span class="big-emoji">👗</span>
-              <span>Saroju's Fashion</span>
+          <div class="port-thumb" style="background:linear-gradient(160deg,#1c1205 0%,#3d2a10 50%,#2c1e08 100%);">
+            <div class="thumb-chrome">
+              <div class="thumb-dots"><span></span><span></span><span></span></div>
+              <div class="thumb-url-bar">saroju-s.vercel.app</div>
             </div>
-            <div class="port-chip">E-Commerce</div>
+            <div class="thumb-mock-nav">
+              <div class="thumb-mock-logo">Saroju's Farmview</div>
+              <div class="thumb-mock-links">
+                <span>About</span><span>Rooms</span><span>Events</span>
+                <span class="thumb-mock-cta-btn">Reserve Now</span>
+              </div>
+            </div>
+            <div class="thumb-mock-hero">
+              <div class="thumb-eyebrow-text">Urdaneta City, Pangasinan</div>
+              <div class="thumb-title-text">Where the <em style="color:var(--gold);font-style:italic;">Farm</em></div>
+              <div class="thumb-title-text">Meets Finesse</div>
+              <div class="thumb-sub-text">Boutique Hotel &amp; Events Center</div>
+              <div class="thumb-btns">
+                <div class="thumb-btn-fill">Check Availability</div>
+                <div class="thumb-btn-outline">Discover</div>
+              </div>
+            </div>
+            <div class="port-chip">Farm Resort</div>
           </div>
           <div class="port-body">
-            <div class="port-title">Saroju's — Fashion &amp; Lifestyle</div>
-            <div class="port-sub">Retail E-Commerce — Brand Identity Site</div>
+            <div class="port-title">Saroju's Farmview</div>
+            <div class="port-sub">Boutique Hotel &amp; Events Center — Urdaneta City</div>
             <ul class="port-checklist">
-              <li>Fashion-forward product showcase with filter UI</li>
-              <li>Brand storytelling &amp; lifestyle content layout</li>
-              <li>Integrated checkout flow &amp; cart design</li>
-              <li>Instagram-ready social proof sections</li>
+              <li>Boutique hotel showcase with rooms &amp; events calendar</li>
+              <li>Farm-to-table dining section &amp; amenities display</li>
+              <li>Event booking &amp; inquiry system</li>
+              <li>Warm, earthy brand identity with immersive visuals</li>
             </ul>
             <div class="port-footer">
               <div class="port-tags">
                 <span class="port-tag">HTML/CSS</span>
                 <span class="port-tag">JavaScript</span>
-                <span class="port-tag">E-Commerce</span>
+                <span class="port-tag">Hospitality</span>
               </div>
               <a href="https://saroju-s.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-navy btn-sm">View Live Site</a>
             </div>
           </div>
         </div>
 
-        <!-- Card 4: La Casa -->
+        <!-- Card 4: La Casa Prime Cabin's -->
         <div class="port-card">
-          <div class="port-thumb" style="background:linear-gradient(135deg,#2a0d0d 0%,#6b2020 55%,#9e4040 100%);">
-            <div class="port-thumb-pattern"></div>
-            <div class="port-overlay"></div>
-            <div class="port-thumb-icon">
-              <span class="big-emoji">🏡</span>
-              <span>La Casa</span>
+          <div class="port-thumb" style="background:linear-gradient(160deg,#2a1e10 0%,#56381e 50%,#3c2812 100%);">
+            <div class="thumb-chrome">
+              <div class="thumb-dots"><span></span><span></span><span></span></div>
+              <div class="thumb-url-bar">la-casa-ten.vercel.app</div>
             </div>
-            <div class="port-chip">Real Estate</div>
+            <div class="thumb-mock-nav">
+              <div class="thumb-mock-logo">La Casa Prime Cabin's</div>
+              <div class="thumb-mock-links">
+                <span>About</span><span>Rooms</span><span>Rates</span>
+                <span class="thumb-mock-cta-btn">Book Now</span>
+              </div>
+            </div>
+            <div class="thumb-mock-hero">
+              <div class="thumb-hero-chip">🌴 Bali-Inspired · Bongabon, Nueva Ecija</div>
+              <div class="thumb-title-text">La Casa</div>
+              <div class="thumb-italic-text">Prime</div>
+              <div class="thumb-title-text">Cabin's</div>
+              <div class="thumb-btns">
+                <div class="thumb-btn-fill">View Packages</div>
+                <div class="thumb-btn-outline">Book via Facebook</div>
+              </div>
+            </div>
+            <div class="port-chip">Private Resort</div>
           </div>
           <div class="port-body">
-            <div class="port-title">La Casa — Real Estate Platform</div>
-            <div class="port-sub">Property &amp; Real Estate — Listing Site</div>
+            <div class="port-title">La Casa Prime Cabin's</div>
+            <div class="port-sub">Bali-Inspired Private Resort — Bongabon, Nueva Ecija</div>
             <ul class="port-checklist">
-              <li>Premium property listings with search &amp; filter</li>
-              <li>Lead capture &amp; inquiry forms</li>
-              <li>Virtual tour &amp; photo gallery integration</li>
-              <li>Agent profiles &amp; trust-building layout</li>
+              <li>Bali-inspired private resort with premium cabin accommodations</li>
+              <li>Room showcase with rates &amp; availability</li>
+              <li>Events &amp; dining sections with immersive visuals</li>
+              <li>Facebook booking integration &amp; social proof elements</li>
             </ul>
             <div class="port-footer">
               <div class="port-tags">
                 <span class="port-tag">HTML/CSS</span>
                 <span class="port-tag">JavaScript</span>
-                <span class="port-tag">CMS</span>
+                <span class="port-tag">Hospitality</span>
               </div>
               <a href="https://la-casa-ten.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-navy btn-sm">View Live Site</a>
             </div>
@@ -1764,6 +2434,16 @@
           <a href="#" onclick="navigate('services');  return false;">Services</a>
           <a href="#" onclick="navigate('portfolio'); return false;">Portfolio</a>
           <a href="#" onclick="navigate('contact');   return false;">Contact</a>
+        </div>
+        <div class="footer-social-col">
+          <a href="https://www.facebook.com/trp.vibe.solutions" target="_blank" rel="noopener noreferrer" class="footer-social-link footer-social-fb">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            Facebook
+          </a>
+          <a href="https://m.me/trp.vibe.solutions" target="_blank" rel="noopener noreferrer" class="footer-social-link footer-social-msn">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.36 2 2 6.13 2 11.7c0 2.7 1.1 5.14 2.94 6.9.15.14.24.33.25.54l.05 1.66c.02.53.55.88 1.04.66l1.86-.82c.16-.07.33-.08.49-.04.95.26 1.96.4 3 .4 5.64 0 10-4.13 10-9.7C22 6.13 17.64 2 12 2zm6.1 7.43L15.6 13.5c-.2.32-.64.4-.96.18l-2.13-1.6c-.1-.07-.24-.07-.34 0l-2.88 2.18c-.38.29-.88-.16-.63-.57l2.5-4.07c.2-.32.64-.4.96-.18l2.13 1.6c.1.07.24.07.34 0l2.88-2.18c.38-.29.88.16.63.57z"/></svg>
+            Messenger
+          </a>
         </div>
       </div>
       <div class="footer-bottom">
@@ -1808,6 +2488,24 @@
 
           <div style="margin-top:2rem;">
             <div class="info-row">
+              <div class="info-icon" style="background:rgba(0,132,255,0.08);border-color:rgba(0,132,255,0.18);">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#0084FF" aria-hidden="true"><path d="M12 2C6.36 2 2 6.13 2 11.7c0 2.7 1.1 5.14 2.94 6.9.15.14.24.33.25.54l.05 1.66c.02.53.55.88 1.04.66l1.86-.82c.16-.07.33-.08.49-.04.95.26 1.96.4 3 .4 5.64 0 10-4.13 10-9.7C22 6.13 17.64 2 12 2zm6.1 7.43L15.6 13.5c-.2.32-.64.4-.96.18l-2.13-1.6c-.1-.07-.24-.07-.34 0l-2.88 2.18c-.38.29-.88-.16-.63-.57l2.5-4.07c.2-.32.64-.4.96-.18l2.13 1.6c.1.07.24.07.34 0l2.88-2.18c.38-.29.88.16.63.57z"/></svg>
+              </div>
+              <div class="info-content">
+                <h4>Chat on Messenger</h4>
+                <a href="https://m.me/trp.vibe.solutions" target="_blank" rel="noopener noreferrer">m.me/trp.vibe.solutions</a>
+              </div>
+            </div>
+            <div class="info-row">
+              <div class="info-icon" style="background:rgba(24,119,242,0.08);border-color:rgba(24,119,242,0.18);">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#1877F2" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              </div>
+              <div class="info-content">
+                <h4>Facebook Page</h4>
+                <a href="https://www.facebook.com/trp.vibe.solutions" target="_blank" rel="noopener noreferrer">fb.com/trp.vibe.solutions</a>
+              </div>
+            </div>
+            <div class="info-row">
               <div class="info-icon">✉️</div>
               <div class="info-content">
                 <h4>Email Us</h4>
@@ -1830,10 +2528,19 @@
             </div>
           </div>
 
-          <div class="offer-callout">
-            <div class="offer-callout-label">Current Offer</div>
-            <h4>6-Hour Fast-Action Bonus</h4>
-            <p>Book within 6 hours and receive 10,000 Free Facebook Followers for instant social proof and brand credibility — completely complimentary.</p>
+          <div class="offer-callout-v2">
+            <div class="ocv2-header">
+              <span class="ocv2-header-label">⚡ Fast-Action Bonus — Active Now</span>
+              <span class="ocv2-live"><span class="ocv2-live-dot"></span> LIVE</span>
+            </div>
+            <div class="ocv2-body">
+              <div class="ocv2-title">Claim <em>10,000 Free</em> Facebook Followers</div>
+              <p class="ocv2-text">Book within 6 hours of first contact and receive a complimentary social proof boost — 10,000 followers delivered to your page. Zero catch. 100% yours.</p>
+              <a href="https://m.me/trp.vibe.solutions" target="_blank" rel="noopener noreferrer" class="ocv2-cta">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.36 2 2 6.13 2 11.7c0 2.7 1.1 5.14 2.94 6.9.15.14.24.33.25.54l.05 1.66c.02.53.55.88 1.04.66l1.86-.82c.16-.07.33-.08.49-.04.95.26 1.96.4 3 .4 5.64 0 10-4.13 10-9.7C22 6.13 17.64 2 12 2zm6.1 7.43L15.6 13.5c-.2.32-.64.4-.96.18l-2.13-1.6c-.1-.07-.24-.07-.34 0l-2.88 2.18c-.38.29-.88-.16-.63-.57l2.5-4.07c.2-.32.64-.4.96-.18l2.13 1.6c.1.07.24.07.34 0l2.88-2.18c.38-.29.88.16.63.57z"/></svg>
+                Claim Bonus via Messenger
+              </a>
+            </div>
           </div>
         </div>
 
@@ -1884,6 +2591,14 @@
               ✓ Inquiry received! We'll be in touch within 24 hours.
             </div>
           </form>
+
+          <div class="form-alt">
+            <div class="form-alt-divider">or reach us instantly via</div>
+            <a href="https://m.me/trp.vibe.solutions" target="_blank" rel="noopener noreferrer" class="btn-messenger">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.36 2 2 6.13 2 11.7c0 2.7 1.1 5.14 2.94 6.9.15.14.24.33.25.54l.05 1.66c.02.53.55.88 1.04.66l1.86-.82c.16-.07.33-.08.49-.04.95.26 1.96.4 3 .4 5.64 0 10-4.13 10-9.7C22 6.13 17.64 2 12 2zm6.1 7.43L15.6 13.5c-.2.32-.64.4-.96.18l-2.13-1.6c-.1-.07-.24-.07-.34 0l-2.88 2.18c-.38.29-.88-.16-.63-.57l2.5-4.07c.2-.32.64-.4.96-.18l2.13 1.6c.1.07.24.07.34 0l2.88-2.18c.38-.29.88.16.63.57z"/></svg>
+              Message Us on Messenger
+            </a>
+          </div>
         </div>
 
       </div>
@@ -1902,6 +2617,16 @@
           <a href="#" onclick="navigate('services');  return false;">Services</a>
           <a href="#" onclick="navigate('portfolio'); return false;">Portfolio</a>
           <a href="#" onclick="navigate('contact');   return false;">Contact</a>
+        </div>
+        <div class="footer-social-col">
+          <a href="https://www.facebook.com/trp.vibe.solutions" target="_blank" rel="noopener noreferrer" class="footer-social-link footer-social-fb">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            Facebook
+          </a>
+          <a href="https://m.me/trp.vibe.solutions" target="_blank" rel="noopener noreferrer" class="footer-social-link footer-social-msn">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.36 2 2 6.13 2 11.7c0 2.7 1.1 5.14 2.94 6.9.15.14.24.33.25.54l.05 1.66c.02.53.55.88 1.04.66l1.86-.82c.16-.07.33-.08.49-.04.95.26 1.96.4 3 .4 5.64 0 10-4.13 10-9.7C22 6.13 17.64 2 12 2zm6.1 7.43L15.6 13.5c-.2.32-.64.4-.96.18l-2.13-1.6c-.1-.07-.24-.07-.34 0l-2.88 2.18c-.38.29-.88-.16-.63-.57l2.5-4.07c.2-.32.64-.4.96-.18l2.13 1.6c.1.07.24.07.34 0l2.88-2.18c.38-.29.88.16.63.57z"/></svg>
+            Messenger
+          </a>
         </div>
       </div>
       <div class="footer-bottom">
@@ -1974,6 +2699,107 @@
     navbar.classList.toggle('scrolled', window.scrollY > 8);
   }, { passive: true });
 
+  /* ── 6-Hour Fast-Action Bonus Countdown ── */
+  /* Timer is STATIC at 06:00:00 until user clicks Messenger or Submit Inquiry.
+     Once activated, it counts down and persists within the session. */
+  (function() {
+    var SIX_HOURS = 6 * 60 * 60 * 1000;
+    var KEY = 'trp_bonus_start';
+    var timerInterval = null;
+    var activated = false;
+
+    function pad(n) { return String(n).padStart(2, '0'); }
+
+    function tickEl(el) {
+      if (!el) return;
+      el.classList.add('tick');
+      setTimeout(function() { el.classList.remove('tick'); }, 130);
+    }
+
+    function setDisplay(h, m, s) {
+      var bcH = document.getElementById('bc-hours');
+      var bcM = document.getElementById('bc-minutes');
+      var bcS = document.getElementById('bc-seconds');
+      if (bcH) bcH.textContent = pad(h);
+      if (bcM) bcM.textContent = pad(m);
+      if (bcS) { tickEl(bcS); bcS.textContent = pad(s); }
+
+      var ubH = document.getElementById('ub-hours');
+      var ubM = document.getElementById('ub-minutes');
+      var ubS = document.getElementById('ub-seconds');
+      if (ubH) ubH.textContent = pad(h);
+      if (ubM) ubM.textContent = pad(m);
+      if (ubS) { tickEl(ubS); ubS.textContent = pad(s); }
+    }
+
+    function tick(endTime) {
+      var remaining = Math.max(0, endTime - Date.now());
+      var h = Math.floor(remaining / 3600000);
+      var m = Math.floor((remaining % 3600000) / 60000);
+      var s = Math.floor((remaining % 60000) / 1000);
+      setDisplay(h, m, s);
+
+      if (remaining === 0) {
+        clearInterval(timerInterval);
+        var cd = document.getElementById('bonusCountdown');
+        if (cd) cd.innerHTML = '<div style="font-size:0.85rem;color:rgba(255,255,255,0.55);padding:1rem;text-align:center;">Window closed — contact us for your exclusive deal.</div>';
+        var ubMini = document.querySelector('.ub-mini-cd');
+        if (ubMini) ubMini.style.display = 'none';
+      }
+    }
+
+    function activateTimer() {
+      if (activated) return;
+      activated = true;
+      var startTime = Date.now();
+      sessionStorage.setItem(KEY, String(startTime));
+      var endTime = startTime + SIX_HOURS;
+      // Update labels to show timer is now live
+      var sub = document.querySelector('.bonus-timer-sub');
+      if (sub) sub.textContent = 'Your window is now open — move fast!';
+      var note = document.querySelector('.bonus-timer-note');
+      if (note) note.textContent = '⚡ Timer activated — 6 hours from first contact';
+      var wl = document.querySelector('.ub-window-label');
+      if (wl) wl.textContent = '— your window is live, act now';
+      tick(endTime);
+      timerInterval = setInterval(function() { tick(endTime); }, 1000);
+    }
+
+    // If timer was already started in this session, resume it
+    var stored = sessionStorage.getItem(KEY);
+    if (stored) {
+      var endTime = parseInt(stored, 10) + SIX_HOURS;
+      if (Date.now() < endTime) {
+        activated = true;
+        var sub = document.querySelector('.bonus-timer-sub');
+        if (sub) sub.textContent = 'Your window is now open — move fast!';
+        var note = document.querySelector('.bonus-timer-note');
+        if (note) note.textContent = '⚡ Timer activated — 6 hours from first contact';
+        var wl = document.querySelector('.ub-window-label');
+        if (wl) wl.textContent = '— your window is live, act now';
+        tick(endTime);
+        timerInterval = setInterval(function() { tick(endTime); }, 1000);
+      } else {
+        // Expired session
+        setDisplay(0, 0, 0);
+        var cd = document.getElementById('bonusCountdown');
+        if (cd) cd.innerHTML = '<div style="font-size:0.85rem;color:rgba(255,255,255,0.55);padding:1rem;text-align:center;">Window closed — contact us for your exclusive deal.</div>';
+        var ubMini = document.querySelector('.ub-mini-cd');
+        if (ubMini) ubMini.style.display = 'none';
+      }
+    } else {
+      // Not yet activated — show static 06:00:00
+      setDisplay(6, 0, 0);
+    }
+
+    // Listen for trigger clicks: Messenger links and Submit button
+    document.addEventListener('click', function(e) {
+      if (activated) return;
+      var el = e.target.closest('a[href*="m.me"], .messenger-float, .btn-messenger, .ocv2-cta, .footer-social-msn, #submitBtn');
+      if (el) activateTimer();
+    }, true);
+  })();
+
   /* ── Contact form ── */
   var form       = document.getElementById('contactForm');
   var submitBtn  = document.getElementById('submitBtn');
@@ -2008,6 +2834,14 @@
     }, 1400);
   });
 </script>
+
+<!-- ── Floating Messenger Button ── -->
+<a href="https://m.me/trp.vibe.solutions" target="_blank" rel="noopener noreferrer" class="messenger-float" aria-label="Chat with us on Messenger">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M12 2C6.36 2 2 6.13 2 11.7c0 2.7 1.1 5.14 2.94 6.9.15.14.24.33.25.54l.05 1.66c.02.53.55.88 1.04.66l1.86-.82c.16-.07.33-.08.49-.04.95.26 1.96.4 3 .4 5.64 0 10-4.13 10-9.7C22 6.13 17.64 2 12 2zm6.1 7.43L15.6 13.5c-.2.32-.64.4-.96.18l-2.13-1.6c-.1-.07-.24-.07-.34 0l-2.88 2.18c-.38.29-.88-.16-.63-.57l2.5-4.07c.2-.32.64-.4.96-.18l2.13 1.6c.1.07.24.07.34 0l2.88-2.18c.38-.29.88.16.63.57z"/>
+  </svg>
+  <span class="mf-label">Chat on Messenger</span>
+</a>
 
 </body>
 </html>
