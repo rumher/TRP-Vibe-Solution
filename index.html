@@ -786,6 +786,50 @@
     }
     .renewal-note strong { color: var(--navy); }
 
+    /* Flexible pricing note */
+    .flex-price-note {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      margin-top: 1rem;
+      padding: 1.1rem 1.5rem;
+      background: rgba(169,142,96,0.07);
+      border-left: 3px solid var(--gold);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      font-size: 0.8rem;
+      color: var(--slate);
+      line-height: 1.6;
+    }
+    .flex-price-note strong { color: var(--navy); }
+    .flex-price-note > span:first-child { font-size: 1.05rem; flex-shrink: 0; margin-top: 1px; }
+
+    /* SurveyIQ flagship portfolio card */
+    .port-card--flagship {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .port-card--flagship .port-thumb { height: auto; min-height: 300px; }
+    .flagship-pride-note {
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+      background: rgba(169,142,96,0.08);
+      border: 1px solid rgba(169,142,96,0.22);
+      border-radius: var(--radius-md);
+      padding: 0.9rem 1rem;
+      margin-bottom: 1.25rem;
+      font-size: 0.77rem;
+      color: var(--slate);
+      line-height: 1.6;
+    }
+    .flagship-pride-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 2px; }
+    .flagship-pride-note strong { color: var(--navy); }
+    @media (max-width: 640px) {
+      .port-card--flagship { grid-template-columns: 1fr; }
+      .port-card--flagship .port-thumb { min-height: 220px; }
+    }
+
     /* Urgency banner */
     .urgency-banner {
       margin-top: 3.5rem;
@@ -2133,6 +2177,11 @@
         </span>
       </div>
 
+      <div class="flex-price-note">
+        <span>💬</span>
+        <span><strong>Prices are flexible.</strong> Every business has unique needs — if our standard tiers don't fit your scope or budget, reach out and we'll build a custom package tailored exactly to your goals.</span>
+      </div>
+
       <!-- 6-Hour urgency banner -->
       <div class="urgency-banner">
         <div class="ub-icon">⚡</div>
@@ -2405,6 +2454,56 @@
                 <span class="port-tag">Hospitality</span>
               </div>
               <a href="https://la-casa-ten.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-navy btn-sm">View Live Site</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 5: SurveyIQ — Flagship Product -->
+        <div class="port-card port-card--flagship">
+          <div class="port-thumb" style="background:linear-gradient(145deg,#040d1a 0%,#071e38 40%,#0a2d4a 70%,#041220 100%);">
+            <div class="thumb-chrome">
+              <div class="thumb-dots"><span></span><span></span><span></span></div>
+              <div class="thumb-url-bar">surveyiq.site</div>
+            </div>
+            <div class="thumb-mock-nav">
+              <div class="thumb-mock-logo" style="color:#A98E60;letter-spacing:0.04em;">SurveyIQ</div>
+              <div class="thumb-mock-links">
+                <span>Features</span><span>Pricing</span><span>Docs</span>
+                <span class="thumb-mock-cta-btn" style="background:#A98E60;">Get Started</span>
+              </div>
+            </div>
+            <div class="thumb-mock-hero" style="align-items:center;text-align:center;gap:0.35rem;">
+              <div style="font-size:0.48rem;color:rgba(169,142,96,0.85);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.1rem;">🤖 AI-Powered · Global SaaS Platform</div>
+              <div class="thumb-title-text" style="font-size:1.5rem;letter-spacing:-0.02em;">Survey<span style="color:#A98E60;">IQ</span></div>
+              <div style="font-size:0.52rem;color:rgba(255,255,255,0.45);letter-spacing:0.04em;font-style:italic;">Intelligent Surveys. Real Insights. Global Scale.</div>
+              <div class="thumb-btns" style="margin-top:0.5rem;">
+                <div class="thumb-btn-fill" style="background:#A98E60;color:#112946;font-weight:700;">Try Free</div>
+                <div class="thumb-btn-outline">See Demo</div>
+              </div>
+            </div>
+            <div class="port-chip" style="background:rgba(169,142,96,0.92);color:#0d1f35;font-weight:800;letter-spacing:0.05em;">⭐ Flagship SaaS Product</div>
+          </div>
+          <div class="port-body">
+            <div class="port-title">SurveyIQ — AI-Powered Survey Platform</div>
+            <div class="port-sub">International SaaS Application · Built &amp; Owned by TRP Vibe Solutions</div>
+            <ul class="port-checklist">
+              <li>AI-driven survey creation, distribution, and real-time analytics</li>
+              <li>International SaaS platform built for global users and organizations</li>
+              <li>Machine learning–powered response analysis and reporting engine</li>
+              <li>Designed, built, and maintained by The Rumherius Project — Philippines</li>
+            </ul>
+            <div class="flagship-pride-note">
+              <span class="flagship-pride-icon">🇵🇭</span>
+              <span><strong>Your project fuels something bigger.</strong> Every website you commission through TRP Vibe Solutions directly funds the continued development of SurveyIQ — a Filipino-built AI SaaS application competing on the international stage. By choosing TRP, you're not just getting a world-class website; you're helping put the Philippines on the global tech map.</span>
+            </div>
+            <div class="port-footer">
+              <div class="port-tags">
+                <span class="port-tag">SaaS</span>
+                <span class="port-tag">Artificial Intelligence</span>
+                <span class="port-tag">International</span>
+                <span class="port-tag">Filipino-Built</span>
+              </div>
+              <a href="https://www.surveyiq.site/" target="_blank" rel="noopener noreferrer" class="btn btn-gold btn-sm">Visit SurveyIQ →</a>
             </div>
           </div>
         </div>
