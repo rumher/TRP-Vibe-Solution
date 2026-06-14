@@ -1020,6 +1020,63 @@
     .upt-dash  { color: rgba(90,107,124,0.28); font-size: 0.95rem; line-height: 1; }
     .upt-val   { color: var(--navy); font-weight: 600; font-size: 0.73rem; }
 
+    /* ── Mobile Pricing Column Switcher ── */
+    .upt-mob-nav {
+      display: none;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--navy);
+      padding: 0.7rem 0.85rem;
+      border-radius: var(--radius-md) var(--radius-md) 0 0;
+      position: sticky;
+      top: 70px;
+      z-index: 50;
+    }
+    .upt-mob-arr {
+      flex-shrink: 0; width: 30px; height: 30px;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 50%; color: var(--white); font-size: 1.1rem; line-height: 1;
+      cursor: pointer; transition: background var(--t); padding: 0;
+      font-family: 'Inter', sans-serif;
+    }
+    .upt-mob-arr:disabled { opacity: 0.22; cursor: default; }
+    .upt-mob-arr:not(:disabled):hover { background: rgba(255,255,255,0.18); }
+    .upt-mob-tabs {
+      display: flex; gap: 0.3rem; flex: 1; overflow-x: auto;
+      scrollbar-width: none; -ms-overflow-style: none; scroll-behavior: smooth;
+    }
+    .upt-mob-tabs::-webkit-scrollbar { display: none; }
+    .upt-mob-tab {
+      white-space: nowrap; font-size: 0.67rem; font-weight: 600;
+      padding: 0.26rem 0.65rem; border-radius: 100px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: transparent; color: rgba(255,255,255,0.48);
+      cursor: pointer; transition: all var(--t); flex-shrink: 0;
+      font-family: 'Inter', sans-serif;
+    }
+    .upt-mob-tab.active { background: var(--gold); border-color: var(--gold); color: var(--white); }
+    @media (max-width: 760px) {
+      .upt-mob-nav { display: flex; }
+      .vl-scroll-hint { display: none; }
+      .upt-wrap { overflow-x: hidden; border-radius: 0 0 var(--radius-md) var(--radius-md); }
+      .upt-table { min-width: 0; }
+      .upt-feature-head { min-width: 0; width: 48%; padding: 0.8rem 0.75rem 1.1rem; }
+      .upt-plan-th { display: none; }
+      .upt-plan-th.mob-visible { display: table-cell !important; width: 52%; }
+      .upt-table tbody td:not(:first-child) { display: none; }
+      .upt-table tbody td.mob-visible { display: table-cell !important; }
+      .upt-section-row td { display: table-cell !important; }
+      /* Compact card inside single-column mobile view */
+      .upt-plan-card { border-radius: 0; border-left: none; border-right: none; border-top: none; padding: 0.75rem 0.7rem 0.85rem; }
+      .upt-price-main { font-size: 1.1rem; }
+      .upt-plan-cta { font-size: 0.64rem; padding: 0.38rem 0.3rem; }
+      /* No column tint on mobile */
+      .upt-table tbody td:nth-child(5),
+      .upt-table tbody tr:not(.upt-section-row):nth-child(even) td:nth-child(5),
+      .upt-table tbody tr:not(.upt-section-row):hover td:nth-child(5) { background: inherit; }
+    }
+
     /* SurveyIQ flagship portfolio card */
     .port-card--flagship {
       grid-column: 1 / -1;
@@ -2254,6 +2311,17 @@
       <!-- Unified Pricing + Feature Comparison -->
       <div class="vl-scroll-hint">← Scroll to compare all tiers →</div>
       <div class="upt-wrap">
+        <div class="upt-mob-nav" id="uptMobNav">
+          <button class="upt-mob-arr" id="uptMobPrev" aria-label="Previous plan">&#8249;</button>
+          <div class="upt-mob-tabs" id="uptMobTabs">
+            <button class="upt-mob-tab active" data-col="0">🚀 Launchpad</button>
+            <button class="upt-mob-tab" data-col="1">⭐ Starter</button>
+            <button class="upt-mob-tab" data-col="2">📈 Growth</button>
+            <button class="upt-mob-tab" data-col="3">💎 Pro</button>
+            <button class="upt-mob-tab" data-col="4">🏢 Enterprise</button>
+          </div>
+          <button class="upt-mob-arr" id="uptMobNext" aria-label="Next plan">&#8250;</button>
+        </div>
         <table class="upt-table">
           <thead>
             <tr>
@@ -3136,39 +3204,111 @@
     });
   })();
 
-  /* ── Contact form ── */
-  var form       = document.getElementById('contactForm');
-  var submitBtn  = document.getElementById('submitBtn');
-  var successMsg = document.getElementById('formSuccess');
+  /* ── Mobile pricing column switcher ── */
+  (function() {
+    var MOBILE_BP = 760;
+    var activeCol = 0;
+    var totalCols = 5;
+    var mobNav  = document.getElementById('uptMobNav');
+    var prevBtn = document.getElementById('uptMobPrev');
+    var nextBtn = document.getElementById('uptMobNext');
+    var tabs    = document.querySelectorAll('.upt-mob-tab');
+    var planThs = document.querySelectorAll('.upt-plan-th');
+    var table   = document.querySelector('.upt-table');
+    if (!mobNav || !table) return;
 
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    // Basic validation
-    var name    = document.getElementById('f-name').value.trim();
-    var email   = document.getElementById('f-email').value.trim();
-    var pkg     = document.getElementById('f-package').value;
-    var details = document.getElementById('f-details').value.trim();
-
-    if (!name || !email || !pkg || !details) {
-      return; // browser native validation handles visual feedback
+    function setCol(n) {
+      activeCol = Math.max(0, Math.min(totalCols - 1, n));
+      planThs.forEach(function(th, i) { th.classList.toggle('mob-visible', i === activeCol); });
+      table.querySelectorAll('tbody tr').forEach(function(row) {
+        if (row.classList.contains('upt-section-row')) return;
+        row.querySelectorAll('td:not(:first-child)').forEach(function(td, i) {
+          td.classList.toggle('mob-visible', i === activeCol);
+        });
+      });
+      tabs.forEach(function(tab, i) { tab.classList.toggle('active', i === activeCol); });
+      var activeTab = tabs[activeCol];
+      if (activeTab) activeTab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      prevBtn.disabled = activeCol === 0;
+      nextBtn.disabled = activeCol === totalCols - 1;
     }
 
-    // Simulate async send
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Sending…';
+    prevBtn.addEventListener('click', function() { setCol(activeCol - 1); });
+    nextBtn.addEventListener('click', function() { setCol(activeCol + 1); });
+    tabs.forEach(function(tab) {
+      tab.addEventListener('click', function() { setCol(parseInt(this.dataset.col, 10)); });
+    });
 
-    setTimeout(function() {
-      form.reset();
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Submit Inquiry — Let\'s Build';
-      successMsg.style.display = 'block';
+    var touchStartX = 0;
+    table.addEventListener('touchstart', function(e) {
+      touchStartX = e.touches[0].clientX;
+    }, { passive: true });
+    table.addEventListener('touchend', function(e) {
+      var dx = e.changedTouches[0].clientX - touchStartX;
+      if (Math.abs(dx) > 50) { if (dx < 0) setCol(activeCol + 1); else setCol(activeCol - 1); }
+    }, { passive: true });
 
-      setTimeout(function() {
-        successMsg.style.display = 'none';
-      }, 7000);
-    }, 1400);
-  });
+    function init() { if (window.innerWidth <= MOBILE_BP) setCol(0); }
+    init();
+    window.addEventListener('resize', function() {
+      if (window.innerWidth <= MOBILE_BP) {
+        setCol(activeCol);
+      } else {
+        planThs.forEach(function(th) { th.classList.remove('mob-visible'); });
+        table.querySelectorAll('tbody td').forEach(function(td) { td.classList.remove('mob-visible'); });
+      }
+    });
+  })();
+
+  /* ── Contact form (Web3Forms) ── */
+  (function() {
+    var form       = document.getElementById('contactForm');
+    var submitBtn  = document.getElementById('submitBtn');
+    var successMsg = document.getElementById('formSuccess');
+    if (!form) return;
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var name    = document.getElementById('f-name').value.trim();
+      var email   = document.getElementById('f-email').value.trim();
+      var pkg     = document.getElementById('f-package').value;
+      var details = document.getElementById('f-details').value.trim();
+      if (!name || !email || !pkg || !details) return;
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending…';
+
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          access_key: 'REPLACE_WITH_YOUR_WEB3FORMS_KEY',
+          subject: 'New Project Inquiry — TRP Vibe Solutions',
+          from_name: name,
+          email: email,
+          package: pkg,
+          project_details: details
+        })
+      })
+      .then(function(res) { return res.json(); })
+      .then(function(data) {
+        if (data.success) {
+          form.reset();
+          successMsg.style.display = 'block';
+          setTimeout(function() { successMsg.style.display = 'none'; }, 7000);
+        } else {
+          alert('Something went wrong. Please try again or reach us via Messenger.');
+        }
+      })
+      .catch(function() {
+        alert('Network error. Please check your connection and try again.');
+      })
+      .finally(function() {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Submit Inquiry — Let\'s Build';
+      });
+    });
+  })();
 </script>
 
 <!-- ── Floating Messenger Button ── -->
