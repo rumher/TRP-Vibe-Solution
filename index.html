@@ -686,13 +686,18 @@
       white-space: nowrap;
     }
 
-    /* Package grid */
+    /* Package grid — 3-2 pyramid on desktop, responsive below */
     .pkg-grid {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 1.1rem;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 1.25rem;
       align-items: start;
     }
+    .pkg-grid > .pkg-card:nth-child(1) { grid-column: 1 / 3; }
+    .pkg-grid > .pkg-card:nth-child(2) { grid-column: 3 / 5; }
+    .pkg-grid > .pkg-card:nth-child(3) { grid-column: 5 / 7; }
+    .pkg-grid > .pkg-card:nth-child(4) { grid-column: 2 / 4; }
+    .pkg-grid > .pkg-card:nth-child(5) { grid-column: 4 / 6; }
     /* Enterprise dark card */
     .pkg-card--enterprise {
       background: var(--navy);
@@ -1792,7 +1797,13 @@
        RESPONSIVE BREAKPOINTS
     ═════════════════════════════════════════════════ */
     @media (max-width: 1080px) {
+      /* Reset pyramid to 3-column auto flow */
       .pkg-grid { grid-template-columns: repeat(3, 1fr); }
+      .pkg-grid > .pkg-card:nth-child(1),
+      .pkg-grid > .pkg-card:nth-child(2),
+      .pkg-grid > .pkg-card:nth-child(3),
+      .pkg-grid > .pkg-card:nth-child(4),
+      .pkg-grid > .pkg-card:nth-child(5) { grid-column: auto; }
       .hero-inner { grid-template-columns: 1fr; }
       .hero-card { display: none; }
     }
@@ -1819,8 +1830,11 @@
       .form-card { padding: 1.75rem; }
     }
     @media (max-width: 640px) {
-      /* Packages two-column on small screens */
-      .pkg-grid { grid-template-columns: repeat(2, 1fr); }
+      .pkg-grid { grid-template-columns: 1fr 1fr; }
+      .pkg-grid > .pkg-card:nth-child(4),
+      .pkg-grid > .pkg-card:nth-child(5) { grid-column: auto; }
+      /* Enterprise full-width at small */
+      .pkg-grid > .pkg-card:nth-child(5) { grid-column: 1 / -1; }
       .pkg-card.featured { transform: none; }
       .pkg-card.featured:hover { transform: translateY(-5px); }
     }
@@ -1842,6 +1856,7 @@
       .port-thumb { height: 200px; }
       .hero-stats .stat-num { font-size: 1.55rem; }
       .pkg-grid { grid-template-columns: 1fr; }
+      .pkg-grid > .pkg-card:nth-child(5) { grid-column: auto; }
       .pkg-card { padding: 1.5rem 1.25rem; }
       .port-body { padding: 1.25rem; }
     }
@@ -1925,8 +1940,8 @@
               <div class="stat-lbl">Domain + SSL Year 1</div>
             </div>
             <div>
-              <div class="stat-num">$60</div>
-              <div class="stat-lbl">Flat Annual Renewal</div>
+              <div class="stat-num">1–3</div>
+              <div class="stat-lbl">Day Delivery</div>
             </div>
           </div>
         </div>
@@ -1973,63 +1988,9 @@
       <div class="strip-item"><span class="strip-check">✓</span> Business Email Setup</div>
       <div class="strip-item"><span class="strip-check">✓</span> Mobile-Responsive Design</div>
       <div class="strip-item"><span class="strip-check">✓</span> 5 Plans — Starting at ₱3,999</div>
-    </div>
-  </div>
-
-  <!-- ⚡ 6-Hour Fast-Action Bonus Highlight -->
-  <div class="bonus-section">
-    <div class="bonus-bg-grid"></div>
-    <div class="bonus-glow-orb"></div>
-    <div class="container">
-      <div class="bonus-inner">
-
-        <div class="bonus-content" style="opacity:0.65">
-          <div class="bonus-badge" style="background:rgba(255,255,255,0.06);border-color:rgba(255,255,255,0.12);color:rgba(255,255,255,0.35);animation:none">
-            <span style="width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,0.25);display:inline-block;flex-shrink:0"></span>
-            PREVIOUS OFFER — NOW EXPIRED
-          </div>
-          <h2 class="bonus-headline" style="opacity:0.55">
-            Free Social Media<br><em>Business Setup</em> — <span style="color:rgba(255,255,255,0.4);font-size:0.75em">Offer Expired</span>
-          </h2>
-          <p class="bonus-subhead" style="opacity:0.45">
-            This offer has ended. We previously offered a complimentary Facebook &amp; Instagram
-            business page setup — branded cover photo, optimized bio, and CTA button fully configured —
-            worth ₱1,500, free with any booking made within 6 hours of first contact.
-          </p>
-          <ul class="bonus-checklist" style="opacity:0.4">
-            <li><span class="bcheck">✓</span> Facebook &amp; Instagram business pages configured</li>
-            <li><span class="bcheck">✓</span> Branded cover photo + optimized bio</li>
-            <li><span class="bcheck">✓</span> Contact details &amp; CTA button set up</li>
-            <li><span class="bcheck">✓</span> Worth ₱1,500 — was free with any package</li>
-          </ul>
-          <div class="bonus-cta-row">
-            <a href="https://m.me/trp.vibe.solutions" target="_blank" rel="noopener noreferrer" class="btn-bonus-secondary" style="opacity:0.6">Ask About Current Offers</a>
-            <a href="#" class="btn-bonus-secondary" style="opacity:0.5" onclick="navigate('services'); return false;">View Packages</a>
-          </div>
-        </div>
-
-        <div class="bonus-timer-wrap" style="opacity:0.4">
-          <div class="bonus-timer-label" style="color:rgba(255,255,255,0.4)">Offer Window — Closed</div>
-          <div class="bonus-timer-sub">This promotion has ended</div>
-          <div class="bonus-countdown" id="bonusCountdown">
-            <div class="bc-unit">
-              <div class="bc-num" id="bc-hours">06</div>
-              <div class="bc-lbl">Hours</div>
-            </div>
-            <div class="bc-sep">:</div>
-            <div class="bc-unit">
-              <div class="bc-num" id="bc-minutes">00</div>
-              <div class="bc-lbl">Min</div>
-            </div>
-            <div class="bc-sep">:</div>
-            <div class="bc-unit">
-              <div class="bc-num" id="bc-seconds">00</div>
-              <div class="bc-lbl">Sec</div>
-            </div>
-          </div>
-          <div class="bonus-timer-note">⚡ Click Messenger or Submit Inquiry to activate</div>
-        </div>
-
+      <div class="strip-item strip-bonus-item">
+        <span class="strip-bonus-icon">🎁</span>
+        <span class="strip-bonus-text">Book in 6 Hrs — Free Social Media Setup</span>
       </div>
     </div>
   </div>
@@ -2178,7 +2139,7 @@
         <div class="vib-icon">🎁</div>
         <div class="vib-text">
           <strong>All Packages Include: Free 1-Year Domain · Secure SSL Hosting · CMS/Page Builder</strong>
-          <span>Email, Hosting &amp; Domain renewal: flat <strong>$60 USD annually</strong> after the first complimentary year.</span>
+          <span>No hidden fees during your first year. Renewal rates provided on request after Year 1.</span>
         </div>
         <div class="vib-pill">Included Free</div>
       </div>
@@ -2391,27 +2352,35 @@
       <div class="renewal-note">
         <span style="font-size:1rem;flex-shrink:0">ℹ️</span>
         <span>
-          <strong>Renewal Notice:</strong> After the complimentary first year, Email, Hosting &amp; Domain
-          renewal is a flat <strong>$60 USD/year (~₱3,500)</strong> — all three services, one flat fee, no surprises.
+          <strong>First Year Included Free:</strong> Your domain, SSL hosting, and business email are complimentary for the first year.
+          After that, renewal is billed at a competitive flat rate — contact us for current pricing.
         </span>
       </div>
 
-      <!-- 6-Hour urgency banner — EXPIRED -->
-      <div class="urgency-banner" style="opacity:0.6;filter:grayscale(0.35)">
-        <div class="ub-icon" style="opacity:0.5">⚪</div>
+      <!-- 6-Hour Fast-Action Bonus — LIVE -->
+      <div class="urgency-banner">
+        <div class="ub-icon">🎁</div>
         <div class="ub-body">
-          <div class="ub-eyebrow" style="color:rgba(255,255,255,0.35);background:rgba(255,255,255,0.06);border-color:rgba(255,255,255,0.12)">⚪ PREVIOUS OFFER — NOW EXPIRED</div>
-          <h3 class="ub-title" style="opacity:0.55">6-Hour Fast-Action <em>Bonus</em></h3>
-          <p class="ub-desc" style="opacity:0.5">
-            This offer has ended. We previously offered a <strong style="color:rgba(255,255,255,0.6)">Free Social Media Business Setup</strong> —
-            branded Facebook &amp; Instagram business pages with cover photo, optimized bio, and contact
-            button configured — worth <strong style="color:rgba(255,255,255,0.6)">₱1,500</strong>, complimentary
-            with any booking made within 6 hours of first contact.
+          <div class="ub-eyebrow">🎁 LIMITED-TIME FAST-ACTION BONUS — BOOK WITHIN 6 HOURS</div>
+          <h3 class="ub-title">Free Social Media <em>Business Setup</em></h3>
+          <p class="ub-desc">
+            Book any package within <strong style="color:var(--gold)">6 hours of first contact</strong> and get a complete
+            <strong style="color:var(--gold)">Free Social Media Business Setup</strong> — branded Facebook &amp; Instagram
+            business pages with cover photo, optimized bio, and CTA button fully configured.
+            Worth <strong style="color:var(--gold)">₱1,500</strong>, yours at no extra cost.
+            <span style="display:block;margin-top:0.5rem;font-size:0.8rem;color:rgba(255,255,255,0.5)">Note: Our previous 10,000 Followers bonus has ended — this new setup bonus is now the active offer.</span>
           </p>
-          <p style="font-size:0.75rem;color:rgba(255,255,255,0.3);margin-top:0.6rem;">Message us on Messenger to ask about current promotions.</p>
         </div>
         <div class="ub-cta">
-          <a href="https://m.me/trp.vibe.solutions" target="_blank" rel="noopener noreferrer" class="btn btn-ghost" style="opacity:0.55">Ask About Current Offers</a>
+          <a href="https://m.me/trp.vibe.solutions" target="_blank" rel="noopener noreferrer" class="btn btn-gold">Claim Bonus on Messenger</a>
+          <div class="ub-mini-cd">
+            <div class="ub-cd-unit"><div class="ub-cd-num" id="ub-hours">06</div><div class="ub-cd-lbl">Hrs</div></div>
+            <div class="ub-cd-sep">:</div>
+            <div class="ub-cd-unit"><div class="ub-cd-num" id="ub-minutes">00</div><div class="ub-cd-lbl">Min</div></div>
+            <div class="ub-cd-sep">:</div>
+            <div class="ub-cd-unit"><div class="ub-cd-num" id="ub-seconds">00</div><div class="ub-cd-lbl">Sec</div></div>
+            <span class="ub-window-label">— click Messenger to start your window</span>
+          </div>
         </div>
       </div>
 
@@ -2816,17 +2785,17 @@
             </div>
           </div>
 
-          <div class="offer-callout-v2" style="opacity:0.55">
+          <div class="offer-callout-v2">
             <div class="ocv2-header">
-              <span class="ocv2-header-label" style="color:rgba(255,255,255,0.35)">⚪ Previous Offer — Expired</span>
-              <span class="ocv2-live" style="background:rgba(255,255,255,0.06);border-color:rgba(255,255,255,0.12);color:rgba(255,255,255,0.3);animation:none"><span style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.2);display:inline-block"></span> ENDED</span>
+              <span class="ocv2-header-label">🎁 6-Hour Fast-Action Bonus</span>
+              <span class="ocv2-live"><span style="width:6px;height:6px;border-radius:50%;background:var(--gold);display:inline-block;box-shadow:0 0 6px var(--gold)"></span> ACTIVE</span>
             </div>
             <div class="ocv2-body">
-              <div class="ocv2-title" style="opacity:0.5">Free Social Media Business Setup</div>
-              <p class="ocv2-text" style="opacity:0.45">This offer has expired. We previously offered free Facebook &amp; Instagram business page setup (worth ₱1,500) with any booking made within 6 hours. Message us on Messenger to ask about current promotions.</p>
-              <a href="https://m.me/trp.vibe.solutions" target="_blank" rel="noopener noreferrer" class="ocv2-cta" style="opacity:0.55">
+              <div class="ocv2-title">Free Social Media Business Setup</div>
+              <p class="ocv2-text">Book within <strong style="color:var(--gold)">6 hours of first contact</strong> and get a free Facebook &amp; Instagram business page setup — cover photo, bio, and CTA button fully configured. Worth <strong style="color:var(--gold)">₱1,500</strong>, FREE.<br><span style="font-size:0.75rem;opacity:0.6;display:block;margin-top:0.35rem">Replaces our previous 10,000 Followers bonus.</span></p>
+              <a href="https://m.me/trp.vibe.solutions" target="_blank" rel="noopener noreferrer" class="ocv2-cta">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.36 2 2 6.13 2 11.7c0 2.7 1.1 5.14 2.94 6.9.15.14.24.33.25.54l.05 1.66c.02.53.55.88 1.04.66l1.86-.82c.16-.07.33-.08.49-.04.95.26 1.96.4 3 .4 5.64 0 10-4.13 10-9.7C22 6.13 17.64 2 12 2zm6.1 7.43L15.6 13.5c-.2.32-.64.4-.96.18l-2.13-1.6c-.1-.07-.24-.07-.34 0l-2.88 2.18c-.38.29-.88-.16-.63-.57l2.5-4.07c.2-.32.64-.4.96-.18l2.13 1.6c.1.07.24.07.34 0l2.88-2.18c.38-.29.88.16.63.57z"/></svg>
-                Ask About Current Offers
+                Claim via Messenger — Start My Window
               </a>
             </div>
           </div>
