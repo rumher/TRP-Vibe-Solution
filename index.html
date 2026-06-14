@@ -666,10 +666,17 @@
     /* Package grid */
     .pkg-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1.4rem;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1.1rem;
       align-items: start;
     }
+    /* Enterprise dark card */
+    .pkg-card--enterprise {
+      background: var(--navy);
+      border-color: var(--navy);
+    }
+    .pkg-card--enterprise .pkg-features li { color: rgba(255,255,255,0.72); }
+    .pkg-card--enterprise .pkg-features li::before { color: var(--gold); }
     .pkg-card {
       background: var(--white);
       border: 1px solid var(--border);
@@ -1676,7 +1683,7 @@
        RESPONSIVE BREAKPOINTS
     ═════════════════════════════════════════════════ */
     @media (max-width: 1080px) {
-      .pkg-grid { grid-template-columns: repeat(2, 1fr); }
+      .pkg-grid { grid-template-columns: repeat(3, 1fr); }
       .hero-inner { grid-template-columns: 1fr; }
       .hero-card { display: none; }
     }
@@ -1703,8 +1710,8 @@
       .form-card { padding: 1.75rem; }
     }
     @media (max-width: 640px) {
-      /* Packages go single-column earlier */
-      .pkg-grid { grid-template-columns: 1fr; }
+      /* Packages two-column on small screens */
+      .pkg-grid { grid-template-columns: repeat(2, 1fr); }
       .pkg-card.featured { transform: none; }
       .pkg-card.featured:hover { transform: translateY(-5px); }
     }
@@ -1725,6 +1732,7 @@
     @media (max-width: 400px) {
       .port-thumb { height: 200px; }
       .hero-stats .stat-num { font-size: 1.55rem; }
+      .pkg-grid { grid-template-columns: 1fr; }
       .pkg-card { padding: 1.5rem 1.25rem; }
       .port-body { padding: 1.25rem; }
     }
@@ -2068,13 +2076,39 @@
         <div class="vib-pill">Included Free</div>
       </div>
 
-      <!-- 4 packages -->
+      <!-- 5 packages -->
       <div class="pkg-grid">
 
-        <!-- Tier 01 -->
+        <!-- Tier 01: Launchpad -->
         <div class="pkg-card">
           <div class="pkg-tier">Tier 01</div>
-          <div class="pkg-name">Single-Page</div>
+          <div class="pkg-name">Launchpad</div>
+          <div class="pkg-price">
+            <span class="pkg-currency">₱</span>
+            <span class="pkg-amount">3,999</span>
+          </div>
+          <div class="pkg-deposit">₱2,000 Deposit Required</div>
+          <div class="pkg-rule"></div>
+          <ul class="pkg-features">
+            <li>1 Professionally Designed Page</li>
+            <li>1 Business Email @yourdomain</li>
+            <li>Free 1-Year Domain</li>
+            <li>Secure SSL Hosting</li>
+            <li>CMS — Edit Anytime</li>
+            <li>Mobile Responsive</li>
+            <li>Basic On-Page SEO</li>
+            <li>Contact Form</li>
+            <li>1 Round of Revisions</li>
+            <li>Delivered in 3 Business Days</li>
+            <li>14-Day Post-Launch Support</li>
+          </ul>
+          <a href="#" class="btn btn-ghost pkg-cta" onclick="navigate('contact'); return false;">Get Online Now →</a>
+        </div>
+
+        <!-- Tier 02: Starter -->
+        <div class="pkg-card">
+          <div class="pkg-tier">Tier 02</div>
+          <div class="pkg-name">Starter</div>
           <div class="pkg-price">
             <span class="pkg-currency">₱</span>
             <span class="pkg-amount">5,999</span>
@@ -2082,21 +2116,27 @@
           <div class="pkg-deposit">₱3,000 Deposit Required</div>
           <div class="pkg-rule"></div>
           <ul class="pkg-features">
-            <li>1 Full Single Page</li>
-            <li>1 Business Email Account</li>
+            <li>2–3 Professionally Designed Pages</li>
+            <li>1 Business Email @yourdomain</li>
             <li>Free 1-Year Domain</li>
             <li>Secure SSL Hosting</li>
-            <li>Built-in CMS / Page Builder</li>
-            <li>Mobile-Responsive Design</li>
-            <li>Basic On-Page SEO</li>
+            <li>CMS — Edit Anytime</li>
+            <li>Mobile Responsive</li>
+            <li>On-Page SEO on Every Page</li>
+            <li>Contact Form</li>
+            <li>WhatsApp / Messenger Widget</li>
+            <li>Google Maps Embed</li>
+            <li>2 Rounds of Revisions</li>
+            <li>Delivered in 4 Business Days</li>
+            <li>30-Day Post-Launch Support</li>
           </ul>
-          <a href="#" class="btn btn-ghost pkg-cta" onclick="navigate('contact'); return false;">Get Started</a>
+          <a href="#" class="btn btn-ghost pkg-cta" onclick="navigate('contact'); return false;">Build My Starter Site →</a>
         </div>
 
-        <!-- Tier 02 -->
+        <!-- Tier 03: Growth -->
         <div class="pkg-card">
-          <div class="pkg-tier">Tier 02</div>
-          <div class="pkg-name">Starter</div>
+          <div class="pkg-tier">Tier 03</div>
+          <div class="pkg-name">Growth</div>
           <div class="pkg-price">
             <span class="pkg-currency">₱</span>
             <span class="pkg-amount">7,999</span>
@@ -2104,66 +2144,87 @@
           <div class="pkg-deposit">₱4,000 Deposit Required</div>
           <div class="pkg-rule"></div>
           <ul class="pkg-features">
-            <li>2–4 Pages</li>
-            <li>1 Business Email Account</li>
+            <li>4–6 Professionally Designed Pages</li>
+            <li>2 Business Emails @yourdomain</li>
             <li>Free 1-Year Domain</li>
             <li>Secure SSL Hosting</li>
-            <li>Built-in CMS / Page Builder</li>
-            <li>Mobile-Responsive Design</li>
-            <li>On-Page SEO Optimization</li>
-            <li>Contact Form Integration</li>
+            <li>CMS — Edit Anytime</li>
+            <li>Mobile Responsive</li>
+            <li>Full On-Page SEO</li>
+            <li>Advanced Lead &amp; Contact Forms</li>
+            <li>WhatsApp / Messenger Widget</li>
+            <li>Google Maps Embed</li>
+            <li>Google Analytics</li>
+            <li>Facebook &amp; Instagram Page Setup</li>
+            <li>PageSpeed Optimized</li>
+            <li>3 Rounds of Revisions</li>
+            <li>Delivered in 5 Business Days</li>
+            <li>30-Day Post-Launch Support</li>
           </ul>
-          <a href="#" class="btn btn-ghost pkg-cta" onclick="navigate('contact'); return false;">Get Started</a>
+          <a href="#" class="btn btn-ghost pkg-cta" onclick="navigate('contact'); return false;">Start Growing Online →</a>
         </div>
 
-        <!-- Tier 03 — Featured -->
+        <!-- Tier 04: Pro — Most Popular -->
         <div class="pkg-card featured">
           <div class="pkg-featured-label">Most Popular</div>
-          <div class="pkg-tier">Tier 03</div>
-          <div class="pkg-name">Standard</div>
+          <div class="pkg-tier">Tier 04</div>
+          <div class="pkg-name">Pro</div>
           <div class="pkg-price">
             <span class="pkg-currency">₱</span>
-            <span class="pkg-amount">10,000</span>
+            <span class="pkg-amount">9,999</span>
           </div>
           <div class="pkg-deposit">₱5,000 Deposit Required</div>
           <div class="pkg-rule"></div>
           <ul class="pkg-features">
-            <li>5–8 Pages</li>
-            <li>3 Business Email Accounts</li>
+            <li>6–10 Professionally Designed Pages</li>
+            <li>3 Business Emails @yourdomain</li>
             <li>Free 1-Year Domain</li>
             <li>Secure SSL Hosting</li>
-            <li>Built-in CMS / Page Builder</li>
-            <li>Mobile-Responsive Design</li>
-            <li>Full SEO Suite</li>
-            <li>Advanced Lead &amp; Contact Forms</li>
-            <li>Google Analytics Integration</li>
+            <li>CMS — Edit Anytime</li>
+            <li>Mobile Responsive</li>
+            <li>Full SEO Suite — Built to Rank</li>
+            <li>Advanced Lead Capture Forms</li>
+            <li>WhatsApp / Messenger Widget</li>
+            <li>Google Analytics + Search Console</li>
+            <li>Branded Social Media Covers</li>
+            <li>1-Hour CMS Training Call</li>
+            <li>Unlimited Revisions (Build Phase)</li>
+            <li>30-Day Performance Report</li>
+            <li>Delivered in 10 Business Days</li>
+            <li>60-Day Post-Launch Support</li>
           </ul>
-          <a href="#" class="btn btn-navy pkg-cta" onclick="navigate('contact'); return false;">Get Started</a>
+          <a href="#" class="btn btn-navy pkg-cta" onclick="navigate('contact'); return false;">Get My Complete Website →</a>
         </div>
 
-        <!-- Tier 04 -->
-        <div class="pkg-card">
-          <div class="pkg-tier">Tier 04</div>
-          <div class="pkg-name">Premium</div>
-          <div class="pkg-price">
-            <span class="pkg-currency">₱</span>
-            <span class="pkg-amount">15,000</span>
+        <!-- Tier 05: Enterprise -->
+        <div class="pkg-card pkg-card--enterprise">
+          <div class="pkg-tier" style="color:rgba(169,142,96,0.75)">Tier 05</div>
+          <div class="pkg-name" style="color:white">Enterprise</div>
+          <div class="pkg-price" style="margin-bottom:0.2rem">
+            <span class="pkg-amount" style="font-size:1.45rem;color:var(--gold);letter-spacing:0">Custom Quote</span>
           </div>
-          <div class="pkg-deposit">₱7,500 Deposit Required</div>
-          <div class="pkg-rule"></div>
+          <div class="pkg-deposit" style="color:rgba(255,255,255,0.4)">50% Deposit of Agreed Price</div>
+          <div class="pkg-rule" style="background:rgba(255,255,255,0.1)"></div>
           <ul class="pkg-features">
             <li>Unlimited Pages</li>
             <li>Unlimited Business Emails</li>
             <li>Free 1-Year Domain</li>
             <li>Secure SSL Hosting</li>
-            <li>Built-in CMS / Page Builder</li>
-            <li>Mobile-Responsive Design</li>
+            <li>CMS — Edit Anytime</li>
+            <li>Mobile Responsive</li>
             <li>Enterprise SEO Suite</li>
             <li>E-Commerce Ready</li>
-            <li>Priority Support &amp; Maintenance</li>
             <li>Custom Integrations &amp; Automations</li>
+            <li>Google Analytics + Search Console</li>
+            <li>Google Business Profile Setup</li>
+            <li>Complete Social Media Kit</li>
+            <li>2-Hour CMS + Analytics Training</li>
+            <li>Monthly Performance Reports × 3</li>
+            <li>Unlimited Revisions (Build Phase)</li>
+            <li>90-Day Post-Launch Support</li>
+            <li>Priority Support Line</li>
           </ul>
-          <a href="#" class="btn btn-gold pkg-cta" onclick="navigate('contact'); return false;">Get Started</a>
+          <a href="#" class="btn btn-gold pkg-cta" onclick="navigate('contact'); return false;">Book a Discovery Call →</a>
         </div>
 
       </div>
@@ -2173,47 +2234,26 @@
         <span style="font-size:1rem;flex-shrink:0">ℹ️</span>
         <span>
           <strong>Renewal Notice:</strong> After the complimentary first year, Email, Hosting &amp; Domain
-          renewal is a flat <strong>$60 USD annually</strong> — transparent, predictable, no surprises.
+          renewal is a flat <strong>$60 USD/year (~₱3,500)</strong> — all three services, one flat fee, no surprises.
         </span>
       </div>
 
-      <div class="flex-price-note">
-        <span>💬</span>
-        <span><strong>Prices are flexible.</strong> Every business has unique needs — if our standard tiers don't fit your scope or budget, reach out and we'll build a custom package tailored exactly to your goals.</span>
-      </div>
-
-      <!-- 6-Hour urgency banner -->
-      <div class="urgency-banner">
-        <div class="ub-icon">⚡</div>
+      <!-- 6-Hour urgency banner — EXPIRED -->
+      <div class="urgency-banner" style="opacity:0.6;filter:grayscale(0.35)">
+        <div class="ub-icon" style="opacity:0.5">⚪</div>
         <div class="ub-body">
-          <div class="ub-eyebrow">🔴 LIVE — Limited Fast-Action Offer</div>
-          <h3 class="ub-title">6-Hour Fast-Action <em>Bonus</em></h3>
-          <p class="ub-desc">
-            Book within <strong>6 hours</strong> and receive a
-            <strong>Complimentary Social Proof Boost</strong> — 10,000 free Facebook followers
-            delivered to your page for <strong>immediate brand credibility</strong> and social
-            authority. Establish dominance before your competitors do.
+          <div class="ub-eyebrow" style="color:rgba(255,255,255,0.35);background:rgba(255,255,255,0.06);border-color:rgba(255,255,255,0.12)">⚪ PREVIOUS OFFER — NOW EXPIRED</div>
+          <h3 class="ub-title" style="opacity:0.55">6-Hour Fast-Action <em>Bonus</em></h3>
+          <p class="ub-desc" style="opacity:0.5">
+            This offer has ended. We previously offered a <strong style="color:rgba(255,255,255,0.6)">Free Social Media Business Setup</strong> —
+            branded Facebook &amp; Instagram business pages with cover photo, optimized bio, and contact
+            button configured — worth <strong style="color:rgba(255,255,255,0.6)">₱1,500</strong>, complimentary
+            with any booking made within 6 hours of first contact.
           </p>
-          <div class="ub-mini-cd">
-            <div class="ub-cd-unit">
-              <div class="ub-cd-num" id="ub-hours">06</div>
-              <div class="ub-cd-lbl">Hrs</div>
-            </div>
-            <div class="ub-cd-sep">:</div>
-            <div class="ub-cd-unit">
-              <div class="ub-cd-num" id="ub-minutes">00</div>
-              <div class="ub-cd-lbl">Min</div>
-            </div>
-            <div class="ub-cd-sep">:</div>
-            <div class="ub-cd-unit">
-              <div class="ub-cd-num" id="ub-seconds">00</div>
-              <div class="ub-cd-lbl">Sec</div>
-            </div>
-            <div class="ub-window-label">— starts the moment you take action</div>
-          </div>
+          <p style="font-size:0.75rem;color:rgba(255,255,255,0.3);margin-top:0.6rem;">Message us on Messenger to ask about current promotions.</p>
         </div>
         <div class="ub-cta">
-          <a href="#" class="btn btn-gold" onclick="navigate('contact'); return false;">⚡ Claim Bonus Now</a>
+          <a href="https://m.me/trp.vibe.solutions" target="_blank" rel="noopener noreferrer" class="btn btn-ghost" style="opacity:0.55">Ask About Current Offers</a>
         </div>
       </div>
 
