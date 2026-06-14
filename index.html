@@ -120,6 +120,7 @@
       display: flex;
       align-items: center;
       gap: 2.25rem;
+      position: relative;
     }
     .nav-links a {
       font-size: 0.78rem;
@@ -128,19 +129,12 @@
       letter-spacing: 0.07em;
       text-transform: uppercase;
       position: relative;
-      padding-bottom: 3px;
+      z-index: 1;
+      padding: 0.35rem 0.6rem;
       transition: color var(--t);
     }
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      left: 0; bottom: 0;
-      width: 0; height: 1.5px;
-      background: var(--gold);
-      transition: width var(--t);
-    }
+    .nav-links a::after { display: none; }
     .nav-links a:hover, .nav-links a.active { color: var(--navy); }
-    .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
     .nav-links a.nav-cta {
       background: var(--navy);
       color: var(--white) !important;
@@ -148,8 +142,37 @@
       border-radius: var(--radius-sm);
       transition: background var(--t), transform var(--t) !important;
     }
-    .nav-links a.nav-cta::after { display: none; }
     .nav-links a.nav-cta:hover { background: var(--gold) !important; transform: translateY(-1px); }
+
+    /* ── Tubelight pill indicator ── */
+    .nav-pill {
+      position: absolute;
+      border-radius: 100px;
+      background: rgba(169,142,96,0.1);
+      border: 1px solid rgba(169,142,96,0.22);
+      pointer-events: none;
+      z-index: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      transition: left   0.42s cubic-bezier(0.34, 1.56, 0.64, 1),
+                  width  0.42s cubic-bezier(0.34, 1.56, 0.64, 1),
+                  opacity 0.2s ease;
+    }
+    .nav-pill::before {
+      content: '';
+      position: absolute;
+      top: -1px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 28px;
+      height: 3px;
+      background: var(--gold);
+      border-radius: 0 0 8px 8px;
+      box-shadow:
+        0 0 12px 4px  rgba(169,142,96,0.7),
+        0 0 32px 8px  rgba(169,142,96,0.3),
+        0 0 60px 14px rgba(169,142,96,0.12);
+    }
 
     /* ── Hamburger ── */
     .hamburger {
@@ -644,7 +667,7 @@
       background: var(--gold-light);
       border: 1px solid var(--gold-border);
       border-radius: var(--radius-md);
-      margin-bottom: 3.5rem;
+      margin-bottom: 1.8rem;
       flex-wrap: wrap;
     }
     .vib-icon { font-size: 1.4rem; flex-shrink: 0; }
@@ -809,6 +832,92 @@
     }
     .flex-price-note strong { color: var(--navy); }
     .flex-price-note > span:first-child { font-size: 1.05rem; flex-shrink: 0; margin-top: 1px; }
+
+    /* Value ladder comparison table */
+    .vl-scroll-hint {
+      display: none;
+      font-size: 0.72rem;
+      color: var(--slate);
+      text-align: center;
+      padding: 0 0 0.5rem;
+      opacity: 0.65;
+      letter-spacing: 0.04em;
+    }
+    @media (max-width: 760px) { .vl-scroll-hint { display: block; } }
+    .vl-wrap {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-md);
+      box-shadow: var(--shadow-sm);
+      margin: 0 0 2.5rem;
+    }
+    .vl-table {
+      width: 100%;
+      min-width: 680px;
+      border-collapse: collapse;
+      font-size: 0.8rem;
+    }
+    .vl-table thead tr { background: var(--navy); }
+    .vl-table thead th {
+      padding: 1rem 0.9rem 0.95rem;
+      text-align: center;
+      color: rgba(255,255,255,0.6);
+      font-weight: 700;
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-right: 1px solid rgba(255,255,255,0.07);
+    }
+    .vl-table thead th:last-child { border-right: none; }
+    .vl-table thead th:first-child { text-align: left; min-width: 200px; }
+    .vl-th-name {
+      display: block;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 0.88rem;
+      color: var(--white);
+      margin-bottom: 0.18rem;
+    }
+    .vl-th-price { display: block; font-size: 0.73rem; font-weight: 600; color: var(--gold); }
+    .vl-th-badge {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--white);
+      font-size: 0.54rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.15rem 0.55rem;
+      border-radius: 100px;
+      margin-top: 0.35rem;
+    }
+    .vl-section-row td {
+      background: var(--navy);
+      color: rgba(255,255,255,0.4);
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 0.5rem 0.9rem;
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+    .vl-table tbody tr:not(.vl-section-row) { border-bottom: 1px solid var(--border); }
+    .vl-table tbody tr:not(.vl-section-row):nth-child(even) { background: var(--navy-tint); }
+    .vl-table tbody tr:not(.vl-section-row):hover { background: var(--gold-light); }
+    .vl-table td {
+      padding: 0.65rem 0.9rem;
+      text-align: center;
+      color: var(--slate);
+      border-right: 1px solid var(--border);
+      vertical-align: middle;
+      line-height: 1.3;
+    }
+    .vl-table td:last-child { border-right: none; }
+    .vl-table td:first-child { text-align: left; color: var(--navy); font-weight: 500; font-size: 0.79rem; }
+    .vl-check { color: var(--gold); font-weight: 800; font-size: 1rem; line-height: 1; }
+    .vl-dash  { color: rgba(90,107,124,0.3); font-size: 1rem; line-height: 1; }
+    .vl-val   { color: var(--navy); font-weight: 600; font-size: 0.74rem; }
 
     /* SurveyIQ flagship portfolio card */
     .port-card--flagship {
@@ -1807,9 +1916,9 @@
               <div class="stat-num">100%</div>
               <div class="stat-lbl">Client Satisfaction</div>
             </div>
-            <div class="bonus-stat-wrap">
-              <div class="stat-num bonus-stat-num">6-Hr</div>
-              <div class="stat-lbl bonus-stat-lbl">⚡ Fast-Action Bonus</div>
+            <div>
+              <div class="stat-num">5</div>
+              <div class="stat-lbl">Pricing Plans</div>
             </div>
             <div>
               <div class="stat-num">Free</div>
@@ -1863,10 +1972,7 @@
       <div class="strip-item"><span class="strip-check">✓</span> Built-in CMS / Page Builder</div>
       <div class="strip-item"><span class="strip-check">✓</span> Business Email Setup</div>
       <div class="strip-item"><span class="strip-check">✓</span> Mobile-Responsive Design</div>
-      <div class="strip-item strip-bonus-item">
-        <span class="strip-bonus-icon">⚡</span>
-        <span class="strip-bonus-text">6-Hour Bonus — 10K Followers FREE</span>
-      </div>
+      <div class="strip-item"><span class="strip-check">✓</span> 5 Plans — Starting at ₱3,999</div>
     </div>
   </div>
 
@@ -2075,6 +2181,57 @@
           <span>Email, Hosting &amp; Domain renewal: flat <strong>$60 USD annually</strong> after the first complimentary year.</span>
         </div>
         <div class="vib-pill">Included Free</div>
+      </div>
+
+      <!-- Value Ladder Comparison Table -->
+      <div class="vl-scroll-hint">← Scroll to compare all tiers →</div>
+      <div class="vl-wrap">
+        <table class="vl-table">
+          <thead>
+            <tr>
+              <th></th>
+              <th><span class="vl-th-name">Launchpad</span><span class="vl-th-price">₱3,999</span></th>
+              <th><span class="vl-th-name">Starter</span><span class="vl-th-price">₱5,999</span></th>
+              <th><span class="vl-th-name">Growth</span><span class="vl-th-price">₱7,999</span></th>
+              <th><span class="vl-th-name">Pro</span><span class="vl-th-price">₱9,999</span><br><span class="vl-th-badge">Most Popular</span></th>
+              <th><span class="vl-th-name">Enterprise</span><span class="vl-th-price">Custom Quote</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="vl-section-row"><td colspan="6">Foundation — Every Plan Includes</td></tr>
+            <tr><td>Free 1-Year Domain</td><td><span class="vl-check">✓</span></td><td><span class="vl-check">✓</span></td><td><span class="vl-check">✓</span></td><td><span class="vl-check">✓</span></td><td><span class="vl-check">✓</span></td></tr>
+            <tr><td>Secure SSL Hosting</td><td><span class="vl-check">✓</span></td><td><span class="vl-check">✓</span></td><td><span class="vl-check">✓</span></td><td><span class="vl-check">✓</span></td><td><span class="vl-check">✓</span></td></tr>
+            <tr><td>CMS — Edit Anytime</td><td><span class="vl-check">✓</span></td><td><span class="vl-check">✓</span></td><td><span class="vl-check">✓</span></td><td><span class="vl-check">✓</span></td><td><span class="vl-check">✓</span></td></tr>
+            <tr><td>Mobile Responsive Design</td><td><span class="vl-check">✓</span></td><td><span class="vl-check">✓</span></td><td><span class="vl-check">✓</span></td><td><span class="vl-check">✓</span></td><td><span class="vl-check">✓</span></td></tr>
+            <tr><td>Contact Form</td><td><span class="vl-check">✓</span></td><td><span class="vl-check">✓</span></td><td><span class="vl-check">✓</span></td><td><span class="vl-check">✓</span></td><td><span class="vl-check">✓</span></td></tr>
+
+            <tr class="vl-section-row"><td colspan="6">Scope &amp; Scale</td></tr>
+            <tr><td>Professionally Designed Pages</td><td><span class="vl-val">1 page</span></td><td><span class="vl-val">2–3 pages</span></td><td><span class="vl-val">4–6 pages</span></td><td><span class="vl-val">6–10 pages</span></td><td><span class="vl-val">Unlimited</span></td></tr>
+            <tr><td>Business Emails @yourdomain</td><td><span class="vl-val">1</span></td><td><span class="vl-val">1</span></td><td><span class="vl-val">2</span></td><td><span class="vl-val">3</span></td><td><span class="vl-val">Unlimited</span></td></tr>
+
+            <tr class="vl-section-row"><td colspan="6">SEO &amp; Marketing</td></tr>
+            <tr><td>SEO Coverage</td><td><span class="vl-val">Basic</span></td><td><span class="vl-val">On-Page</span></td><td><span class="vl-val">Full On-Page</span></td><td><span class="vl-val">Full Suite</span></td><td><span class="vl-val">Enterprise Suite</span></td></tr>
+            <tr><td>WhatsApp / Messenger Widget</td><td><span class="vl-dash">—</span></td><td><span class="vl-check">✓</span></td><td><span class="vl-check">✓</span></td><td><span class="vl-check">✓</span></td><td><span class="vl-check">✓</span></td></tr>
+            <tr><td>Google Maps Embed</td><td><span class="vl-dash">—</span></td><td><span class="vl-check">✓</span></td><td><span class="vl-check">✓</span></td><td><span class="vl-check">✓</span></td><td><span class="vl-check">✓</span></td></tr>
+            <tr><td>Google Analytics</td><td><span class="vl-dash">—</span></td><td><span class="vl-dash">—</span></td><td><span class="vl-check">✓</span></td><td><span class="vl-check">✓</span></td><td><span class="vl-check">✓</span></td></tr>
+            <tr><td>PageSpeed Optimized</td><td><span class="vl-dash">—</span></td><td><span class="vl-dash">—</span></td><td><span class="vl-check">✓</span></td><td><span class="vl-check">✓</span></td><td><span class="vl-check">✓</span></td></tr>
+            <tr><td>Social Media Setup</td><td><span class="vl-dash">—</span></td><td><span class="vl-dash">—</span></td><td><span class="vl-val">FB + IG Pages</span></td><td><span class="vl-val">Branded Covers</span></td><td><span class="vl-val">Complete Kit</span></td></tr>
+            <tr><td>Google Search Console</td><td><span class="vl-dash">—</span></td><td><span class="vl-dash">—</span></td><td><span class="vl-dash">—</span></td><td><span class="vl-check">✓</span></td><td><span class="vl-check">✓</span></td></tr>
+            <tr><td>Google Business Profile</td><td><span class="vl-dash">—</span></td><td><span class="vl-dash">—</span></td><td><span class="vl-dash">—</span></td><td><span class="vl-dash">—</span></td><td><span class="vl-check">✓</span></td></tr>
+
+            <tr class="vl-section-row"><td colspan="6">Advanced Features</td></tr>
+            <tr><td>E-Commerce / Online Store</td><td><span class="vl-dash">—</span></td><td><span class="vl-dash">—</span></td><td><span class="vl-dash">—</span></td><td><span class="vl-dash">—</span></td><td><span class="vl-check">✓</span></td></tr>
+            <tr><td>Custom Integrations &amp; Automations</td><td><span class="vl-dash">—</span></td><td><span class="vl-dash">—</span></td><td><span class="vl-dash">—</span></td><td><span class="vl-dash">—</span></td><td><span class="vl-check">✓</span></td></tr>
+
+            <tr class="vl-section-row"><td colspan="6">Support &amp; Delivery</td></tr>
+            <tr><td>Revision Rounds</td><td><span class="vl-val">1 round</span></td><td><span class="vl-val">2 rounds</span></td><td><span class="vl-val">3 rounds</span></td><td><span class="vl-val">Unlimited</span></td><td><span class="vl-val">Unlimited</span></td></tr>
+            <tr><td>CMS Training Call</td><td><span class="vl-dash">—</span></td><td><span class="vl-dash">—</span></td><td><span class="vl-dash">—</span></td><td><span class="vl-val">1-Hour</span></td><td><span class="vl-val">2-Hour</span></td></tr>
+            <tr><td>Performance Report</td><td><span class="vl-dash">—</span></td><td><span class="vl-dash">—</span></td><td><span class="vl-dash">—</span></td><td><span class="vl-val">30-Day</span></td><td><span class="vl-val">Monthly × 3</span></td></tr>
+            <tr><td>Post-Launch Support</td><td><span class="vl-val">14 days</span></td><td><span class="vl-val">30 days</span></td><td><span class="vl-val">30 days</span></td><td><span class="vl-val">60 days</span></td><td><span class="vl-val">90 days</span></td></tr>
+            <tr><td>Priority Support Line</td><td><span class="vl-dash">—</span></td><td><span class="vl-dash">—</span></td><td><span class="vl-dash">—</span></td><td><span class="vl-dash">—</span></td><td><span class="vl-check">✓</span></td></tr>
+            <tr><td>Delivery Time</td><td><span class="vl-val">3 days</span></td><td><span class="vl-val">4 days</span></td><td><span class="vl-val">5 days</span></td><td><span class="vl-val">10 days</span></td><td><span class="vl-val">Custom</span></td></tr>
+          </tbody>
+        </table>
       </div>
 
       <!-- 5 packages -->
@@ -2799,6 +2956,9 @@
     document.querySelectorAll('.mobile-link').forEach(function(a) {
       a.classList.toggle('active', a.dataset.view === viewId);
     });
+
+    // Update tubelight pill position
+    if (window.updateNavPill) window.updateNavPill();
   }
 
   /* ── Hamburger / mobile menu ── */
@@ -2829,6 +2989,38 @@
   window.addEventListener('scroll', function() {
     navbar.classList.toggle('scrolled', window.scrollY > 8);
   }, { passive: true });
+
+  /* ── Tubelight nav pill ── */
+  (function() {
+    var navLinksEl = document.getElementById('navLinks');
+    if (!navLinksEl) return;
+
+    var pill = document.createElement('div');
+    pill.className = 'nav-pill';
+    pill.id = 'navPill';
+    pill.style.opacity = '0';
+    pill.style.transition = 'none';
+    navLinksEl.appendChild(pill);
+
+    window.updateNavPill = function() {
+      var active = navLinksEl.querySelector('.nav-link.active:not(.nav-cta)');
+      if (!active) { pill.style.opacity = '0'; return; }
+      var nlRect = navLinksEl.getBoundingClientRect();
+      var aRect  = active.getBoundingClientRect();
+      pill.style.opacity = '1';
+      pill.style.left   = (aRect.left  - nlRect.left)  + 'px';
+      pill.style.width  = aRect.width  + 'px';
+      pill.style.height = aRect.height + 'px';
+    };
+
+    // Snap to position on load, then enable spring transition
+    setTimeout(function() {
+      window.updateNavPill();
+      setTimeout(function() { pill.style.transition = ''; }, 30);
+    }, 0);
+
+    window.addEventListener('resize', window.updateNavPill);
+  })();
 
   /* ── 6-Hour Fast-Action Bonus Countdown ── */
   /* Timer is STATIC at 06:00:00 until user clicks Messenger or Submit Inquiry.
