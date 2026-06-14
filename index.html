@@ -924,6 +924,102 @@
     .vl-dash  { color: rgba(90,107,124,0.3); font-size: 1rem; line-height: 1; }
     .vl-val   { color: var(--navy); font-weight: 600; font-size: 0.74rem; }
 
+    /* ── Discount Toggle ── */
+    .disc-toggle { margin-bottom: 2rem; }
+    .disc-toggle-label { font-size: 0.7rem; font-weight: 700; color: var(--navy); margin-bottom: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; }
+    .disc-options { display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; }
+    .disc-opt {
+      display: inline-flex; align-items: center; gap: 0.45rem;
+      padding: 0.48rem 1rem; border-radius: 100px;
+      border: 1.5px solid var(--border-md); background: var(--white);
+      font-size: 0.77rem; font-weight: 600; color: var(--slate);
+      cursor: pointer; transition: all var(--t); font-family: 'Inter', sans-serif;
+    }
+    .disc-opt:hover { border-color: var(--gold); color: var(--navy); }
+    .disc-opt.active { border-color: var(--gold); background: var(--gold); color: var(--white); }
+    .disc-stage {
+      font-size: 0.58rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 0.1rem 0.45rem; border-radius: 100px; background: rgba(255,255,255,0.25);
+    }
+    .disc-opt:not(.active) .disc-stage { background: rgba(17,41,70,0.08); color: var(--navy); }
+    .disc-note { font-size: 0.69rem; color: var(--slate); margin-top: 0.55rem; font-style: italic; opacity: 0.7; }
+
+    /* ── Unified Pricing Table ── */
+    .upt-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: var(--radius-md); border: 1px solid var(--border-md); box-shadow: var(--shadow-sm); margin: 0 0 2.5rem; }
+    .upt-table { width: 100%; min-width: 820px; border-collapse: collapse; }
+    .upt-table thead { background: var(--navy); }
+    .upt-table thead tr { border: none; }
+    .upt-feature-head {
+      vertical-align: bottom; text-align: left;
+      padding: 1.25rem 1rem 1.75rem; min-width: 190px; width: 190px;
+      font-size: 0.6rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
+      color: rgba(255,255,255,0.32); border-right: 1px solid rgba(255,255,255,0.07);
+    }
+    .upt-plan-th { vertical-align: bottom; padding: 0.55rem 0.4rem 0; border-right: 1px solid rgba(255,255,255,0.07); }
+    .upt-plan-th:last-child { border-right: none; }
+
+    .upt-plan-card {
+      border-radius: 10px 10px 0 0; border: 1px solid rgba(255,255,255,0.1); border-bottom: none;
+      background: rgba(255,255,255,0.05); padding: 0.85rem 0.85rem 0.95rem;
+      text-align: left; position: relative; height: 100%;
+    }
+    .upt-plan-card.featured-card { background: rgba(169,142,96,0.18); border-color: var(--gold); }
+    .upt-plan-card.enterprise-card { background: rgba(169,142,96,0.08); border-color: rgba(169,142,96,0.35); }
+
+    .upt-plan-header { display: flex; align-items: flex-start; gap: 0.45rem; margin-bottom: 0.65rem; }
+    .upt-plan-icon {
+      width: 27px; height: 27px; display: flex; align-items: center; justify-content: center;
+      border-radius: 50%; border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.07); font-size: 0.78rem; flex-shrink: 0;
+    }
+    .upt-plan-meta { flex: 1; min-width: 0; }
+    .upt-plan-name { display: block; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.82rem; color: var(--white); margin-bottom: 0.2rem; }
+    .upt-plan-badge {
+      display: inline-block; font-size: 0.54rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.1rem 0.5rem; border-radius: 100px;
+      background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.5);
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+    .upt-plan-badge.popular { background: var(--gold); color: var(--white); border-color: var(--gold); }
+
+    .upt-price-row { margin-bottom: 0.3rem; line-height: 1; }
+    .upt-price-main { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 1.25rem; color: var(--white); }
+    .upt-price-compare { font-size: 0.74rem; color: rgba(255,255,255,0.38); text-decoration: line-through; margin-left: 0.3rem; display: none; }
+    .upt-deposit { font-size: 0.61rem; color: rgba(255,255,255,0.38); margin-bottom: 0.7rem; }
+
+    .upt-plan-cta {
+      display: block; width: 100%; text-align: center; padding: 0.42rem 0.4rem;
+      border-radius: var(--radius-sm); font-size: 0.66rem; font-weight: 700; letter-spacing: 0.02em;
+      background: rgba(255,255,255,0.1); color: var(--white);
+      border: 1px solid rgba(255,255,255,0.18);
+      cursor: pointer; transition: background var(--t), border-color var(--t);
+    }
+    .upt-plan-cta:hover { background: rgba(255,255,255,0.2); }
+    .upt-plan-card.featured-card .upt-plan-cta { background: var(--gold); border-color: var(--gold); }
+    .upt-plan-card.featured-card .upt-plan-cta:hover { background: #be9f6e; }
+    .upt-plan-card.enterprise-card .upt-plan-cta { background: rgba(169,142,96,0.18); border-color: var(--gold); color: var(--gold); }
+    .upt-plan-card.enterprise-card .upt-plan-cta:hover { background: var(--gold); color: var(--white); }
+
+    .upt-section-row td {
+      background: var(--navy); padding: 0.42rem 1rem;
+      color: rgba(255,255,255,0.32); font-size: 0.58rem; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .upt-table tbody tr:not(.upt-section-row) { border-bottom: 1px solid var(--border); }
+    .upt-table tbody tr:not(.upt-section-row):nth-child(even) { background: var(--navy-tint); }
+    .upt-table tbody tr:not(.upt-section-row):hover { background: var(--gold-light); }
+    .upt-table td { padding: 0.58rem 1rem; text-align: center; border-right: 1px solid var(--border); vertical-align: middle; }
+    .upt-table td:last-child { border-right: none; }
+    .upt-table td:first-child { text-align: left; color: var(--navy); font-weight: 500; font-size: 0.79rem; }
+    /* Subtle featured column tint */
+    .upt-table tbody td:nth-child(5) { background: rgba(169,142,96,0.04); }
+    .upt-table tbody tr:not(.upt-section-row):nth-child(even) td:nth-child(5) { background: rgba(169,142,96,0.07); }
+    .upt-table tbody tr:not(.upt-section-row):hover td:nth-child(5) { background: rgba(169,142,96,0.12); }
+    .upt-check { color: var(--gold); font-weight: 800; font-size: 0.95rem; line-height: 1; }
+    .upt-dash  { color: rgba(90,107,124,0.28); font-size: 0.95rem; line-height: 1; }
+    .upt-val   { color: var(--navy); font-weight: 600; font-size: 0.73rem; }
+
     /* SurveyIQ flagship portfolio card */
     .port-card--flagship {
       grid-column: 1 / -1;
@@ -1940,8 +2036,8 @@
               <div class="stat-lbl">Domain + SSL Year 1</div>
             </div>
             <div>
-              <div class="stat-num">1–3</div>
-              <div class="stat-lbl">Day Delivery</div>
+              <div class="stat-num">3-Day</div>
+              <div class="stat-lbl">Express Turnaround</div>
             </div>
           </div>
         </div>
@@ -2144,208 +2240,131 @@
         <div class="vib-pill">Included Free</div>
       </div>
 
-      <!-- Value Ladder Comparison Table -->
+      <!-- Discount Program -->
+      <div class="disc-toggle">
+        <div class="disc-toggle-label">Business Stage Discount Program</div>
+        <div class="disc-options">
+          <button class="disc-opt active" data-discount="0">Standard Pricing</button>
+          <button class="disc-opt" data-discount="10"><span class="disc-stage">Stage 1</span> Startup Business — 10% off</button>
+          <button class="disc-opt" data-discount="5"><span class="disc-stage">Stage 2</span> Business Growth — 5% off</button>
+        </div>
+        <p class="disc-note">* All discounts are subject to review upon our conversation with you.</p>
+      </div>
+
+      <!-- Unified Pricing + Feature Comparison -->
       <div class="vl-scroll-hint">← Scroll to compare all tiers →</div>
-      <div class="vl-wrap">
-        <table class="vl-table">
+      <div class="upt-wrap">
+        <table class="upt-table">
           <thead>
             <tr>
-              <th></th>
-              <th><span class="vl-th-name">Launchpad</span><span class="vl-th-price">₱3,999</span></th>
-              <th><span class="vl-th-name">Starter</span><span class="vl-th-price">₱5,999</span></th>
-              <th><span class="vl-th-name">Growth</span><span class="vl-th-price">₱7,999</span></th>
-              <th><span class="vl-th-name">Pro</span><span class="vl-th-price">₱9,999</span><br><span class="vl-th-badge">Most Popular</span></th>
-              <th><span class="vl-th-name">Enterprise</span><span class="vl-th-price">Custom Quote</span></th>
+              <th class="upt-feature-head">Features &amp; Inclusions</th>
+              <th class="upt-plan-th">
+                <div class="upt-plan-card" data-base-price="3999">
+                  <div class="upt-plan-header">
+                    <div class="upt-plan-icon">🚀</div>
+                    <div class="upt-plan-meta">
+                      <span class="upt-plan-name">Launchpad</span>
+                      <span class="upt-plan-badge">Tier 01</span>
+                    </div>
+                  </div>
+                  <div class="upt-price-row"><span class="upt-price-main">₱3,999</span><span class="upt-price-compare"></span></div>
+                  <div class="upt-deposit">₱2,000 Deposit Required</div>
+                  <a href="#" class="upt-plan-cta" onclick="navigate('contact'); return false;">Get Online Now →</a>
+                </div>
+              </th>
+              <th class="upt-plan-th">
+                <div class="upt-plan-card" data-base-price="5999">
+                  <div class="upt-plan-header">
+                    <div class="upt-plan-icon">⭐</div>
+                    <div class="upt-plan-meta">
+                      <span class="upt-plan-name">Starter</span>
+                      <span class="upt-plan-badge">Tier 02</span>
+                    </div>
+                  </div>
+                  <div class="upt-price-row"><span class="upt-price-main">₱5,999</span><span class="upt-price-compare"></span></div>
+                  <div class="upt-deposit">₱3,000 Deposit Required</div>
+                  <a href="#" class="upt-plan-cta" onclick="navigate('contact'); return false;">Build My Starter →</a>
+                </div>
+              </th>
+              <th class="upt-plan-th">
+                <div class="upt-plan-card" data-base-price="7999">
+                  <div class="upt-plan-header">
+                    <div class="upt-plan-icon">📈</div>
+                    <div class="upt-plan-meta">
+                      <span class="upt-plan-name">Growth</span>
+                      <span class="upt-plan-badge">Tier 03</span>
+                    </div>
+                  </div>
+                  <div class="upt-price-row"><span class="upt-price-main">₱7,999</span><span class="upt-price-compare"></span></div>
+                  <div class="upt-deposit">₱4,000 Deposit Required</div>
+                  <a href="#" class="upt-plan-cta" onclick="navigate('contact'); return false;">Start Growing →</a>
+                </div>
+              </th>
+              <th class="upt-plan-th">
+                <div class="upt-plan-card featured-card" data-base-price="9999">
+                  <div class="upt-plan-header">
+                    <div class="upt-plan-icon">💎</div>
+                    <div class="upt-plan-meta">
+                      <span class="upt-plan-name">Pro</span>
+                      <span class="upt-plan-badge popular">Most Popular</span>
+                    </div>
+                  </div>
+                  <div class="upt-price-row"><span class="upt-price-main">₱9,999</span><span class="upt-price-compare"></span></div>
+                  <div class="upt-deposit">₱5,000 Deposit Required</div>
+                  <a href="#" class="upt-plan-cta" onclick="navigate('contact'); return false;">Get Complete Site →</a>
+                </div>
+              </th>
+              <th class="upt-plan-th">
+                <div class="upt-plan-card enterprise-card">
+                  <div class="upt-plan-header">
+                    <div class="upt-plan-icon">🏢</div>
+                    <div class="upt-plan-meta">
+                      <span class="upt-plan-name">Enterprise</span>
+                      <span class="upt-plan-badge">Tier 05 · Custom</span>
+                    </div>
+                  </div>
+                  <div class="upt-price-row"><span class="upt-price-main" style="font-size:1rem;color:var(--gold)">Custom Quote</span></div>
+                  <div class="upt-deposit">50% Deposit of Agreed Price</div>
+                  <a href="#" class="upt-plan-cta" onclick="navigate('contact'); return false;">Book Discovery Call →</a>
+                </div>
+              </th>
             </tr>
           </thead>
           <tbody>
-            <tr class="vl-section-row"><td colspan="6">Foundation — Every Plan Includes</td></tr>
-            <tr><td>Free 1-Year Domain</td><td><span class="vl-check">✓</span></td><td><span class="vl-check">✓</span></td><td><span class="vl-check">✓</span></td><td><span class="vl-check">✓</span></td><td><span class="vl-check">✓</span></td></tr>
-            <tr><td>Secure SSL Hosting</td><td><span class="vl-check">✓</span></td><td><span class="vl-check">✓</span></td><td><span class="vl-check">✓</span></td><td><span class="vl-check">✓</span></td><td><span class="vl-check">✓</span></td></tr>
-            <tr><td>CMS — Edit Anytime</td><td><span class="vl-check">✓</span></td><td><span class="vl-check">✓</span></td><td><span class="vl-check">✓</span></td><td><span class="vl-check">✓</span></td><td><span class="vl-check">✓</span></td></tr>
-            <tr><td>Mobile Responsive Design</td><td><span class="vl-check">✓</span></td><td><span class="vl-check">✓</span></td><td><span class="vl-check">✓</span></td><td><span class="vl-check">✓</span></td><td><span class="vl-check">✓</span></td></tr>
-            <tr><td>Contact Form</td><td><span class="vl-check">✓</span></td><td><span class="vl-check">✓</span></td><td><span class="vl-check">✓</span></td><td><span class="vl-check">✓</span></td><td><span class="vl-check">✓</span></td></tr>
+            <tr class="upt-section-row"><td colspan="6">Foundation — Every Plan Includes</td></tr>
+            <tr><td>Free 1-Year Domain</td><td><span class="upt-check">✓</span></td><td><span class="upt-check">✓</span></td><td><span class="upt-check">✓</span></td><td><span class="upt-check">✓</span></td><td><span class="upt-check">✓</span></td></tr>
+            <tr><td>Secure SSL Hosting</td><td><span class="upt-check">✓</span></td><td><span class="upt-check">✓</span></td><td><span class="upt-check">✓</span></td><td><span class="upt-check">✓</span></td><td><span class="upt-check">✓</span></td></tr>
+            <tr><td>CMS — Edit Anytime</td><td><span class="upt-check">✓</span></td><td><span class="upt-check">✓</span></td><td><span class="upt-check">✓</span></td><td><span class="upt-check">✓</span></td><td><span class="upt-check">✓</span></td></tr>
+            <tr><td>Mobile Responsive Design</td><td><span class="upt-check">✓</span></td><td><span class="upt-check">✓</span></td><td><span class="upt-check">✓</span></td><td><span class="upt-check">✓</span></td><td><span class="upt-check">✓</span></td></tr>
+            <tr><td>Contact Form</td><td><span class="upt-check">✓</span></td><td><span class="upt-check">✓</span></td><td><span class="upt-check">✓</span></td><td><span class="upt-check">✓</span></td><td><span class="upt-check">✓</span></td></tr>
 
-            <tr class="vl-section-row"><td colspan="6">Scope &amp; Scale</td></tr>
-            <tr><td>Professionally Designed Pages</td><td><span class="vl-val">1 page</span></td><td><span class="vl-val">2–3 pages</span></td><td><span class="vl-val">4–6 pages</span></td><td><span class="vl-val">6–10 pages</span></td><td><span class="vl-val">Unlimited</span></td></tr>
-            <tr><td>Business Emails @yourdomain</td><td><span class="vl-val">1</span></td><td><span class="vl-val">1</span></td><td><span class="vl-val">2</span></td><td><span class="vl-val">3</span></td><td><span class="vl-val">Unlimited</span></td></tr>
+            <tr class="upt-section-row"><td colspan="6">Scope &amp; Scale</td></tr>
+            <tr><td>Professionally Designed Pages</td><td><span class="upt-val">1 page</span></td><td><span class="upt-val">2–3 pages</span></td><td><span class="upt-val">4–6 pages</span></td><td><span class="upt-val">6–10 pages</span></td><td><span class="upt-val">Unlimited</span></td></tr>
+            <tr><td>Business Emails @yourdomain</td><td><span class="upt-val">1</span></td><td><span class="upt-val">1</span></td><td><span class="upt-val">2</span></td><td><span class="upt-val">3</span></td><td><span class="upt-val">Unlimited</span></td></tr>
 
-            <tr class="vl-section-row"><td colspan="6">SEO &amp; Marketing</td></tr>
-            <tr><td>SEO Coverage</td><td><span class="vl-val">Basic</span></td><td><span class="vl-val">On-Page</span></td><td><span class="vl-val">Full On-Page</span></td><td><span class="vl-val">Full Suite</span></td><td><span class="vl-val">Enterprise Suite</span></td></tr>
-            <tr><td>WhatsApp / Messenger Widget</td><td><span class="vl-dash">—</span></td><td><span class="vl-check">✓</span></td><td><span class="vl-check">✓</span></td><td><span class="vl-check">✓</span></td><td><span class="vl-check">✓</span></td></tr>
-            <tr><td>Google Maps Embed</td><td><span class="vl-dash">—</span></td><td><span class="vl-check">✓</span></td><td><span class="vl-check">✓</span></td><td><span class="vl-check">✓</span></td><td><span class="vl-check">✓</span></td></tr>
-            <tr><td>Google Analytics</td><td><span class="vl-dash">—</span></td><td><span class="vl-dash">—</span></td><td><span class="vl-check">✓</span></td><td><span class="vl-check">✓</span></td><td><span class="vl-check">✓</span></td></tr>
-            <tr><td>PageSpeed Optimized</td><td><span class="vl-dash">—</span></td><td><span class="vl-dash">—</span></td><td><span class="vl-check">✓</span></td><td><span class="vl-check">✓</span></td><td><span class="vl-check">✓</span></td></tr>
-            <tr><td>Social Media Setup</td><td><span class="vl-dash">—</span></td><td><span class="vl-dash">—</span></td><td><span class="vl-val">FB + IG Pages</span></td><td><span class="vl-val">Branded Covers</span></td><td><span class="vl-val">Complete Kit</span></td></tr>
-            <tr><td>Google Search Console</td><td><span class="vl-dash">—</span></td><td><span class="vl-dash">—</span></td><td><span class="vl-dash">—</span></td><td><span class="vl-check">✓</span></td><td><span class="vl-check">✓</span></td></tr>
-            <tr><td>Google Business Profile</td><td><span class="vl-dash">—</span></td><td><span class="vl-dash">—</span></td><td><span class="vl-dash">—</span></td><td><span class="vl-dash">—</span></td><td><span class="vl-check">✓</span></td></tr>
+            <tr class="upt-section-row"><td colspan="6">SEO &amp; Marketing</td></tr>
+            <tr><td>SEO Coverage</td><td><span class="upt-val">Basic</span></td><td><span class="upt-val">On-Page</span></td><td><span class="upt-val">Full On-Page</span></td><td><span class="upt-val">Full Suite</span></td><td><span class="upt-val">Enterprise Suite</span></td></tr>
+            <tr><td>WhatsApp / Messenger Widget</td><td><span class="upt-dash">—</span></td><td><span class="upt-check">✓</span></td><td><span class="upt-check">✓</span></td><td><span class="upt-check">✓</span></td><td><span class="upt-check">✓</span></td></tr>
+            <tr><td>Google Maps Embed</td><td><span class="upt-dash">—</span></td><td><span class="upt-check">✓</span></td><td><span class="upt-check">✓</span></td><td><span class="upt-check">✓</span></td><td><span class="upt-check">✓</span></td></tr>
+            <tr><td>Google Analytics</td><td><span class="upt-dash">—</span></td><td><span class="upt-dash">—</span></td><td><span class="upt-check">✓</span></td><td><span class="upt-check">✓</span></td><td><span class="upt-check">✓</span></td></tr>
+            <tr><td>PageSpeed Optimized</td><td><span class="upt-dash">—</span></td><td><span class="upt-dash">—</span></td><td><span class="upt-check">✓</span></td><td><span class="upt-check">✓</span></td><td><span class="upt-check">✓</span></td></tr>
+            <tr><td>Social Media Setup</td><td><span class="upt-dash">—</span></td><td><span class="upt-dash">—</span></td><td><span class="upt-val">FB + IG Pages</span></td><td><span class="upt-val">Branded Covers</span></td><td><span class="upt-val">Complete Kit</span></td></tr>
+            <tr><td>Google Search Console</td><td><span class="upt-dash">—</span></td><td><span class="upt-dash">—</span></td><td><span class="upt-dash">—</span></td><td><span class="upt-check">✓</span></td><td><span class="upt-check">✓</span></td></tr>
+            <tr><td>Google Business Profile</td><td><span class="upt-dash">—</span></td><td><span class="upt-dash">—</span></td><td><span class="upt-dash">—</span></td><td><span class="upt-dash">—</span></td><td><span class="upt-check">✓</span></td></tr>
 
-            <tr class="vl-section-row"><td colspan="6">Advanced Features</td></tr>
-            <tr><td>E-Commerce / Online Store</td><td><span class="vl-dash">—</span></td><td><span class="vl-dash">—</span></td><td><span class="vl-dash">—</span></td><td><span class="vl-dash">—</span></td><td><span class="vl-check">✓</span></td></tr>
-            <tr><td>Custom Integrations &amp; Automations</td><td><span class="vl-dash">—</span></td><td><span class="vl-dash">—</span></td><td><span class="vl-dash">—</span></td><td><span class="vl-dash">—</span></td><td><span class="vl-check">✓</span></td></tr>
+            <tr class="upt-section-row"><td colspan="6">Advanced Features</td></tr>
+            <tr><td>E-Commerce / Online Store</td><td><span class="upt-dash">—</span></td><td><span class="upt-dash">—</span></td><td><span class="upt-dash">—</span></td><td><span class="upt-dash">—</span></td><td><span class="upt-check">✓</span></td></tr>
+            <tr><td>Custom Integrations &amp; Automations</td><td><span class="upt-dash">—</span></td><td><span class="upt-dash">—</span></td><td><span class="upt-dash">—</span></td><td><span class="upt-dash">—</span></td><td><span class="upt-check">✓</span></td></tr>
 
-            <tr class="vl-section-row"><td colspan="6">Support &amp; Delivery</td></tr>
-            <tr><td>Revision Rounds</td><td><span class="vl-val">1 round</span></td><td><span class="vl-val">2 rounds</span></td><td><span class="vl-val">3 rounds</span></td><td><span class="vl-val">Unlimited</span></td><td><span class="vl-val">Unlimited</span></td></tr>
-            <tr><td>CMS Training Call</td><td><span class="vl-dash">—</span></td><td><span class="vl-dash">—</span></td><td><span class="vl-dash">—</span></td><td><span class="vl-val">1-Hour</span></td><td><span class="vl-val">2-Hour</span></td></tr>
-            <tr><td>Performance Report</td><td><span class="vl-dash">—</span></td><td><span class="vl-dash">—</span></td><td><span class="vl-dash">—</span></td><td><span class="vl-val">30-Day</span></td><td><span class="vl-val">Monthly × 3</span></td></tr>
-            <tr><td>Post-Launch Support</td><td><span class="vl-val">14 days</span></td><td><span class="vl-val">30 days</span></td><td><span class="vl-val">30 days</span></td><td><span class="vl-val">60 days</span></td><td><span class="vl-val">90 days</span></td></tr>
-            <tr><td>Priority Support Line</td><td><span class="vl-dash">—</span></td><td><span class="vl-dash">—</span></td><td><span class="vl-dash">—</span></td><td><span class="vl-dash">—</span></td><td><span class="vl-check">✓</span></td></tr>
-            <tr><td>Delivery Time</td><td><span class="vl-val">3 days</span></td><td><span class="vl-val">4 days</span></td><td><span class="vl-val">5 days</span></td><td><span class="vl-val">10 days</span></td><td><span class="vl-val">Custom</span></td></tr>
+            <tr class="upt-section-row"><td colspan="6">Support &amp; Delivery</td></tr>
+            <tr><td>Revision Rounds</td><td><span class="upt-val">1 round</span></td><td><span class="upt-val">2 rounds</span></td><td><span class="upt-val">3 rounds</span></td><td><span class="upt-val">Unlimited</span></td><td><span class="upt-val">Unlimited</span></td></tr>
+            <tr><td>CMS Training Call</td><td><span class="upt-dash">—</span></td><td><span class="upt-dash">—</span></td><td><span class="upt-dash">—</span></td><td><span class="upt-val">1-Hour</span></td><td><span class="upt-val">2-Hour</span></td></tr>
+            <tr><td>Performance Report</td><td><span class="upt-dash">—</span></td><td><span class="upt-dash">—</span></td><td><span class="upt-dash">—</span></td><td><span class="upt-val">30-Day</span></td><td><span class="upt-val">Monthly × 3</span></td></tr>
+            <tr><td>Post-Launch Support</td><td><span class="upt-val">14 days</span></td><td><span class="upt-val">30 days</span></td><td><span class="upt-val">30 days</span></td><td><span class="upt-val">60 days</span></td><td><span class="upt-val">90 days</span></td></tr>
+            <tr><td>Priority Support Line</td><td><span class="upt-dash">—</span></td><td><span class="upt-dash">—</span></td><td><span class="upt-dash">—</span></td><td><span class="upt-dash">—</span></td><td><span class="upt-check">✓</span></td></tr>
+            <tr><td>Delivery Time</td><td><span class="upt-val">3 days</span></td><td><span class="upt-val">4 days</span></td><td><span class="upt-val">5 days</span></td><td><span class="upt-val">10 days</span></td><td><span class="upt-val">Custom</span></td></tr>
           </tbody>
         </table>
-      </div>
-
-      <!-- 5 packages -->
-      <div class="pkg-grid">
-
-        <!-- Tier 01: Launchpad -->
-        <div class="pkg-card">
-          <div class="pkg-tier">Tier 01</div>
-          <div class="pkg-name">Launchpad</div>
-          <div class="pkg-price">
-            <span class="pkg-currency">₱</span>
-            <span class="pkg-amount">3,999</span>
-          </div>
-          <div class="pkg-deposit">₱2,000 Deposit Required</div>
-          <div class="pkg-rule"></div>
-          <ul class="pkg-features">
-            <li>1 Professionally Designed Page</li>
-            <li>1 Business Email @yourdomain</li>
-            <li>Free 1-Year Domain</li>
-            <li>Secure SSL Hosting</li>
-            <li>CMS — Edit Anytime</li>
-            <li>Mobile Responsive</li>
-            <li>Basic On-Page SEO</li>
-            <li>Contact Form</li>
-            <li>1 Round of Revisions</li>
-            <li>Delivered in 3 Business Days</li>
-            <li>14-Day Post-Launch Support</li>
-          </ul>
-          <a href="#" class="btn btn-ghost pkg-cta" onclick="navigate('contact'); return false;">Get Online Now →</a>
-        </div>
-
-        <!-- Tier 02: Starter -->
-        <div class="pkg-card">
-          <div class="pkg-tier">Tier 02</div>
-          <div class="pkg-name">Starter</div>
-          <div class="pkg-price">
-            <span class="pkg-currency">₱</span>
-            <span class="pkg-amount">5,999</span>
-          </div>
-          <div class="pkg-deposit">₱3,000 Deposit Required</div>
-          <div class="pkg-rule"></div>
-          <ul class="pkg-features">
-            <li>2–3 Professionally Designed Pages</li>
-            <li>1 Business Email @yourdomain</li>
-            <li>Free 1-Year Domain</li>
-            <li>Secure SSL Hosting</li>
-            <li>CMS — Edit Anytime</li>
-            <li>Mobile Responsive</li>
-            <li>On-Page SEO on Every Page</li>
-            <li>Contact Form</li>
-            <li>WhatsApp / Messenger Widget</li>
-            <li>Google Maps Embed</li>
-            <li>2 Rounds of Revisions</li>
-            <li>Delivered in 4 Business Days</li>
-            <li>30-Day Post-Launch Support</li>
-          </ul>
-          <a href="#" class="btn btn-ghost pkg-cta" onclick="navigate('contact'); return false;">Build My Starter Site →</a>
-        </div>
-
-        <!-- Tier 03: Growth -->
-        <div class="pkg-card">
-          <div class="pkg-tier">Tier 03</div>
-          <div class="pkg-name">Growth</div>
-          <div class="pkg-price">
-            <span class="pkg-currency">₱</span>
-            <span class="pkg-amount">7,999</span>
-          </div>
-          <div class="pkg-deposit">₱4,000 Deposit Required</div>
-          <div class="pkg-rule"></div>
-          <ul class="pkg-features">
-            <li>4–6 Professionally Designed Pages</li>
-            <li>2 Business Emails @yourdomain</li>
-            <li>Free 1-Year Domain</li>
-            <li>Secure SSL Hosting</li>
-            <li>CMS — Edit Anytime</li>
-            <li>Mobile Responsive</li>
-            <li>Full On-Page SEO</li>
-            <li>Advanced Lead &amp; Contact Forms</li>
-            <li>WhatsApp / Messenger Widget</li>
-            <li>Google Maps Embed</li>
-            <li>Google Analytics</li>
-            <li>Facebook &amp; Instagram Page Setup</li>
-            <li>PageSpeed Optimized</li>
-            <li>3 Rounds of Revisions</li>
-            <li>Delivered in 5 Business Days</li>
-            <li>30-Day Post-Launch Support</li>
-          </ul>
-          <a href="#" class="btn btn-ghost pkg-cta" onclick="navigate('contact'); return false;">Start Growing Online →</a>
-        </div>
-
-        <!-- Tier 04: Pro — Most Popular -->
-        <div class="pkg-card featured">
-          <div class="pkg-featured-label">Most Popular</div>
-          <div class="pkg-tier">Tier 04</div>
-          <div class="pkg-name">Pro</div>
-          <div class="pkg-price">
-            <span class="pkg-currency">₱</span>
-            <span class="pkg-amount">9,999</span>
-          </div>
-          <div class="pkg-deposit">₱5,000 Deposit Required</div>
-          <div class="pkg-rule"></div>
-          <ul class="pkg-features">
-            <li>6–10 Professionally Designed Pages</li>
-            <li>3 Business Emails @yourdomain</li>
-            <li>Free 1-Year Domain</li>
-            <li>Secure SSL Hosting</li>
-            <li>CMS — Edit Anytime</li>
-            <li>Mobile Responsive</li>
-            <li>Full SEO Suite — Built to Rank</li>
-            <li>Advanced Lead Capture Forms</li>
-            <li>WhatsApp / Messenger Widget</li>
-            <li>Google Analytics + Search Console</li>
-            <li>Branded Social Media Covers</li>
-            <li>1-Hour CMS Training Call</li>
-            <li>Unlimited Revisions (Build Phase)</li>
-            <li>30-Day Performance Report</li>
-            <li>Delivered in 10 Business Days</li>
-            <li>60-Day Post-Launch Support</li>
-          </ul>
-          <a href="#" class="btn btn-navy pkg-cta" onclick="navigate('contact'); return false;">Get My Complete Website →</a>
-        </div>
-
-        <!-- Tier 05: Enterprise -->
-        <div class="pkg-card pkg-card--enterprise">
-          <div class="pkg-tier" style="color:rgba(169,142,96,0.75)">Tier 05</div>
-          <div class="pkg-name" style="color:white">Enterprise</div>
-          <div class="pkg-price" style="margin-bottom:0.2rem">
-            <span class="pkg-amount" style="font-size:1.45rem;color:var(--gold);letter-spacing:0">Custom Quote</span>
-          </div>
-          <div class="pkg-deposit" style="color:rgba(255,255,255,0.4)">50% Deposit of Agreed Price</div>
-          <div class="pkg-rule" style="background:rgba(255,255,255,0.1)"></div>
-          <ul class="pkg-features">
-            <li>Unlimited Pages</li>
-            <li>Unlimited Business Emails</li>
-            <li>Free 1-Year Domain</li>
-            <li>Secure SSL Hosting</li>
-            <li>CMS — Edit Anytime</li>
-            <li>Mobile Responsive</li>
-            <li>Enterprise SEO Suite</li>
-            <li>E-Commerce Ready</li>
-            <li>Custom Integrations &amp; Automations</li>
-            <li>Google Analytics + Search Console</li>
-            <li>Google Business Profile Setup</li>
-            <li>Complete Social Media Kit</li>
-            <li>2-Hour CMS + Analytics Training</li>
-            <li>Monthly Performance Reports × 3</li>
-            <li>Unlimited Revisions (Build Phase)</li>
-            <li>90-Day Post-Launch Support</li>
-            <li>Priority Support Line</li>
-          </ul>
-          <a href="#" class="btn btn-gold pkg-cta" onclick="navigate('contact'); return false;">Book a Discovery Call →</a>
-        </div>
-
       </div>
 
       <!-- Renewal note -->
@@ -3090,6 +3109,31 @@
       var el = e.target.closest('a[href*="m.me"], .messenger-float, .btn-messenger, .ocv2-cta, .footer-social-msn, #submitBtn');
       if (el) activateTimer();
     }, true);
+  })();
+
+  /* ── Pricing discount toggle ── */
+  (function() {
+    document.querySelectorAll('.disc-opt').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.disc-opt').forEach(function(b) { b.classList.remove('active'); });
+        this.classList.add('active');
+        var pct = parseInt(this.dataset.discount || '0', 10);
+        document.querySelectorAll('[data-base-price]').forEach(function(card) {
+          var base = parseInt(card.dataset.basePrice, 10);
+          var disc = Math.round(base * (1 - pct / 100));
+          var mainEl = card.querySelector('.upt-price-main');
+          var cmpEl  = card.querySelector('.upt-price-compare');
+          if (!mainEl) return;
+          mainEl.textContent = '₱' + disc.toLocaleString('en-PH');
+          if (pct > 0) {
+            cmpEl.textContent = '₱' + base.toLocaleString('en-PH');
+            cmpEl.style.display = 'inline';
+          } else {
+            cmpEl.style.display = 'none';
+          }
+        });
+      });
+    });
   })();
 
   /* ── Contact form ── */
