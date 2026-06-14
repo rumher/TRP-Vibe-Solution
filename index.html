@@ -331,6 +331,201 @@
     .page-hero .section-body { color: rgba(255,255,255,0.62); margin: 0 auto; text-align: center; }
 
     /* ─────────────────────────────────────────────────
+       TIER SHOWCASE (Home)
+    ───────────────────────────────────────────────── */
+    .tier-showcase { padding: 4.5rem 0 5rem; }
+
+    .tier-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 1.25rem;
+      margin-top: 3rem;
+    }
+    .tier-card:nth-child(1) { grid-column: 1 / 3; }
+    .tier-card:nth-child(2) { grid-column: 3 / 5; }
+    .tier-card:nth-child(3) { grid-column: 5 / 7; }
+    .tier-card:nth-child(4) { grid-column: 2 / 4; }
+    .tier-card:nth-child(5) { grid-column: 4 / 6; }
+
+    .tier-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem 1.5rem 0;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow-sm);
+      transition: box-shadow var(--t), transform var(--t);
+      overflow: hidden;
+    }
+    .tier-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
+    .tier-card--featured { background: var(--navy); border-color: var(--navy); }
+    .tier-card--enterprise {
+      background: linear-gradient(135deg, var(--navy-deep) 0%, #1a3a5c 100%);
+      border-color: var(--navy-deep);
+    }
+
+    .tier-card-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 1rem; }
+    .tier-icon { font-size: 1.65rem; line-height: 1; }
+    .tier-badge {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: rgba(169,142,96,0.1);
+      border: 1px solid rgba(169,142,96,0.25);
+      padding: 0.2rem 0.6rem;
+      border-radius: 100px;
+    }
+    .tier-card--featured .tier-badge,
+    .tier-card--enterprise .tier-badge { background: rgba(169,142,96,0.18); }
+
+    .tier-name {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 1.15rem;
+      color: var(--navy);
+      margin-bottom: 0.2rem;
+      line-height: 1.2;
+    }
+    .tier-card--featured .tier-name,
+    .tier-card--enterprise .tier-name { color: var(--white); }
+
+    .tier-tagline {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      margin-bottom: 0.8rem;
+    }
+
+    .tier-desc {
+      font-size: 0.79rem;
+      color: var(--slate);
+      line-height: 1.65;
+      margin-bottom: 1rem;
+    }
+    .tier-card--featured .tier-desc,
+    .tier-card--enterprise .tier-desc { color: rgba(255,255,255,0.6); }
+
+    .tier-bullets { display: flex; flex-direction: column; gap: 0.42rem; flex: 1; margin-bottom: 1rem; }
+    .tier-bullet { display: flex; align-items: flex-start; gap: 0.5rem; font-size: 0.76rem; color: var(--slate); line-height: 1.45; }
+    .tier-card--featured .tier-bullet,
+    .tier-card--enterprise .tier-bullet { color: rgba(255,255,255,0.7); }
+    .tier-bullet-dot {
+      width: 5px; height: 5px; border-radius: 50%;
+      background: var(--gold); flex-shrink: 0; margin-top: 0.46em;
+    }
+
+    .tier-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.03em;
+      margin-bottom: 1.25rem;
+      transition: gap var(--t);
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+    }
+    .tier-cta:hover { gap: 0.7rem; }
+
+    /* ── Mini card illustrations ── */
+    .tier-illus {
+      margin: 0 -1.5rem;
+      border-top: 1px solid var(--border);
+      background: var(--bg);
+      padding: 0.9rem 1rem 0.85rem;
+    }
+    .tier-card--featured .tier-illus  { background: rgba(0,0,0,0.18); border-top-color: rgba(255,255,255,0.08); }
+    .tier-card--enterprise .tier-illus { background: rgba(0,0,0,0.22); border-top-color: rgba(255,255,255,0.08); }
+
+    /* Launchpad: single-page wireframe */
+    .ti-page { display: flex; flex-direction: column; gap: 4px; }
+    .ti-nav-bar { height: 7px; background: var(--navy); border-radius: 3px; opacity: 0.2; }
+    .ti-hero-blk { height: 30px; background: linear-gradient(120deg, var(--navy) 0%, var(--gold) 100%); border-radius: 4px; opacity: 0.2; }
+    .ti-row { display: flex; gap: 5px; margin-top: 1px; }
+    .ti-blk { height: 17px; flex: 1; background: var(--slate); border-radius: 3px; opacity: 0.11; }
+    .ti-cta-stub { height: 8px; width: 55px; background: var(--gold); border-radius: 100px; opacity: 0.5; margin-top: 2px; }
+
+    /* Starter: sidebar + content */
+    .ti-sidebody { display: flex; gap: 7px; height: 62px; }
+    .ti-sidebar { width: 22%; display: flex; flex-direction: column; gap: 3px; padding-top: 2px; }
+    .ti-sitem { height: 6px; background: var(--navy); border-radius: 2px; opacity: 0.13; }
+    .ti-sitem.on { background: var(--gold); opacity: 0.55; width: 88%; }
+    .ti-lines { flex: 1; display: flex; flex-direction: column; gap: 4px; justify-content: center; }
+    .ti-line { height: 5px; background: var(--slate); border-radius: 2px; opacity: 0.13; }
+    .ti-line.s { width: 55%; }
+    .ti-line.m { width: 78%; }
+
+    /* Growth: product cards */
+    .ti-products { display: flex; gap: 6px; }
+    .ti-product { flex: 1; display: flex; flex-direction: column; gap: 3px; }
+    .ti-product-img {
+      height: 28px; border-radius: 4px;
+      background: linear-gradient(135deg, rgba(169,142,96,0.18) 0%, rgba(17,41,70,0.13) 100%);
+      border: 1px solid var(--border);
+    }
+    .ti-product-txt { height: 4px; background: var(--slate); border-radius: 2px; opacity: 0.14; }
+    .ti-product-price { height: 4px; width: 55%; background: var(--gold); border-radius: 2px; opacity: 0.5; }
+    .ti-cart-row { display: flex; align-items: center; gap: 5px; margin-top: 5px; }
+    .ti-cart-lbl { font-size: 0.6rem; }
+    .ti-cart-pill { height: 4px; width: 38px; background: var(--gold); border-radius: 2px; opacity: 0.45; }
+
+    /* Pro: analytics dashboard */
+    .ti-dash { display: flex; flex-direction: column; gap: 5px; }
+    .ti-stats-row { display: flex; gap: 5px; }
+    .ti-stat {
+      flex: 1; background: var(--navy-tint); border: 1px solid var(--border);
+      border-radius: 5px; padding: 4px 6px;
+    }
+    .tier-card--featured .ti-stat { background: rgba(255,255,255,0.07); border-color: rgba(255,255,255,0.1); }
+    .ti-stat-val { height: 7px; background: var(--navy); border-radius: 2px; opacity: 0.22; width: 55%; margin-bottom: 3px; }
+    .tier-card--featured .ti-stat-val { background: var(--white); opacity: 0.3; }
+    .ti-stat-lbl { height: 4px; background: var(--slate); border-radius: 2px; opacity: 0.13; }
+    .tier-card--featured .ti-stat-lbl { background: var(--white); opacity: 0.15; }
+    .ti-bars { display: flex; flex-direction: column; gap: 3px; }
+    .ti-bar-item { display: flex; align-items: center; gap: 4px; }
+    .ti-bar-lbl { height: 4px; width: 26px; background: var(--slate); border-radius: 2px; opacity: 0.13; flex-shrink: 0; }
+    .tier-card--featured .ti-bar-lbl { background: var(--white); opacity: 0.15; }
+    .ti-bar-track { flex: 1; height: 5px; background: var(--navy-tint); border-radius: 3px; overflow: hidden; }
+    .tier-card--featured .ti-bar-track { background: rgba(255,255,255,0.1); }
+    .ti-bar-fill { height: 100%; background: linear-gradient(to right, var(--gold), rgba(169,142,96,0.45)); border-radius: 3px; }
+
+    /* Enterprise: node architecture */
+    .ti-arch { display: flex; flex-direction: column; gap: 6px; align-items: center; }
+    .ti-arch-row { display: flex; align-items: center; gap: 4px; }
+    .ti-node {
+      padding: 3px 8px; border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 4px; font-size: 0.52rem; font-weight: 700;
+      letter-spacing: 0.04em; color: rgba(255,255,255,0.5); white-space: nowrap;
+    }
+    .ti-node.hi { background: rgba(169,142,96,0.2); border-color: rgba(169,142,96,0.55); color: var(--gold); }
+    .ti-conn-h { width: 10px; height: 1px; background: rgba(255,255,255,0.18); flex-shrink: 0; }
+    .ti-conn-v { width: 1px; height: 6px; background: rgba(255,255,255,0.18); }
+
+    /* Tier showcase CTA row */
+    .tier-showcase-cta { text-align: center; margin-top: 2.75rem; }
+
+    @media (max-width: 960px) {
+      .tier-grid { grid-template-columns: repeat(2, 1fr); }
+      .tier-card:nth-child(1),
+      .tier-card:nth-child(2),
+      .tier-card:nth-child(3),
+      .tier-card:nth-child(4),
+      .tier-card:nth-child(5) { grid-column: auto; }
+    }
+    @media (max-width: 540px) {
+      .tier-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ─────────────────────────────────────────────────
        SHARED FOOTER
     ───────────────────────────────────────────────── */
     .site-footer {
@@ -2229,6 +2424,182 @@
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tier Showcase -->
+  <div class="tier-showcase">
+    <div class="container">
+      <div class="section-eyebrow"><span></span>Our Service Plans</div>
+      <h2 class="section-heading">5 Tiers Built for Every<br>Stage of Your Business</h2>
+      <p class="section-body">From first-time founders to large-scale enterprises — we have a plan that fits where you are today and scales with where you're going.</p>
+
+      <div class="tier-grid">
+
+        <!-- Tier 01: Launchpad -->
+        <div class="tier-card">
+          <div class="tier-card-top">
+            <div class="tier-icon">🚀</div>
+            <span class="tier-badge">Tier 01</span>
+          </div>
+          <div class="tier-name">Launchpad</div>
+          <div class="tier-tagline">For brand-new businesses</div>
+          <p class="tier-desc">Get your brand online fast with a clean, conversion-ready landing page — everything a new business needs to start capturing leads immediately.</p>
+          <ul class="tier-bullets">
+            <li class="tier-bullet"><span class="tier-bullet-dot"></span>1-page professional website</li>
+            <li class="tier-bullet"><span class="tier-bullet-dot"></span>Free domain + SSL (Year 1)</li>
+            <li class="tier-bullet"><span class="tier-bullet-dot"></span>Business email setup</li>
+            <li class="tier-bullet"><span class="tier-bullet-dot"></span>Mobile-responsive design</li>
+          </ul>
+          <button class="tier-cta" onclick="navigate('services'); return false;">See Full Details →</button>
+          <div class="tier-illus">
+            <div class="ti-page">
+              <div class="ti-nav-bar"></div>
+              <div class="ti-hero-blk"></div>
+              <div class="ti-row"><div class="ti-blk"></div><div class="ti-blk"></div><div class="ti-blk"></div></div>
+              <div class="ti-cta-stub"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tier 02: Starter -->
+        <div class="tier-card">
+          <div class="tier-card-top">
+            <div class="tier-icon">⭐</div>
+            <span class="tier-badge">Tier 02</span>
+          </div>
+          <div class="tier-name">Starter</div>
+          <div class="tier-tagline">For early-stage businesses</div>
+          <p class="tier-desc">A multi-section website with blog or portfolio capability — to properly establish your brand story and start building organic search presence.</p>
+          <ul class="tier-bullets">
+            <li class="tier-bullet"><span class="tier-bullet-dot"></span>Up to 3-page website</li>
+            <li class="tier-bullet"><span class="tier-bullet-dot"></span>Blog or portfolio section</li>
+            <li class="tier-bullet"><span class="tier-bullet-dot"></span>SEO foundation setup</li>
+            <li class="tier-bullet"><span class="tier-bullet-dot"></span>Contact form integration</li>
+          </ul>
+          <button class="tier-cta" onclick="navigate('services'); return false;">See Full Details →</button>
+          <div class="tier-illus">
+            <div class="ti-sidebody">
+              <div class="ti-sidebar">
+                <div class="ti-sitem on"></div>
+                <div class="ti-sitem"></div>
+                <div class="ti-sitem"></div>
+                <div class="ti-sitem"></div>
+              </div>
+              <div class="ti-lines">
+                <div class="ti-line"></div>
+                <div class="ti-line s"></div>
+                <div class="ti-line m"></div>
+                <div class="ti-line s"></div>
+                <div class="ti-line"></div>
+                <div class="ti-line m"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tier 03: Growth -->
+        <div class="tier-card">
+          <div class="tier-card-top">
+            <div class="tier-icon">📈</div>
+            <span class="tier-badge">Tier 03</span>
+          </div>
+          <div class="tier-name">Growth</div>
+          <div class="tier-tagline">For scaling businesses</div>
+          <p class="tier-desc">A full business website with e-commerce or booking capability. Built to convert visitors into paying customers and support your revenue growth.</p>
+          <ul class="tier-bullets">
+            <li class="tier-bullet"><span class="tier-bullet-dot"></span>Full multi-page website</li>
+            <li class="tier-bullet"><span class="tier-bullet-dot"></span>E-commerce or booking system</li>
+            <li class="tier-bullet"><span class="tier-bullet-dot"></span>Payment gateway integration</li>
+            <li class="tier-bullet"><span class="tier-bullet-dot"></span>Advanced SEO optimization</li>
+          </ul>
+          <button class="tier-cta" onclick="navigate('services'); return false;">See Full Details →</button>
+          <div class="tier-illus">
+            <div class="ti-products">
+              <div class="ti-product"><div class="ti-product-img"></div><div class="ti-product-txt"></div><div class="ti-product-price"></div></div>
+              <div class="ti-product"><div class="ti-product-img"></div><div class="ti-product-txt"></div><div class="ti-product-price"></div></div>
+              <div class="ti-product"><div class="ti-product-img"></div><div class="ti-product-txt"></div><div class="ti-product-price"></div></div>
+            </div>
+            <div class="ti-cart-row"><span class="ti-cart-lbl">🛒</span><div class="ti-cart-pill"></div></div>
+          </div>
+        </div>
+
+        <!-- Tier 04: Pro (featured) -->
+        <div class="tier-card tier-card--featured">
+          <div class="tier-card-top">
+            <div class="tier-icon">💎</div>
+            <span class="tier-badge">Tier 04 · Most Popular</span>
+          </div>
+          <div class="tier-name">Pro</div>
+          <div class="tier-tagline">For established businesses</div>
+          <p class="tier-desc">A premium digital ecosystem — CRM integrations, marketing automation, and performance dashboards for brands that are serious about growth.</p>
+          <ul class="tier-bullets">
+            <li class="tier-bullet"><span class="tier-bullet-dot"></span>Full website + CRM integration</li>
+            <li class="tier-bullet"><span class="tier-bullet-dot"></span>Marketing automation setup</li>
+            <li class="tier-bullet"><span class="tier-bullet-dot"></span>Analytics &amp; conversion tracking</li>
+            <li class="tier-bullet"><span class="tier-bullet-dot"></span>Priority support &amp; 2 revisions</li>
+          </ul>
+          <button class="tier-cta" onclick="navigate('services'); return false;">See Full Details →</button>
+          <div class="tier-illus">
+            <div class="ti-dash">
+              <div class="ti-stats-row">
+                <div class="ti-stat"><div class="ti-stat-val"></div><div class="ti-stat-lbl"></div></div>
+                <div class="ti-stat"><div class="ti-stat-val"></div><div class="ti-stat-lbl"></div></div>
+                <div class="ti-stat"><div class="ti-stat-val"></div><div class="ti-stat-lbl"></div></div>
+              </div>
+              <div class="ti-bars">
+                <div class="ti-bar-item"><div class="ti-bar-lbl"></div><div class="ti-bar-track"><div class="ti-bar-fill" style="width:92%"></div></div></div>
+                <div class="ti-bar-item"><div class="ti-bar-lbl"></div><div class="ti-bar-track"><div class="ti-bar-fill" style="width:76%"></div></div></div>
+                <div class="ti-bar-item"><div class="ti-bar-lbl"></div><div class="ti-bar-track"><div class="ti-bar-fill" style="width:85%"></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tier 05: Enterprise -->
+        <div class="tier-card tier-card--enterprise">
+          <div class="tier-card-top">
+            <div class="tier-icon">🏢</div>
+            <span class="tier-badge">Tier 05 · Custom</span>
+          </div>
+          <div class="tier-name">Enterprise</div>
+          <div class="tier-tagline">For large-scale organizations</div>
+          <p class="tier-desc">Fully bespoke digital infrastructure engineered to your exact requirements — from multi-brand web systems to custom API integrations and long-term dedicated support.</p>
+          <ul class="tier-bullets">
+            <li class="tier-bullet"><span class="tier-bullet-dot"></span>Custom architecture &amp; integrations</li>
+            <li class="tier-bullet"><span class="tier-bullet-dot"></span>Multi-site or multi-brand setup</li>
+            <li class="tier-bullet"><span class="tier-bullet-dot"></span>Dedicated project management</li>
+            <li class="tier-bullet"><span class="tier-bullet-dot"></span>Long-term retainer &amp; SLA support</li>
+          </ul>
+          <button class="tier-cta" onclick="navigate('services'); return false;">See Full Details →</button>
+          <div class="tier-illus">
+            <div class="ti-arch">
+              <div class="ti-arch-row">
+                <div class="ti-node hi">Your Brand</div>
+              </div>
+              <div class="ti-conn-v"></div>
+              <div class="ti-arch-row">
+                <div class="ti-node">CRM</div>
+                <div class="ti-conn-h"></div>
+                <div class="ti-node">Web System</div>
+                <div class="ti-conn-h"></div>
+                <div class="ti-node">API Layer</div>
+              </div>
+              <div class="ti-conn-v"></div>
+              <div class="ti-arch-row">
+                <div class="ti-node">Analytics</div>
+                <div class="ti-conn-h"></div>
+                <div class="ti-node">Automation</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /tier-grid -->
+
+      <div class="tier-showcase-cta">
+        <a href="#" class="btn btn-navy" onclick="navigate('services'); return false;">View Full Pricing &amp; Features</a>
       </div>
     </div>
   </div>
